@@ -67,10 +67,22 @@ const spread = (raw, max) =>
  * 열다섯 체계에서 후보 숫자를 하나씩 뽑는다.
  * 각 항목은 어디서 나온 숫자인지를 함께 들고 다닌다.
  */
-function candidates(input, chart) {
+/**
+ * 번호 후보.
+ *
+ * period 를 주면 그 주의 기운에서 나온 후보를 더한다. 명반만 쓰면 평생
+ * 번호와 이번 주 번호가 거의 같아진다 - 겹침이 많은 번호는 씨앗을 바꿔도
+ * 그대로 이기기 때문이다. 실제로 여섯 중 다섯이 같았다.
+ *
+ * 그래서 이번 주 번호에는 그 주의 일진 일곱 개와 회차를 후보로 넣는다.
+ * 겹침으로 고른다는 원칙은 그대로 두고, 겹치는 재료만 주마다 바꾸는 것이다.
+ */
+function candidates(input, chart, week = null) {
   const out = [];
-  const add = (system, raw, max, why) =>
-    out.push({ system, n: spread(raw, max), raw, max, why });
+  // weight 는 겹침을 셀 때의 몫이다. 이번 주 후보는 2로 센다 - 주간 번호에서
+  // 이번 주 기운이 명반보다 가벼우면 평생 번호와 같아져 버린다.
+  const add = (system, raw, max, why, weight = 1) =>
+    out.push({ system, n: spread(raw, max), raw, max, why, weight });
 
   const { pillars, dayStem } = chart;
   const lunar = input.lunar;
@@ -175,6 +187,20 @@ function candidates(input, chart) {
   const card = sum === 22 ? 0 : sum;
   add('타로', card + 1, 22, `생일 카드 ${card}번`);
 
+  if (week) {
+    // 추첨일까지의 이레. 날마다 일진이 달라지니 주가 바뀌면 후보도 바뀐다.
+    const drawJdn = Math.floor(week.drawAt.getTime() / 86400000) + 2440588;
+    for (let i = 6; i >= 0; i--) {
+      const jd = drawJdn - i;
+      const st = (jd + 9) % 10, br = (jd + 1) % 12;
+      const ix = sexagenaryIndex(st, br) + 1;
+      add('이번 주 일진', ix, 60,
+        `${WEEKDAY_KR[(jd + 1) % 7]}요일 ${STEMS_KR[st]}${BRANCHES_KR[br]} — 육십갑자 ${ix}번째`, 2);
+    }
+    add('이번 주 회차', week.round, 1200, `${week.round}회차`, 2);
+    add('이번 주 절기', input.sectorIndex + 1, 24, `${input.sectorIndex + 1}번째 절기 구간`, 2);
+  }
+
   return out;
 }
 
@@ -217,15 +243,16 @@ function drawGame(cands, rng) {
   // 겹침이 같으면 씨앗으로 정한다. 그래야 같은 사람은 늘 같은 번호가 나온다.
   const byNumber = new Map();
   for (const c of cands) {
-    const e = byNumber.get(c.n) ?? { n: c.n, from: [], why: [] };
+    const e = byNumber.get(c.n) ?? { n: c.n, from: [], why: [], mass: 0 };
     e.from.push(c.system);
     e.why.push(c.why);
+    e.mass += c.weight ?? 1;
     byNumber.set(c.n, e);
   }
 
   const ranked = [...byNumber.values()]
     .map((e) => ({ ...e, overlap: e.from.length, tie: rng() }))
-    .sort((a, b) => b.overlap - a.overlap || a.tie - b.tie);
+    .sort((a, b) => b.mass - a.mass || b.overlap - a.overlap || a.tie - b.tie);
 
   const picked = ranked.slice(0, 6).map((e) => ({
     n: e.n,
@@ -261,9 +288,10 @@ function drawGame(cands, rng) {
  * @param {'life'|'week'} mode  평생 번호 / 이번 주 번호
  */
 export function pickNumbers(input, chart, mode = 'week') {
-  const cands = candidates(input, chart);
-  const base = chartSeed(input, chart);
   const info = currentRound();
+  // 평생 번호는 명반만, 이번 주 번호는 그 주의 기운까지 후보에 넣는다
+  const cands = candidates(input, chart, mode === 'week' ? info : null);
+  const base = chartSeed(input, chart);
 
   // 평생 번호는 명반만, 이번 주 번호는 거기에 회차를 섞는다
   const seed = mode === 'life' ? base : (base ^ Math.imul(info.round, 0x9E3779B1)) >>> 0;
