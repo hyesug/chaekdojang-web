@@ -80,34 +80,52 @@ function candidates(input, chart) {
   const sexa = sexagenaryIndex(pillars.day.stem, pillars.day.branch) + 1;
   add('사주', sexa, 60,
     `일주 ${pillars.day.hanja}(${pillars.day.kr}) — 육십갑자 ${sexa}번째`);
+  for (const [key, label] of [['year', '연주'], ['month', '월주'], ['hour', '시주']]) {
+    const pl = pillars[key];
+    if (!pl) continue;
+    const ix = sexagenaryIndex(pl.stem, pl.branch) + 1;
+    add('사주', ix, 60, `${label} ${pl.hanja}(${pl.kr}) — 육십갑자 ${ix}번째`);
+  }
 
   // 자미두수 — 명궁이 앉은 자리
   const myeong = ((2 + lunar.month - 1 - hb) % 12 + 12) % 12;
   add('자미두수', myeong + 1, 12,
     `명궁 ${BRANCHES_KR[myeong]}(${'子丑寅卯辰巳午未申酉戌亥'[myeong]}) — 열두 궁 중 ${myeong + 1}번째`);
+  const sin = ((2 + lunar.month - 1 + hb) % 12 + 12) % 12;
+  add('자미두수', sin + 1, 12, `신궁 ${BRANCHES_KR[sin]} — 열두 궁 중 ${sin + 1}번째`);
+  const jaebaek = (myeong + 8) % 12;
+  add('자미두수', jaebaek + 1, 12, `재백궁 ${BRANCHES_KR[jaebaek]} — 재물을 보는 자리`);
 
   // 점성술 — 태양이 머문 자리의 도수
   const pos = planetPositions(input.jdUT);
   const sunDeg = Math.floor(pos.태양.lon) + 1;
   add('점성술', sunDeg, 360, `태양 황경 ${pos.태양.lon.toFixed(1)}도`);
+  add('점성술', Math.floor(pos.달.lon) + 1, 360, `달 황경 ${pos.달.lon.toFixed(1)}도`);
+  add('점성술', Math.floor(pos.태양.lon / 30) + 1, 12,
+    `태양이 든 별자리 — 열둘 중 ${Math.floor(pos.태양.lon / 30) + 1}번째`);
 
   // 베딕 — 달이 든 나크샤트라
   const nak = nakshatraOf(input.jdUT);
   add('베딕', nak.index + 1, 27, `달의 나크샤트라 ${nak.index + 1}번째`);
+  add('베딕', nak.index * 4 + nak.pada, 108,
+    `나크샤트라 ${nak.index + 1}번째의 제${nak.pada}파다`);
 
   // 주역 — 본괘 번호
   const hex = hexOf(input);
   add('주역', hex.num, 64, `본괘 ${hex.num}번`);
+  if (hex.line) add('주역', hex.line, 6, `동효 제${hex.line}효`);
 
   // 육임 — 달이 든 자리에 시지를 얹은 값
   add('육임', modFrom1(lunar.month * 12 + hb + 1, 144), 144,
     `음력 ${lunar.month}월 · ${BRANCHES_KR[hb]}시`);
+  add('육임', lunar.day, 30, `음력 ${lunar.day}일`);
 
   // 홍국기문 — 천반수와 지반수
   const hs = modFrom1(pillars.year.stem + pillars.month.stem + pillars.day.stem +
     (input.timeKnown ? pillars.hour.stem : 0) + 4, 9);
   const es = modFrom1(pillars.year.branch + pillars.month.branch + pillars.day.branch + hb + 4, 9);
   add('홍국기문', (hs - 1) * 9 + es, 81, `천반수 ${hs} · 지반수 ${es}`);
+  add('홍국기문', hs * 5 + es, 54, `천반수 ${hs}과 지반수 ${es}를 더한 자리`);
 
   // 태을신수 — 스물네 해 주기에서의 자리
   const cycle = ((chart.sajuYear - 4) % 24 + 24) % 24;
@@ -118,10 +136,12 @@ function candidates(input, chart) {
   const base = { 1: 8, 4: 8, 7: 8, 2: 2, 5: 2, 8: 2, 3: 5, 6: 5, 9: 5 }[honmei];
   const getsu = ((base - chart.sector.index - 1) % 9 + 9) % 9 + 1;
   add('구성학', (honmei - 1) * 9 + getsu, 81, `본명성 ${honmei} · 월명성 ${getsu}`);
+  add('구성학', honmei, 9, `본명성 ${honmei}번째 별`);
 
   // 숙요 — 스물일곱 숙에 파다까지
   add('숙요', nak.index * 4 + nak.pada, 108,
     `${nak.index + 1}번째 숙 · 제${nak.pada}파다`);
+  add('숙요', nak.index + 1, 27, `스물일곱 숙 가운데 ${nak.index + 1}번째`);
 
   // 토정비결 — 상·중·하 세 수
   const age = input.currentYear - input.year + 1;
@@ -130,12 +150,14 @@ function candidates(input, chart) {
   const low = modFrom1(lunar.day + sexa, 3);
   add('토정비결', (up - 1) * 18 + (mid - 1) * 3 + low, 144,
     `상괘 ${up} · 중괘 ${mid} · 하괘 ${low}`);
+  add('토정비결', up * 10 + mid, 86, `상괘 ${up} · 중괘 ${mid}`);
 
   // 카발라 — 라이프 패스와 생일수
   const digits = String(input.year).split('').reduce((a, c) => a + Number(c), 0);
   const lp = digitRoot(digits + input.month + input.day);
   const bd = digitRoot(input.day);
   add('카발라', (lp % 9) * 9 + bd, 81, `라이프 패스 ${lp} · 생일수 ${bd}`);
+  add('카발라', input.day, 31, `태어난 날짜 ${input.day}일`);
 
   // 마하보테 — 여덟 자리 중 어디인가
   const jdn = toJDN(input.year, input.month, input.day);
@@ -188,27 +210,41 @@ function chartSeed(input, chart) {
 }
 
 function drawGame(cands, rng) {
-  // 후보를 섞어서 겹치지 않는 것부터 여섯 개를 고른다
-  const pool = [...cands];
-  for (let i = pool.length - 1; i > 0; i--) {
-    const j = Math.floor(rng() * (i + 1));
-    [pool[i], pool[j]] = [pool[j], pool[i]];
+  // 여러 체계가 같은 번호를 냈다면 그게 가장 믿을 만한 번호다. 서로 다른
+  // 전통이 다른 길로 걸어와 같은 자리에 선 것이기 때문이다. 그래서 무작위로
+  // 섞지 않고 겹친 횟수가 많은 순서로 고른다.
+  //
+  // 겹침이 같으면 씨앗으로 정한다. 그래야 같은 사람은 늘 같은 번호가 나온다.
+  const byNumber = new Map();
+  for (const c of cands) {
+    const e = byNumber.get(c.n) ?? { n: c.n, from: [], why: [] };
+    e.from.push(c.system);
+    e.why.push(c.why);
+    byNumber.set(c.n, e);
   }
-  const picked = [];
-  const used = new Set();
-  for (const c of pool) {
-    if (used.has(c.n)) continue;
-    used.add(c.n);
-    picked.push(c);
-    if (picked.length === 6) break;
-  }
-  // 후보가 겹쳐 여섯이 안 되면 나머지는 씨앗으로 채운다
+
+  const ranked = [...byNumber.values()]
+    .map((e) => ({ ...e, overlap: e.from.length, tie: rng() }))
+    .sort((a, b) => b.overlap - a.overlap || a.tie - b.tie);
+
+  const picked = ranked.slice(0, 6).map((e) => ({
+    n: e.n,
+    overlap: e.overlap,
+    system: e.from.join(', '),
+    why: e.overlap > 1
+      ? `${e.overlap}개 체계가 같이 낸 번호입니다 — ${e.why[0]}`
+      : e.why[0],
+  }));
+
+  // 후보에 서로 다른 번호가 여섯 개도 안 되면 씨앗으로 채운다
+  const used = new Set(picked.map((x) => x.n));
   while (picked.length < 6) {
     const n = Math.floor(rng() * 45) + 1;
     if (used.has(n)) continue;
     used.add(n);
-    picked.push({ system: '보충', n, why: '체계 후보가 겹쳐 씨앗으로 채운 자리' });
+    picked.push({ n, overlap: 0, system: '보충', why: '체계 후보가 모자라 씨앗으로 채운 자리' });
   }
+
   return picked.sort((a, b) => a.n - b.n);
 }
 
@@ -232,12 +268,16 @@ export function pickNumbers(input, chart, mode = 'week') {
   // 평생 번호는 명반만, 이번 주 번호는 거기에 회차를 섞는다
   const seed = mode === 'life' ? base : (base ^ Math.imul(info.round, 0x9E3779B1)) >>> 0;
   const picked = drawGame(cands, mulberry32(seed));
-  const chosen = new Set(picked.map((x) => x.system));
+  const chosen = new Set(picked.map((x) => x.n));
 
-  // 후보 전체 — 뽑힌 것과 안 뽑힌 것을 같이 보여준다
+  // 같은 번호를 몇 개 체계가 냈는지 세어 둔다. 화면에서 그 수를 보여준다.
+  const overlapOf = new Map();
+  for (const c of cands) overlapOf.set(c.n, (overlapOf.get(c.n) ?? 0) + 1);
+
+  // 후보 전체 — 겹침이 많은 순, 같으면 번호 순
   const pool = cands
-    .map((c) => ({ ...c, picked: chosen.has(c.system) }))
-    .sort((a, b) => a.n - b.n);
+    .map((c) => ({ ...c, picked: chosen.has(c.n), overlap: overlapOf.get(c.n) }))
+    .sort((a, b) => b.overlap - a.overlap || a.n - b.n);
 
   const distinct = new Set(cands.map((c) => c.n)).size;
 
