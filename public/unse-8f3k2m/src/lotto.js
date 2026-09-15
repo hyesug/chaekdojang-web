@@ -30,8 +30,8 @@ import { toJDN } from './core/astro.js';
 // 회차
 // ─────────────────────────────────────────────────────────────
 
-/** 1회차 추첨 순간 — 2002-12-07(토) 20:45 KST */
-const FIRST_DRAW = Date.UTC(2002, 11, 7, 11, 45);
+/** 1회차 추첨 순간 — 2002-12-07(토) 20:35 KST (동행복권 추첨 방송 시각) */
+const FIRST_DRAW = Date.UTC(2002, 11, 7, 11, 35);
 const WEEK = 7 * 86400000;
 
 /**
@@ -250,16 +250,22 @@ function drawGame(cands, rng) {
     byNumber.set(c.n, e);
   }
 
+  // 한 체계가 같은 번호를 두 번 낼 수 있다 (이레치 일진처럼 여러 날을 보는
+  // 경우가 그렇다). 그걸 그대로 세면 '이번 주 일진, 이번 주 일진 — 2개 체계'
+  // 가 되어 겹친 것처럼 보인다. 겹침은 서로 다른 체계의 수로만 센다.
   const ranked = [...byNumber.values()]
-    .map((e) => ({ ...e, overlap: e.from.length, tie: rng() }))
+    .map((e) => {
+      const names = [...new Set(e.from)];
+      return { ...e, names, overlap: names.length, tie: rng() };
+    })
     .sort((a, b) => b.mass - a.mass || b.overlap - a.overlap || a.tie - b.tie);
 
   const picked = ranked.slice(0, 6).map((e) => ({
     n: e.n,
     overlap: e.overlap,
-    system: e.from.join(', '),
+    system: e.names.join(', '),
     why: e.overlap > 1
-      ? `${e.overlap}개 체계가 같이 낸 번호입니다 — ${e.why[0]}`
+      ? `서로 다른 ${e.overlap}개 체계가 같이 낸 번호입니다 — ${e.why[0]}`
       : e.why[0],
   }));
 
