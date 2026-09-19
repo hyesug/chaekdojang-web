@@ -25,8 +25,11 @@ import { starOfYear } from './systems/gujeong.js';
 import { hexOf } from './systems/juyeok.js';
 import { modFrom1, digitRoot, weekdayFromJDN, WEEKDAY_KR } from './systems/_base.js';
 import { toJDN } from './core/astro.js';
-import { relaxShape } from './lotto-avoid.js';
-import { signalsOf, probabilities, SIGNALS } from './lotto-stats.js';
+import { BASE, POOL } from './lotto-statistics.js';
+import { signalsOf, probabilities, SIGNALS, MODEL_VERSION } from './lotto-backtest.js';
+import { classify } from './lotto-regime.js';
+import { buildStructureModel } from './lotto-combination.js';
+import { generate } from './lotto-generator.js';
 import { DRAWS } from './data/draws.js';
 import { LOTTO_MODEL } from './data/lotto-model.js';
 
@@ -240,27 +243,16 @@ function chartSeed(input, chart) {
 }
 
 /**
- * 검증을 통과한 통계 신호가 있으면 그만큼 후보에 무게를 더한다.
+ * 번호별 확률.
  *
- * 거의 언제나 아무것도 통과하지 못한다 — 로또는 그렇게 만들어진 게임이다.
- * 그때는 이 함수가 아무 일도 하지 않고, 번호는 지금까지처럼 명반 겹침으로만
- * 정해진다. 통과한 신호가 있을 때만, 그 신호가 높게 본 번호의 몫을 조금 키운다.
- *
- * "조금"인 이유: 통계 비중은 최대 0.7이고 그것도 우연 수준을 넘은 만큼만
- * 인정된 값이다. 명반 겹침이라는 이 사이트의 원칙을 뒤집지 않는다.
+ * 검증을 통과한 신호가 하나도 없으면(거의 언제나 그렇다) 균등(6/45)을 돌려준다.
+ * 그때 통계는 번호 선택에 아무 영향도 주지 못한다.
  */
-function statBoost(cands) {
+function statProbabilities() {
   const w = LOTTO_MODEL.weights || {};
   const on = SIGNALS.some((n) => (w[n] || 0) > 0);
-  if (!on || DRAWS.length < 50) return null;
-
-  const p = probabilities(signalsOf(DRAWS), w);
-  const base = 6 / 45;
-  for (const c of cands) {
-    // 균등 대비 몇 배로 봤는지를 겹침 몫에 곱한다. 1.0 이면 그대로.
-    c.weight = (c.weight ?? 1) * Math.max(0.5, Math.min(1.5, p[c.n - 1] / base));
-  }
-  return { weights: w, used: LOTTO_MODEL.used, statWeight: LOTTO_MODEL.statWeight };
+  if (!on || DRAWS.length < 50) return { p: new Array(POOL).fill(BASE), on: false };
+  return { p: probabilities(signalsOf(DRAWS), w), on: true };
 }
 
 function drawGame(cands, rng) {
@@ -327,17 +319,48 @@ export function pickNumbers(input, chart, mode = 'week') {
   const cands = candidates(input, chart, mode === 'week' ? info : null);
   const base = chartSeed(input, chart);
 
-  // 검증을 통과한 통계 신호가 있으면 여기서 후보 몫이 조금 바뀐다. 없으면 그대로.
-  const stats = statBoost(cands);
-
   // 평생 번호는 명반만, 이번 주 번호는 거기에 회차를 섞는다
   const seed = mode === 'life' ? base : (base ^ Math.imul(info.round, 0x9E3779B1)) >>> 0;
-  const raw = drawGame(cands, mulberry32(seed));
 
-  // 너무 흔한 모양(생일·연속수·용지 직선…)이면 한 자리만 바꿔 본다.
-  // 당첨 확률과는 무관하고, 당첨됐을 때 나눠 갖는 사람을 줄이려는 것이다.
-  const relaxed = relaxShape(raw, cands);
-  const picked = relaxed.numbers;
+  // 번호별 겹침 몫 — 여러 체계가 같이 낸 번호일수록 무겁다
+  const massOf = new Map();
+  for (const c of cands) massOf.set(c.n, (massOf.get(c.n) ?? 0) + (c.weight ?? 1));
+  const massPool = [...massOf.entries()].map(([n, mass]) => ({ n, mass }));
+
+  // 후보 조합을 수만 개 만들어 Utility 로 고른다(§17).
+  // 씨앗에 모델 버전을 섞어, 모델이 바뀌면 번호도 새로 뽑히게 한다.
+  const seedStr = `${seed}|${mode}|${info.round}|${MODEL_VERSION}`;
+  const stat = statProbabilities();
+  const structure = buildStructureModel(DRAWS.slice(0, Math.floor(DRAWS.length * 0.6)));
+  const gen = generate({
+    pool: massPool,
+    probabilities: stat.p,
+    structure,
+    prev: DRAWS.length ? DRAWS[DRAWS.length - 1] : [],
+    prev2: DRAWS.length > 1 ? DRAWS[DRAWS.length - 2] : [],
+    seed: seedStr,
+  });
+
+  // 고른 여섯 개에 "어느 체계에서 나왔는지"를 다시 붙인다 — 근거가 이 사이트의 핵심이다
+  const why = new Map();
+  for (const c of cands) {
+    const e = why.get(c.n) ?? { names: new Set(), why: [] };
+    e.names.add(c.system);
+    e.why.push(c.why);
+    why.set(c.n, e);
+  }
+  const picked = gen.chosen.numbers.map((n) => {
+    const e = why.get(n);
+    const names = e ? [...e.names] : [];
+    return {
+      n,
+      overlap: names.length,
+      system: names.length ? names.join(', ') : '보충',
+      why: !e ? '체계 후보가 모자라 씨앗으로 채운 자리'
+        : names.length > 1 ? `서로 다른 ${names.length}개 체계가 같이 낸 번호입니다 — ${e.why[0]}`
+          : e.why[0],
+    };
+  });
   const chosen = new Set(picked.map((x) => x.n));
 
   // 같은 번호를 몇 개 체계가 냈는지 세어 둔다. 화면에서 그 수를 보여준다.
@@ -359,10 +382,37 @@ export function pickNumbers(input, chart, mode = 'week') {
     round: info.round,
     drawAt: info.drawAt,
     drawText: formatDraw(info.drawAt),
-    /** 흔한 모양을 피해 한 자리를 바꿨다면 그 내역. 안 바꿨으면 swapped 가 null */
-    shape: relaxed,
-    /** 통계 검증 결과. 통과한 신호가 없으면 null — 화면에서 그 사실을 밝힌다 */
-    stats,
     statsNote: LOTTO_MODEL.reason,
+    /**
+     * 개발·검증용 분석값(§20). 화면에는 요약만 쓰고 나머지는 콘솔이나 테스트에서 본다.
+     * 확률처럼 보이는 숫자를 사용자에게 그대로 내보이지 않는다.
+     */
+    analysis: {
+      modelVersion: MODEL_VERSION,
+      targetDraw: info.round,
+      drawDate: info.drawAt.toISOString().slice(0, 10),
+      weights: {
+        ...Object.fromEntries(SIGNALS.map((n) => [n, LOTTO_MODEL.weights?.[n] ?? 0])),
+        structure: gen.structureWeight,
+        overlap: 1,
+        randomness: Math.max(0, 1 - (LOTTO_MODEL.statWeight ?? 0) - gen.structureWeight),
+      },
+      activeSignals: LOTTO_MODEL.used ?? [],
+      statWeight: LOTTO_MODEL.statWeight ?? 0,
+      regime: DRAWS.length >= 20 ? classify(DRAWS) : null,
+      structure: { informative: structure.informative, tests: structure.tests },
+      backtest: LOTTO_MODEL.finalTest ?? null,
+      randomBaseline: LOTTO_MODEL.testBaseline ?? null,
+      candidate: {
+        poolSize: gen.poolSize,
+        topSize: gen.topSize,
+        predictionScore: gen.chosen.predictionScore,
+        overlap: gen.chosen.overlap,
+        statScore: gen.chosen.statScore,
+        popularityPenalty: gen.chosen.popularityPenalty,
+        penaltyHits: gen.chosen.penaltyHits,
+        utility: gen.chosen.utility,
+      },
+    },
   };
 }
