@@ -25,6 +25,10 @@ import { starOfYear } from './systems/gujeong.js';
 import { hexOf } from './systems/juyeok.js';
 import { modFrom1, digitRoot, weekdayFromJDN, WEEKDAY_KR } from './systems/_base.js';
 import { toJDN } from './core/astro.js';
+import { relaxShape } from './lotto-avoid.js';
+import { signalsOf, probabilities, SIGNALS } from './lotto-stats.js';
+import { DRAWS } from './data/draws.js';
+import { LOTTO_MODEL } from './data/lotto-model.js';
 
 // ─────────────────────────────────────────────────────────────
 // 회차
@@ -235,6 +239,30 @@ function chartSeed(input, chart) {
   return h >>> 0;
 }
 
+/**
+ * 검증을 통과한 통계 신호가 있으면 그만큼 후보에 무게를 더한다.
+ *
+ * 거의 언제나 아무것도 통과하지 못한다 — 로또는 그렇게 만들어진 게임이다.
+ * 그때는 이 함수가 아무 일도 하지 않고, 번호는 지금까지처럼 명반 겹침으로만
+ * 정해진다. 통과한 신호가 있을 때만, 그 신호가 높게 본 번호의 몫을 조금 키운다.
+ *
+ * "조금"인 이유: 통계 비중은 최대 0.7이고 그것도 우연 수준을 넘은 만큼만
+ * 인정된 값이다. 명반 겹침이라는 이 사이트의 원칙을 뒤집지 않는다.
+ */
+function statBoost(cands) {
+  const w = LOTTO_MODEL.weights || {};
+  const on = SIGNALS.some((n) => (w[n] || 0) > 0);
+  if (!on || DRAWS.length < 50) return null;
+
+  const p = probabilities(signalsOf(DRAWS), w);
+  const base = 6 / 45;
+  for (const c of cands) {
+    // 균등 대비 몇 배로 봤는지를 겹침 몫에 곱한다. 1.0 이면 그대로.
+    c.weight = (c.weight ?? 1) * Math.max(0.5, Math.min(1.5, p[c.n - 1] / base));
+  }
+  return { weights: w, used: LOTTO_MODEL.used, statWeight: LOTTO_MODEL.statWeight };
+}
+
 function drawGame(cands, rng) {
   // 여러 체계가 같은 번호를 냈다면 그게 가장 믿을 만한 번호다. 서로 다른
   // 전통이 다른 길로 걸어와 같은 자리에 선 것이기 때문이다. 그래서 무작위로
@@ -299,9 +327,17 @@ export function pickNumbers(input, chart, mode = 'week') {
   const cands = candidates(input, chart, mode === 'week' ? info : null);
   const base = chartSeed(input, chart);
 
+  // 검증을 통과한 통계 신호가 있으면 여기서 후보 몫이 조금 바뀐다. 없으면 그대로.
+  const stats = statBoost(cands);
+
   // 평생 번호는 명반만, 이번 주 번호는 거기에 회차를 섞는다
   const seed = mode === 'life' ? base : (base ^ Math.imul(info.round, 0x9E3779B1)) >>> 0;
-  const picked = drawGame(cands, mulberry32(seed));
+  const raw = drawGame(cands, mulberry32(seed));
+
+  // 너무 흔한 모양(생일·연속수·용지 직선…)이면 한 자리만 바꿔 본다.
+  // 당첨 확률과는 무관하고, 당첨됐을 때 나눠 갖는 사람을 줄이려는 것이다.
+  const relaxed = relaxShape(raw, cands);
+  const picked = relaxed.numbers;
   const chosen = new Set(picked.map((x) => x.n));
 
   // 같은 번호를 몇 개 체계가 냈는지 세어 둔다. 화면에서 그 수를 보여준다.
@@ -323,5 +359,10 @@ export function pickNumbers(input, chart, mode = 'week') {
     round: info.round,
     drawAt: info.drawAt,
     drawText: formatDraw(info.drawAt),
+    /** 흔한 모양을 피해 한 자리를 바꿨다면 그 내역. 안 바꿨으면 swapped 가 null */
+    shape: relaxed,
+    /** 통계 검증 결과. 통과한 신호가 없으면 null — 화면에서 그 사실을 밝힌다 */
+    stats,
+    statsNote: LOTTO_MODEL.reason,
   };
 }
