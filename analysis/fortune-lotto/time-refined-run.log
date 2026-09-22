@@ -1,0 +1,123 @@
+evaluating 404644 formulas across 1242 rounds
+formula progress 5000/404644
+formula progress 10000/404644
+formula progress 15000/404644
+formula progress 20000/404644
+formula progress 25000/404644
+formula progress 30000/404644
+formula progress 35000/404644
+formula progress 40000/404644
+formula progress 45000/404644
+formula progress 50000/404644
+formula progress 55000/404644
+formula progress 60000/404644
+formula progress 65000/404644
+formula progress 70000/404644
+formula progress 75000/404644
+formula progress 80000/404644
+formula progress 85000/404644
+formula progress 90000/404644
+formula progress 95000/404644
+formula progress 100000/404644
+formula progress 105000/404644
+formula progress 110000/404644
+formula progress 115000/404644
+formula progress 120000/404644
+formula progress 125000/404644
+formula progress 130000/404644
+formula progress 135000/404644
+formula progress 140000/404644
+formula progress 145000/404644
+formula progress 150000/404644
+formula progress 155000/404644
+formula progress 160000/404644
+formula progress 165000/404644
+formula progress 170000/404644
+formula progress 175000/404644
+formula progress 180000/404644
+formula progress 185000/404644
+formula progress 190000/404644
+formula progress 195000/404644
+formula progress 200000/404644
+formula progress 205000/404644
+formula progress 210000/404644
+formula progress 215000/404644
+formula progress 220000/404644
+formula progress 225000/404644
+formula progress 230000/404644
+formula progress 235000/404644
+formula progress 240000/404644
+formula progress 245000/404644
+formula progress 250000/404644
+formula progress 255000/404644
+formula progress 260000/404644
+formula progress 265000/404644
+formula progress 270000/404644
+formula progress 275000/404644
+formula progress 280000/404644
+formula progress 285000/404644
+formula progress 290000/404644
+formula progress 295000/404644
+formula progress 300000/404644
+formula progress 305000/404644
+formula progress 310000/404644
+formula progress 315000/404644
+formula progress 320000/404644
+formula progress 325000/404644
+formula progress 330000/404644
+formula progress 335000/404644
+formula progress 340000/404644
+formula progress 345000/404644
+formula progress 350000/404644
+formula progress 355000/404644
+formula progress 360000/404644
+formula progress 365000/404644
+formula progress 370000/404644
+formula progress 375000/404644
+formula progress 380000/404644
+formula progress 385000/404644
+formula progress 390000/404644
+formula progress 395000/404644
+formula progress 400000/404644
+{
+  "features": 124,
+  "formulas_tested": 404644,
+  "best_score": 3726000,
+  "best_mean": 6,
+  "top20": [
+    {
+      "rank": 1,
+      "formula": "saju.hour_stem.spread×yukim.heaven_plate_at_8.spread",
+      "complexity": 4,
+      "individual_hits": 224,
+      "layer": "spread",
+      "feature_lineage": [
+        "ganzhi.pillars",
+        "yukim.month_general+hour_branch"
+      ]
+    },
+    {
+      "rank": 2,
+      "formula": "juyeok.original_hexagram.spread+2×saju.month_stem.raw-astrology.목성_longitude_degree.raw",
+      "complexity": 5,
+      "individual_hits": 221,
+      "layer": "spread",
+      "feature_lineage": [
+        "juyeok.trigrams",
+        "ganzhi.pillars",
+        "astro.planet.목성"
+      ]
+    },
+    {
+      "rank": 3,
+      "formula": "kabbalah.life_path.raw-saju.element_4.spread",
+      "complexity": 2,
+      "individual_hits": 219,
+      "layer": "raw",
+      "feature_lineage": [
+        "civil_date",
+        "ganzhi.pillars.element_distribution"
+      ]
+    }
+  ]
+}

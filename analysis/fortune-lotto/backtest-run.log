@@ -1,0 +1,59 @@
+evaluating 87436 formulas across 1231 rounds
+formula progress 5000/87436
+formula progress 10000/87436
+formula progress 15000/87436
+formula progress 20000/87436
+formula progress 25000/87436
+formula progress 30000/87436
+formula progress 35000/87436
+formula progress 40000/87436
+formula progress 45000/87436
+formula progress 50000/87436
+formula progress 55000/87436
+formula progress 60000/87436
+formula progress 65000/87436
+formula progress 70000/87436
+formula progress 75000/87436
+formula progress 80000/87436
+formula progress 85000/87436
+{
+  "features": 124,
+  "formulas_tested": 87436,
+  "best_score": 5882,
+  "best_mean": 1.140536149471974,
+  "top20": [
+    {
+      "rank": 1,
+      "formula": "2×saju.year_stem.raw+tojeong.상괘.raw",
+      "complexity": 3,
+      "individual_hits": 215,
+      "layer": "raw",
+      "feature_lineage": [
+        "ganzhi.pillars",
+        "lunar+ganzhi"
+      ]
+    },
+    {
+      "rank": 2,
+      "formula": "2×saju.year_stem.raw+tojeong.괘.raw",
+      "complexity": 3,
+      "individual_hits": 215,
+      "layer": "raw",
+      "feature_lineage": [
+        "ganzhi.pillars",
+        "lunar+ganzhi"
+      ]
+    },
+    {
+      "rank": 3,
+      "formula": "saju.solar_term_sector.raw+astrology.토성_longitude_degree.raw",
+      "complexity": 2,
+      "individual_hits": 213,
+      "layer": "raw",
+      "feature_lineage": [
+        "astro.solar_term",
+        "astro.planet.토성"
+      ]
+    }
+  ]
+}

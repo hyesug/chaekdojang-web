@@ -1,0 +1,155 @@
+{
+  "saju": {
+    "candidates_per_round": 4,
+    "mean_winner_coverage": 0.4967793880837359,
+    "ge1": 0.42592592592592593,
+    "ge2": 0.0644122383252818,
+    "ge3": 0.00644122383252818,
+    "shared_lineages": [
+      "ganzhi.pillars"
+    ]
+  },
+  "jamidusu": {
+    "candidates_per_round": 3,
+    "mean_winner_coverage": 0.27697262479871176,
+    "ge1": 0.2608695652173913,
+    "ge2": 0.01610305958132045,
+    "ge3": 0,
+    "shared_lineages": [
+      "jamidusu.palaces"
+    ]
+  },
+  "astrology": {
+    "candidates_per_round": 3,
+    "mean_winner_coverage": 0.3832528180354267,
+    "ge1": 0.3389694041867955,
+    "ge2": 0.0426731078904992,
+    "ge3": 0.001610305958132045,
+    "shared_lineages": [
+      "astro.sun",
+      "astro.moon"
+    ]
+  },
+  "vedic": {
+    "candidates_per_round": 2,
+    "mean_winner_coverage": 0.18438003220611915,
+    "ge1": 0.17954911433172302,
+    "ge2": 0.004830917874396135,
+    "ge3": 0,
+    "shared_lineages": [
+      "astro.sidereal_moon"
+    ]
+  },
+  "juyeok": {
+    "candidates_per_round": 2,
+    "mean_winner_coverage": 0.27697262479871176,
+    "ge1": 0.2536231884057971,
+    "ge2": 0.023349436392914653,
+    "ge3": 0,
+    "shared_lineages": [
+      "juyeok.trigrams"
+    ]
+  },
+  "yukim": {
+    "candidates_per_round": 5,
+    "mean_winner_coverage": 0.5982286634460547,
+    "ge1": 0.49355877616747185,
+    "ge2": 0.09822866344605476,
+    "ge3": 0.00644122383252818,
+    "shared_lineages": [
+      "yukim.month_general+hour_branch",
+      "yukim.day_stem_gigung",
+      "yukim.three_transmissions"
+    ]
+  },
+  "hongguk": {
+    "candidates_per_round": 2,
+    "mean_winner_coverage": 0.2471819645732689,
+    "ge1": 0.24074074074074073,
+    "ge2": 0.00644122383252818,
+    "ge3": 0,
+    "shared_lineages": [
+      "hongguk.plate"
+    ]
+  },
+  "taeeul": {
+    "candidates_per_round": 1,
+    "mean_winner_coverage": 0.13526570048309178,
+    "ge1": 0.13526570048309178,
+    "ge2": 0,
+    "ge3": 0,
+    "shared_lineages": [
+      "taeeul.cycle"
+    ]
+  },
+  "gujeong": {
+    "candidates_per_round": 2,
+    "mean_winner_coverage": 0.23429951690821257,
+    "ge1": 0.2246376811594203,
+    "ge2": 0.00966183574879227,
+    "ge3": 0,
+    "shared_lineages": [
+      "gujeong.stars"
+    ]
+  },
+  "sukyo": {
+    "candidates_per_round": 2,
+    "mean_winner_coverage": 0.18438003220611915,
+    "ge1": 0.17954911433172302,
+    "ge2": 0.004830917874396135,
+    "ge3": 0,
+    "shared_lineages": [
+      "astro.sidereal_moon"
+    ]
+  },
+  "tojeong": {
+    "candidates_per_round": 2,
+    "mean_winner_coverage": 0.26006441223832527,
+    "ge1": 0.2463768115942029,
+    "ge2": 0.013687600644122383,
+    "ge3": 0,
+    "shared_lineages": [
+      "tojeong.trigrams"
+    ]
+  },
+  "kabbalah": {
+    "candidates_per_round": 2,
+    "mean_winner_coverage": 0.22061191626409019,
+    "ge1": 0.21175523349436393,
+    "ge2": 0.008856682769726247,
+    "ge3": 0,
+    "shared_lineages": [
+      "civil_date"
+    ]
+  },
+  "mahabote": {
+    "candidates_per_round": 1,
+    "mean_winner_coverage": 0.14170692431561996,
+    "ge1": 0.14170692431561996,
+    "ge2": 0,
+    "ge3": 0,
+    "shared_lineages": [
+      "mahabote.eight_place"
+    ]
+  },
+  "thai": {
+    "candidates_per_round": 1,
+    "mean_winner_coverage": 0.13848631239935588,
+    "ge1": 0.13848631239935588,
+    "ge2": 0,
+    "ge3": 0,
+    "shared_lineages": [
+      "thai.calendar"
+    ]
+  },
+  "tarot": {
+    "candidates_per_round": 1,
+    "mean_winner_coverage": 0.1247987117552335,
+    "ge1": 0.1247987117552335,
+    "ge2": 0,
+    "ge3": 0,
+    "shared_lineages": [
+      "tarot.cards"
+    ]
+  }
+}

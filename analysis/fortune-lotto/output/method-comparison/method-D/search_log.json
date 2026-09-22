@@ -1,0 +1,38 @@
+[
+  {
+    "stage": "greedy",
+    "score": 2724,
+    "formulas": [
+      "wrap45(saju.c1_year_sexagenary-astrology.c3_sun_sign-juyeok.c2_moving_line)",
+      "wrap45(astrology.c1_sun_longitude+juyeok.c1_hexagram-hongguk.c1_heaven_earth)",
+      "wrap45(|gujeong.c2_honmei-tarot.c1_birth_card|)",
+      "wrap45(saju.c3_day_sexagenary+astrology.c1_sun_longitude-juyeok.c2_moving_line)",
+      "wrap45(saju.c2_month_sexagenary+vedic.c2_nakshatra_pada+taeeul.c1_cycle)",
+      "wrap45(2*hongguk.c1_heaven_earth-gujeong.c2_honmei)"
+    ]
+  },
+  {
+    "stage": "swap-0-3",
+    "score": 7761,
+    "formulas": [
+      "wrap45(saju.c1_year_sexagenary-astrology.c3_sun_sign-juyeok.c2_moving_line)",
+      "wrap45(astrology.c1_sun_longitude+juyeok.c1_hexagram-hongguk.c1_heaven_earth)",
+      "wrap45(|gujeong.c2_honmei-tarot.c1_birth_card|)",
+      "wrap45(astrology.c3_sun_sign-vedic.c2_nakshatra_pada-yukim.c3_first_transmission)",
+      "wrap45(saju.c2_month_sexagenary+vedic.c2_nakshatra_pada+taeeul.c1_cycle)",
+      "wrap45(2*hongguk.c1_heaven_earth-gujeong.c2_honmei)"
+    ]
+  },
+  {
+    "stage": "swap-1-0",
+    "score": 7969,
+    "formulas": [
+      "wrap45(juyeok.c2_moving_line-yukim.c3_first_transmission+yukim.c4_middle_transmission)",
+      "wrap45(astrology.c1_sun_longitude+juyeok.c1_hexagram-hongguk.c1_heaven_earth)",
+      "wrap45(|gujeong.c2_honmei-tarot.c1_birth_card|)",
+      "wrap45(astrology.c3_sun_sign-vedic.c2_nakshatra_pada-yukim.c3_first_transmission)",
+      "wrap45(saju.c2_month_sexagenary+vedic.c2_nakshatra_pada+taeeul.c1_cycle)",
+      "wrap45(2*hongguk.c1_heaven_earth-gujeong.c2_honmei)"
+    ]
+  }
+]

@@ -1,0 +1,233 @@
+[
+  {
+    "a": 12,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(juyeok.c1_hexagram)",
+    "individual_hits": 182
+  },
+  {
+    "a": 9,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(astrology.c3_sun_sign)",
+    "individual_hits": 180
+  },
+  {
+    "a": 16,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(yukim.c3_first_transmission)",
+    "individual_hits": 179
+  },
+  {
+    "a": 18,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(yukim.c5_last_transmission)",
+    "individual_hits": 179
+  },
+  {
+    "a": 2,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(saju.c3_day_sexagenary)",
+    "individual_hits": 176
+  },
+  {
+    "a": 30,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(mahabote.c1_eight_place)",
+    "individual_hits": 176
+  },
+  {
+    "a": 5,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(jamidusu.c2_sin)",
+    "individual_hits": 175
+  },
+  {
+    "a": 6,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(jamidusu.c3_jaebaek)",
+    "individual_hits": 175
+  },
+  {
+    "a": 19,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(hongguk.c1_heaven_earth)",
+    "individual_hits": 175
+  },
+  {
+    "a": 31,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(thai.c1_weekday_buddhist)",
+    "individual_hits": 172
+  },
+  {
+    "a": 8,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(astrology.c2_moon_longitude)",
+    "individual_hits": 171
+  },
+  {
+    "a": 22,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(gujeong.c1_honmei_getsumei)",
+    "individual_hits": 170
+  },
+  {
+    "a": 4,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(jamidusu.c1_myeong)",
+    "individual_hits": 169
+  },
+  {
+    "a": 21,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(taeeul.c1_cycle)",
+    "individual_hits": 168
+  },
+  {
+    "a": 17,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(yukim.c4_middle_transmission)",
+    "individual_hits": 167
+  },
+  {
+    "a": 27,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(tojeong.c2_upper_middle)",
+    "individual_hits": 167
+  },
+  {
+    "a": 0,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(saju.c1_year_sexagenary)",
+    "individual_hits": 165
+  },
+  {
+    "a": 11,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(vedic.c2_nakshatra_pada)",
+    "individual_hits": 164
+  },
+  {
+    "a": 25,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(sukyo.c2_nakshatra_pada)",
+    "individual_hits": 164
+  },
+  {
+    "a": 14,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(yukim.c1_month_general_point_hour)",
+    "individual_hits": 163
+  },
+  {
+    "a": 13,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(juyeok.c2_moving_line)",
+    "individual_hits": 162
+  },
+  {
+    "a": 28,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(kabbalah.c1_life_birthday)",
+    "individual_hits": 161
+  },
+  {
+    "a": 20,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(hongguk.c2_plate_mix)",
+    "individual_hits": 158
+  },
+  {
+    "a": 15,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(yukim.c2_day_stem_gigung)",
+    "individual_hits": 157
+  },
+  {
+    "a": 3,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(saju.c4_hour_sexagenary)",
+    "individual_hits": 156
+  },
+  {
+    "a": 26,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(tojeong.c1_hexagram)",
+    "individual_hits": 156
+  },
+  {
+    "a": 32,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(tarot.c1_birth_card)",
+    "individual_hits": 155
+  },
+  {
+    "a": 7,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(astrology.c1_sun_longitude)",
+    "individual_hits": 154
+  },
+  {
+    "a": 23,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(gujeong.c2_honmei)",
+    "individual_hits": 152
+  },
+  {
+    "a": 10,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(vedic.c1_nakshatra)",
+    "individual_hits": 151
+  },
+  {
+    "a": 24,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(sukyo.c1_nakshatra)",
+    "individual_hits": 151
+  },
+  {
+    "a": 1,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(saju.c2_month_sexagenary)",
+    "individual_hits": 142
+  },
+  {
+    "a": 29,
+    "op": "one",
+    "complexity": 1,
+    "name": "wrap45(kabbalah.c2_personal_year)",
+    "individual_hits": 141
+  }
+]

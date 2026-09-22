@@ -1,0 +1,75 @@
+{
+  "primary_objective": "whole-history weighted score, in-sample only",
+  "comparison": {
+    "A": {
+      "structure": "Constrained raw/spread feature conditional formula.  One natural condition only; no event signature, no unique key.",
+      "score": 39944,
+      "mean": 1.037842190016103,
+      "ge3": 0.06521739130434782,
+      "ge4": 0.02576489533011272,
+      "five_hit": 5,
+      "six_hit": 12,
+      "complexity": 84,
+      "vs_random_score": 38477.525
+    },
+    "B": {
+      "structure": "Reverse search over fixed global candidate formula identities; winner data selects formulas globally but never routes a round.",
+      "score": 2488,
+      "mean": 0.9380032206119162,
+      "ge3": 0.04106280193236715,
+      "ge4": 0.004830917874396135,
+      "five_hit": 2,
+      "six_hit": 0,
+      "complexity": 17,
+      "vs_random_score": 1021.5250000000001
+    },
+    "C": {
+      "structure": "Ranks every number 1..45 from pre-draw candidate support. Weights are optimized globally, but no row winner appears in a number feature.",
+      "score": 2782,
+      "mean": 1.142512077294686,
+      "ge3": 0.07407407407407407,
+      "ge4": 0.008856682769726247,
+      "five_hit": 0,
+      "six_hit": 0,
+      "complexity": 3,
+      "vs_random_score": 1315.525
+    },
+    "D": {
+      "structure": "Joint six-formula optimization over the B universe using deterministic greedy start and whole-ticket local swaps.",
+      "score": 7969,
+      "mean": 0.9074074074074074,
+      "ge3": 0.02576489533011272,
+      "ge4": 0.004830917874396135,
+      "five_hit": 1,
+      "six_hit": 2,
+      "complexity": 17,
+      "vs_random_score": 6502.525
+    },
+    "E": {
+      "structure": "K-means fortune-state clustering with cluster-specific fixed candidate formula rules. Cluster inputs omit winners.",
+      "score": 32904,
+      "mean": 1.103059581320451,
+      "ge3": 0.0748792270531401,
+      "ge4": 0.02818035426731079,
+      "five_hit": 11,
+      "six_hit": 9,
+      "complexity": 97,
+      "vs_random_score": 31437.525
+    },
+    "F": {
+      "structure": "Nearest historical fortune states using mixed circular/categorical normalized distance. Self is excluded; best LOO and past-only configurations are both retained.",
+      "score": 1530,
+      "mean": 0.8051529790660226,
+      "ge3": 0.0249597423510467,
+      "ge4": 0.0024154589371980675,
+      "five_hit": 0,
+      "six_hit": 0,
+      "complexity": 35,
+      "vs_random_score": 63.52500000000009
+    }
+  },
+  "excluded_upper_bound": {
+    "score": 3726000,
+    "reason": "event_signature makes near-unique per-round keys and is excluded from A–F."
+  }
+}
