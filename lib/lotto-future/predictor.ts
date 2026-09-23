@@ -12,7 +12,7 @@ type FeatureSet = {
   max: Record<string, number>;
   input: { year: number; month: number; day: number; hourBranch: number };
 };
-const MODEL_VERSION = "future-validation-frozen-70a3d85-v1";
+const MODEL_VERSION = "future-validation-frozen-70a3d85-v2";
 const SOURCE_COMMIT = "70a3d85";
 const stateIds = stateMatrix.feature_ids as string[];
 const stateVectors = stateMatrix.vectors as number[][];
@@ -36,7 +36,7 @@ function aLane(formula: string, features: FeatureSet): number {
   const direct = formula.match(/^([\w가-힣.]+)\.(raw|spread)$/); if (direct) return value(features, direct[1], direct[2]);
   const call = formula.match(/^(diff|abs|sum|a2b|mul)\((.+),(.+)\)$/); if (!call) throw new Error(`Unsupported frozen A formula: ${formula}`);
   const left = aLane(call[2], features), right = aLane(call[3], features);
-  return call[1] === "diff" ? left - right : call[1] === "abs" ? Math.abs(left - right) : call[1] === "sum" ? left + right : call[1] === "a2b" ? left + 2 * right : left * right;
+  return call[1] === "diff" ? left - right : call[1] === "abs" ? Math.abs(left - right) : call[1] === "sum" ? left + right : call[1] === "a2b" ? 2 * left + right : left * right;
 }
 function candidateValues(features: FeatureSet) {
   const raw = (id: string) => value(features, id);
@@ -52,7 +52,7 @@ function candidateValues(features: FeatureSet) {
     "gujeong.c1_honmei_getsumei": spread((raw("gujeong.honmei_star") - 1) * 9 + raw("gujeong.getsumei_star"), 81), "gujeong.c2_honmei": direct("gujeong.honmei_star", 9),
     "sukyo.c1_nakshatra": direct("vedic_sukyo_shared.nakshatra_index", 27), "sukyo.c2_nakshatra_pada": spread((raw("vedic_sukyo_shared.nakshatra_index") - 1) * 4 + raw("vedic_sukyo_shared.nakshatra_pada"), 108),
     "tojeong.c1_hexagram": direct("tojeong.괘", 144), "tojeong.c2_upper_middle": spread(raw("tojeong.상괘") * 10 + raw("tojeong.중괘"), 86),
-    "kabbalah.c1_life_birthday": spread(((raw("kabbalah.life_path") - 1) % 9) * 9 + raw("kabbalah.birthday_number"), 81), "kabbalah.c2_personal_year": spread(raw("kabbalah.life_path"), 9), "mahabote.c1_eight_place": direct("mahabote.eight_place", 8),
+    "kabbalah.c1_life_birthday": spread(((raw("kabbalah.life_path") - 1) % 9) * 9 + raw("kabbalah.birthday_number"), 81), "kabbalah.c2_personal_year": spread(raw("kabbalah.personal_year"), 9), "mahabote.c1_eight_place": direct("mahabote.eight_place", 8),
     "thai.c1_weekday_buddhist": spread((raw("thai.weekday_index") - 1) * 100 + raw("thai.buddhist_era_mod100"), 700), "tarot.c1_birth_card": direct("tarot.생일_카드", 78),
   } as Record<string, number>;
 }
@@ -68,6 +68,8 @@ function kmeans(vectors: number[][]) {
     const assignments = vectors.map((vector) => centroids.reduce((best, centroid, index) => {
       const distance = centroid.reduce((sum, coordinate, i) => sum + (coordinate - vector[i]) ** 2, 0); return distance < best.distance ? { index, distance } : best;
     }, { index: 0, distance: Infinity }).index);
+    // The frozen Method E tickets use this final assignment phase before its centroid update.
+    if (iteration === 17) return centroids;
     for (let cluster = 0; cluster < 12; cluster++) { const members = vectors.filter((_, index) => assignments[index] === cluster); if (members.length) centroids[cluster] = centroids[cluster].map((_, i) => members.reduce((sum, row) => sum + row[i], 0) / members.length); }
   }
   return centroids;
@@ -75,12 +77,14 @@ function kmeans(vectors: number[][]) {
 const centroids = kmeans(stateVectors);
 function state(features: FeatureSet) { return stateIds.map((id) => value(features, id) / features.max[id]); }
 function nearestCluster(vector: number[]) { return centroids.reduce((best, centroid, index) => { const distance = centroid.reduce((sum, coordinate, i) => sum + (coordinate - vector[i]) ** 2, 0); return distance < best.distance ? { index, distance } : best; }, { index: 0, distance: Infinity }).index; }
-function fTicket(current: FeatureSet, history: History[]) {
-  const extra = history.filter((row) => row.round > 1242).map((row) => ({ vector: state(eventFeatures({ ...dateParts(row.drawDate), ...timeParts(row.drawTime) }) as unknown as FeatureSet), numbers: row.numbers, round: row.round }));
-  const all = [...stateVectors.map((vector, index) => ({ vector, numbers: baseHistory[index].numbers, round: index + 1 })), ...extra]; const currentState = state(current);
+export function pastOnlyFSelection(event: Event, history: History[]) {
+  const current = eventFeatures({ ...dateParts(event.drawDate), ...timeParts(event.drawTime) }) as unknown as FeatureSet;
+  const extra = history.filter((row) => row.round > 1242 && row.round < event.round).map((row) => ({ vector: state(eventFeatures({ ...dateParts(row.drawDate), ...timeParts(row.drawTime) }) as unknown as FeatureSet), numbers: row.numbers, round: row.round }));
+  const all = baseHistory.filter((row) => row.round < event.round).map((row) => ({ vector: stateVectors[row.round - 1], numbers: row.numbers, round: row.round })).concat(extra); const currentState = state(current);
   const distance = (left: number[], right: number[]) => left.reduce((sum, coordinate, i) => { const delta = Math.abs(coordinate - right[i]); return sum + (/longitude|sexagenary|nakshatra|hexagram|cycle/.test(stateIds[i]) ? Math.min(delta, 1 - delta) : delta); }, 0) / left.length;
-  const scores = Array(46).fill(0); all.sort((a, b) => distance(currentState, a.vector) - distance(currentState, b.vector) || a.round - b.round).slice(0, 20).forEach((neighbor) => neighbor.numbers.forEach((number) => { scores[number] += 1 / Math.max(0.0001, distance(currentState, neighbor.vector)); }));
-  return Array.from({ length: 45 }, (_, index) => index + 1).sort((a, b) => scores[b] - scores[a] || a - b).slice(0, 6);
+  const neighbors = all.sort((a, b) => distance(currentState, a.vector) - distance(currentState, b.vector) || a.round - b.round).slice(0, 10);
+  const scores = Array(46).fill(0); neighbors.forEach((neighbor) => neighbor.numbers.forEach((number) => { scores[number]++; }));
+  return { ticket: Array.from({ length: 45 }, (_, index) => index + 1).sort((a, b) => scores[b] - scores[a] || a - b).slice(0, 6), neighbors };
 }
 function dateParts(drawDate: string) { const [year, month, day] = drawDate.split("-").map(Number); return { year, month, day }; }
 function timeParts(drawTime: string) { const [hour, minute] = drawTime.slice(0, 5).split(":").map(Number); return { hour, minute }; }
@@ -90,7 +94,7 @@ export function generateFrozenPredictions(event: Event, history: History[]) {
   if (!aRules) throw new Error(`Frozen A branch is unavailable: ${branch}`);
   const cluster = nearestCluster(state(features)); const eRules = (methodE.model.cluster_rules as string[][])[cluster];
   const h = features; const weekday = h.values["thai.weekday_index"] - 1; const dayOfYear = Math.floor((Date.UTC(h.input.year, h.input.month - 1, h.input.day) - Date.UTC(h.input.year, 0, 0)) / 86400000);
-  return { predictions: { A: uniqueTicket(aRules.map((formula) => aLane(formula, features))), D: uniqueTicket((methodD.model.genome as string[]).map((formula) => candidateFormula(formula, candidates))), E: uniqueTicket(eRules.map((formula) => candidateFormula(formula, candidates))), F: fTicket(features, history), H: uniqueTicket([
+  return { predictions: { A: uniqueTicket(aRules.map((formula) => aLane(formula, features))), D: uniqueTicket((methodD.model.genome as string[]).map((formula) => candidateFormula(formula, candidates))), E: uniqueTicket(eRules.map((formula) => candidateFormula(formula, candidates))), F: pastOnlyFSelection(event, history).ticket, H: uniqueTicket([
     value(h, "astrology.금성_longitude_degree") * value(h, "astrology.라후_longitude_degree"), value(h, "astrology.달_longitude_degree"), Math.floor((value(h, "astrology.금성_longitude_degree") + h.input.day) / 2), value(h, "astrology.천왕성_longitude_degree") * weekday, 2 * h.input.day + dayOfYear, value(h, "astrology.목성_longitude_degree") * value(h, "astrology.토성_longitude_degree")
   ]) }, modelVersion: MODEL_VERSION, sourceCommit: SOURCE_COMMIT };
 }
