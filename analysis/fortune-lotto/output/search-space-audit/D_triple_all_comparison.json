@@ -1,0 +1,139 @@
+{
+  "in_sample": {
+    "triple_first22": {
+      "stats": {
+        "score": 7969,
+        "hist": [
+          429,
+          542,
+          239,
+          26,
+          3,
+          1,
+          2
+        ],
+        "hits": 1127,
+        "mean": 0.9074074074074074,
+        "ge3": 0.02576489533011272,
+        "ge4": 0.004830917874396135,
+        "fiveHit": 1,
+        "sixHit": 2,
+        "rounds": 1242
+      },
+      "formulas": [
+        "wrap45(juyeok.c2_moving_line-yukim.c3_first_transmission+yukim.c4_middle_transmission)",
+        "wrap45(astrology.c1_sun_longitude+juyeok.c1_hexagram-hongguk.c1_heaven_earth)",
+        "wrap45(|gujeong.c2_honmei-tarot.c1_birth_card|)",
+        "wrap45(astrology.c3_sun_sign-vedic.c2_nakshatra_pada-yukim.c3_first_transmission)",
+        "wrap45(saju.c2_month_sexagenary+vedic.c2_nakshatra_pada+taeeul.c1_cycle)",
+        "wrap45(2*hongguk.c1_heaven_earth-gujeong.c2_honmei)"
+      ],
+      "complexity": 17,
+      "systems": [
+        "juyeok",
+        "yukim",
+        "astrology",
+        "hongguk",
+        "gujeong",
+        "tarot",
+        "vedic",
+        "saju",
+        "taeeul"
+      ]
+    },
+    "triple_all": {
+      "stats": {
+        "score": 7864,
+        "hist": [
+          443,
+          515,
+          233,
+          45,
+          4,
+          0,
+          2
+        ],
+        "hits": 1144,
+        "mean": 0.9210950080515298,
+        "ge3": 0.04106280193236715,
+        "ge4": 0.004830917874396135,
+        "fiveHit": 0,
+        "sixHit": 2,
+        "rounds": 1242
+      },
+      "formulas": [
+        "wrap45(saju.c1_year_sexagenary-astrology.c3_sun_sign-juyeok.c2_moving_line)",
+        "wrap45(astrology.c1_sun_longitude+juyeok.c1_hexagram-hongguk.c1_heaven_earth)",
+        "wrap45(juyeok.c1_hexagram+juyeok.c2_moving_line-2*taeeul.c1_cycle)",
+        "wrap45(|jamidusu.c2_sin-yukim.c1_month_general_point_hour|+hongguk.c1_heaven_earth)",
+        "wrap45(vedic.c2_nakshatra_pada+yukim.c1_month_general_point_hour+yukim.c2_day_stem_gigung)",
+        "wrap45(vedic.c2_nakshatra_pada+yukim.c4_middle_transmission-gujeong.c1_honmei_getsumei)"
+      ],
+      "complexity": 18,
+      "systems": [
+        "saju",
+        "astrology",
+        "juyeok",
+        "hongguk",
+        "taeeul",
+        "jamidusu",
+        "yukim",
+        "vedic",
+        "gujeong"
+      ]
+    }
+  },
+  "exact_walk_forward": {
+    "triple_first22": {
+      "stats": {
+        "score": 920,
+        "hist": [
+          262,
+          273,
+          89,
+          13,
+          5,
+          0,
+          0
+        ],
+        "hits": 510,
+        "mean": 0.794392523364486,
+        "ge3": 0.028037383177570093,
+        "ge4": 0.00778816199376947,
+        "fiveHit": 0,
+        "sixHit": 0,
+        "rounds": 642
+      },
+      "split_count": 7,
+      "all_leakage_checks": true
+    },
+    "triple_all": {
+      "stats": {
+        "score": 826,
+        "hist": [
+          258,
+          273,
+          91,
+          18,
+          2,
+          0,
+          0
+        ],
+        "hits": 517,
+        "mean": 0.8052959501557633,
+        "ge3": 0.03115264797507788,
+        "ge4": 0.003115264797507788,
+        "fiveHit": 0,
+        "sixHit": 0,
+        "rounds": 642
+      },
+      "split_count": 7,
+      "all_leakage_checks": true
+    }
+  },
+  "universe": {
+    "first22": 17633,
+    "all": 48961,
+    "top900_fraction": null
+  }
+}
