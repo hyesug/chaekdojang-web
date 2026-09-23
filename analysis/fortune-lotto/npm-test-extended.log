@@ -1,0 +1,298 @@
+
+> web@0.1.0 test
+> npm run test:unse
+
+
+> web@0.1.0 test:unse
+> node --test tests/unse/*.test.mjs
+
+(node:2588) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/engine.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 영점보다 나빴던 속성은 담당이 비어 있다 (2.2223ms)
+✔ 비운 속성은 어떤 체계가 말해도 답으로 나가지 않는다 (174.2068ms)
+✔ 담당이 침묵하면 다른 체계로 메우지 않는다 (1.7371ms)
+✔ 직업은 넷을 나란히 낸다 — 하나로 좁히지 않는다 (76.7926ms)
+✔ 근거 없는 값은 내지 않는다 (99.1702ms)
+✔ 시각을 모르면 시각이 필요한 담당은 침묵한다 (14.693ms)
+✔ 문맥 글에 담당 구획과 성향/시기의 선이 실린다 (600.5777ms)
+✔ 담당이 아닌 체계는 참고 목록에만 들어간다 (493.4139ms)
+(node:20076) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/validation/metrics.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 실제 사건 월이 최고점이면 Hit@1이다 (1.8459ms)
+✔ ±2개월 안 최고점은 tolerance hit이다 (0.3416ms)
+✔ 동점은 평균 순위를 사용한다 (14.4969ms)
+✔ 표본이 10보다 작으면 부족 표시를 한다 (0.7158ms)
+(node:5532) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/validation/runner.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 출생 시각이 없으면 시간 필수 체계를 건너뛴다 (3.045ms)
+✔ 한 체계 실패는 다른 체계를 중단시키지 않는다 (0.9157ms)
+(node:8156) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/validation/casebook.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 같은 출생 연도가 표본 과반이면 일반화 경고를 낸다 (1.6052ms)
+(node:2996) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/core/astro.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 기준값 파일이 온전하다 (2.1329ms)
+✔ 율리우스일 정의가 기준값과 같다 (1.9619ms)
+✔ 모든 표본에서 독립 구현과 상한 안쪽으로 일치한다 (12.5674ms)
+✔ 수성이 크게 벌어지는 표본은 태양에 붙어 있는 때다 (5.116ms)
+✔ 절기 순간에 독립 구현도 같은 태양 황경을 말한다 (13.5261ms)
+✔ 오차가 실제로 결론을 바꾸는 자리에는 가드가 있다 (113.996ms)
+(node:25156) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/engine.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 검증된 핵심 명반 골든 케이스 1 (49.6975ms)
+✔ 검증된 핵심 명반 골든 케이스 2 (12.8196ms)
+✔ 서로 다른 40개 명반에서 핵심 계산이 빠지거나 오류가 나지 않는다 (669.3347ms)
+(node:13292) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/engine.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ D7 삽탐샤는 파라샤라 표준 대응을 따른다 (5.3963ms)
+✔ D1 라그나는 기존 엔진이 세운 것과 같다 (2.9507ms)
+✔ 행성 상태는 고양·함몰·자기 자리를 표준 표대로 매긴다 (0.8737ms)
+✔ 드리슈티는 화성 4·8, 목성 5·9, 토성 3·10 을 쓴다 (1.8865ms)
+✔ 차라 카라카는 도가 높은 순서로 일곱 자리를 준다 (1.7724ms)
+✔ 아루다는 자기 자리나 7번째에 떨어지면 10번째로 옮긴다 (1.4543ms)
+✔ 우파파다는 12궁의 아루다이고 UL2 는 그 다음 자리다 (1.1748ms)
+✔ 요가는 실제 관계가 있을 때만 잡는다 (43.5443ms)
+✔ 분야 묶음은 궁주와 그 궁주가 앉은 자리까지 준다 (5.0965ms)
+✔ 솔라 아크는 한 해에 약 1도씩 나아간다 (3.097ms)
+✔ 솔라 아크 오브는 1도로 좁혀 해를 좁힌다 (6.983ms)
+✔ 프로펙션은 나이 열두 해마다 한 바퀴 돈다 (0.8555ms)
+✔ 루나 리턴은 달이 출생 위치로 돌아오는 순간이다 (10.4751ms)
+✔ 합성 차트와 데이비슨 차트는 서로 다른 방식이다 (1.9243ms)
+✔ 보조성은 표대로 놓이고 경양·타라는 녹존 양옆이다 (45.2705ms)
+✔ 지겁과 지공은 亥에서 시간만큼 순행·역행한다 (0.4718ms)
+✔ 삼방사정은 자기 자리 · 삼합 둘 · 대궁이다 (0.4388ms)
+✔ 분야 궁은 층마다 삼방사정과 길흉성을 함께 돌려준다 (222.0957ms)
+✔ 유일은 유월 명궁에서 음력 일수만큼 순행한다 (199.5168ms)
+✔ 프로파일의 모든 항목은 근거를 달고 나온다 (192.2141ms)
+✔ 숫자가 들어가는 항목은 초구체화 추정으로 표시된다 (189.2521ms)
+✔ 자녀 프로파일은 수와 성별을 만들지 않는다 (178.4826ms)
+✔ Tier 는 핵심 개수와 같은 시기를 짚은 기법 수로 갈린다 (0.5059ms)
+✔ 실제 명반 여럿에서 Tier 가 실제로 갈린다 (6981.3564ms)
+✔ 한쪽만 켜진 해는 겹친 해로 세지 않는다 (828.7799ms)
+✔ 두 사람 결과는 D9 와 합성 차트를 함께 싣는다 (473.8758ms)
+✔ 후보 도시를 대지 않으면 주요 생활권을 전부 견준다 (4.1342ms)
+✔ 도시끼리 실제 차이가 없으면 순위를 만들지 않는다 (23.1475ms)
+✔ 실제로 달라지는 도시가 있으면 무엇이 달라지는지 적는다 (716.457ms)
+✔ 출생 시각을 모르면 도시를 견주지 않는다 (5.8134ms)
+✔ 문맥에 프로파일·단언 등급·연도 기법이 실린다 (1152.4188ms)
+✔ 시각 미상에서도 무너지지 않고 없는 것은 없다고 적는다 (1011.0456ms)
+✔ 6하우스는 커스프 사인만 보지 않고 도수로 가른다 (0.4102ms)
+✔ 부위 무게는 표에 낱말을 몇 개 적었는지와 무관해야 한다 (0.852ms)
+✔ 부위가 갈리지 않는 명반은 갈리지 않는다고 말한다 (1.0941ms)
+✔ 시각을 모르면 부위를 보지 않는다 (0.1729ms)
+✔ 베딕·자미두수 부위는 미구현으로 명시한다 (0.3669ms)
+✔ 직업의 결은 D10 라그나까지 쓴다 (41.3996ms)
+✔ 직업의 결이 팽팽하면 2위를 함께 적고 등급을 낮춘다 (38.5714ms)
+✔ 직업의 결 표에 몸을 쓰는 일이 있다 (158.519ms)
+✔ 수입의 모양에 이길 수 없는 선택지를 두지 않는다 (248.4532ms)
+✔ 기저율은 출처가 있는 값만 내고 없으면 없다고 한다 (0.5572ms)
+✔ 기저율이 점수에 섞이지 않고 순위보다 먼저 실린다 (1402.5316ms)
+✔ 체계마다 자기 어휘로 읽고, 섞지 않는다 (40.462ms)
+✔ 담당 체계가 침묵하면 같이 침묵한다 (45.5287ms)
+(node:19184) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/engine.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 같은 입력은 두 번 돌려도 글자 하나까지 같다 (4768.7333ms)
+✔ 고해상도 계산은 기존 원국 계산을 바꾸지 않는다 (1878.522ms)
+✔ 입춘 전후로 사주 연도가 갈리고 양쪽 모두 계산된다 (223.7267ms)
+✔ 자정 부근과 서머타임 구간도 층이 서 있다 (302.9689ms)
+✔ 출생 시각을 모르면 자미 층을 세우지 않고 그 사실을 적는다 (1370.3313ms)
+✔ 월운은 절기월 열둘이고 간지가 기존 엔진과 일치한다 (92.7147ms)
+✔ 축월은 이듬해 1월에 시작하고 라벨에 달력 연도가 들어간다 (80.7417ms)
+✔ 원국에 이미 선 합은 달마다 되풀이 적지 않는다 (0.3729ms)
+✔ 대운은 소수 경계로 고르고 전환까지 남은 햇수를 돌려준다 (51.0609ms)
+✔ 연도별 층은 요청한 범위만큼 나오고 대운 전환 해를 표시한다 (49.9094ms)
+✔ 대한은 오행국 수에서 시작해 열 해씩 이어진다 (52.256ms)
+✔ 유년 명궁은 그 해 태세 지지이고 열두 궁이 다시 붙는다 (53.3234ms)
+✔ 유월은 두군에서 순행하는 열두 칸이다 (134.3484ms)
+✔ 보조 네 별이 판에 놓여 사화가 허공에 떨어지지 않는다 (110.0417ms)
+✔ 질문 분야에 따라 볼 궁이 자동으로 골라진다 (140.2265ms)
+✔ 솔라 리턴은 태양이 출생 황경으로 돌아오는 순간이다 (45.0988ms)
+✔ 진행 각은 한 해에 몇 도씩만 움직인다 (일도일년법) (56.619ms)
+✔ 트랜싯은 마주 보는 커스프에 같은 각을 두 번 적지 않는다 (47.1318ms)
+✔ 다샤 하위 구간의 합은 상위 구간 길이와 같다 (53.8598ms)
+✔ 그 시점의 MD·AD·PD 가 한 줄로 집힌다 (54.1487ms)
+✔ 분할 차트는 파라샤라 표준 대응을 따른다 (0.3217ms)
+✔ 고차라는 출생 달에서 몇 번째인지를 세고 사데사티를 표시한다 (55.1502ms)
+✔ MC 라인 경도에서 그 행성은 실제로 중천에 온다 (54.069ms)
+✔ 방위각과 대권거리가 실제 지리와 맞는다 (0.3144ms)
+✔ 후보 도시는 방향과 거리로만 고른다 (0.927ms)
+✔ 릴로케이션은 하우스만 바꾸고 행성 자리는 그대로 둔다 (56.7348ms)
+✔ 질문에 먼저 나온 낱말이 주 분야가 된다 (1.3205ms)
+✔ 지역 질문은 지역 계산을 켜고 도시 이름을 집어낸다 (0.4125ms)
+✔ 날짜를 물을 때만 일진까지 내려간다 (0.4831ms)
+✔ 분야를 못 가려내면 그 사실을 표시한다 (0.2649ms)
+✔ 구간 등급은 절대 점수가 아니라 그 기간 안에서의 순위다 (518.5738ms)
+✔ 사건 후보와 속성이 함께 나오고 좁히지 못한 축은 비워 둔다 (271.0709ms)
+✔ 여러 분야를 겹치면 사건의 선후가 나온다 (536.2951ms)
+✔ 문맥은 계산과 해석을 구획으로 갈라 놓는다 (449.4346ms)
+✔ 지역을 물으면 방향은 계산으로, 도시는 추정으로 표시한다 (742.7042ms)
+✔ 대표 구간은 시간 순서가 아니라 점수로 고른다 (744.8545ms)
+✔ 한 분야에 계산식이 같은 사건 후보를 두지 않는다 (1972.4383ms)
+✔ 한 사건의 여러 모양은 묶어서 본다 (310.8684ms)
+✔ 달을 가르지 못하는 후보는 순위를 내지 않는다 (589.6589ms)
+✔ 생활권을 넘는 이사 질문은 직업 분야도 켠다 (0.6983ms)
+✔ 횟수를 묻는 질문에는 셀 수 없다고 먼저 적는다 (891.1545ms)
+✔ 순위를 탐지기로 읽지 말라고 문맥에 적는다 (451.2943ms)
+✔ 사건을 지정하면 그 사건 기준으로, 아니면 활성도 기준으로 줄을 세운다 (335.5879ms)
+✔ 한 해만 점수 항이 더 붙지 않는다 (663.0265ms)
+✔ 절기월 위치가 1위를 고르게 나눠 가진다 (9266.6559ms)
+✔ 구조화 JSON 이 약속한 모양대로 나온다 (1241.2777ms)
+✔ 해외·여행 질문이 직업 분야로 떨어지지 않는다 (0.3431ms)
+✔ 1위가 혼자 서 있지 않으면 시기를 고르지 않는다 (1947.1202ms)
+✔ 환갑과 본명년을 계산 사실로 표시한다 (443.5875ms)
+✔ 일진 층은 하루 단위로 서고 원국·세운·월운과의 관계를 돌려준다 (41.7147ms)
+✔ 판정 질문에는 판정할 수 없다고 먼저 적는다 (1327.6335ms)
+✔ 체계 자신의 평소와 견주어 지지를 센다 (1828.0282ms)
+✔ 고전 시간주가 트랜싯 무게에 실리되 동률을 만들지 않는다 (1657.6205ms)
+(node:15612) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/engine.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 핵심 셋 이상이 같은 쪽이면 강한 신호 (4.2336ms)
+✔ 핵심 둘이면 중간 신호 (0.6496ms)
+✔ 하나뿐이면 약한 신호이고 현실 조건을 좁히지 못한다 (0.6512ms)
+✔ 같은 수로 갈리면 상충으로 보고 약한 신호로 내린다 (0.6898ms)
+✔ 갈리더라도 한쪽이 더 많으면 그쪽 개수로 판정하고 반대쪽을 지우지 않는다 (2.6591ms)
+✔ 50 언저리는 중립으로 세고 순풍·역풍 어느 쪽에도 넣지 않는다 (0.5859ms)
+✔ 시기 계산이 없으면 월을 좁힐 근거가 없다고 적는다 (0.8705ms)
+✔ 보조 체계는 활성 주제 집계에 들어가지 않는다 (0.674ms)
+✔ 실제 명반으로 돌려도 다섯 주제가 모두 판정된다 (186.2874ms)
+✔ 시기 교집합은 핵심 둘 이상이 같은 쪽인 구간만 싣는다 (171.5294ms)
+✔ 태어난 시각을 모르면 자미두수가 빠지고 그 사실이 한계로 적힌다 (166.9766ms)
+✔ AI 문맥에 다층 해석 근거가 실리고 길이 상한을 넘지 않는다 (945.055ms)
+(node:10592) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/interpretation/profile.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 서로 다른 체계의 근거가 있어야 직업 후보를 낸다 (5.2333ms)
+✔ 점수 근거가 없는 체계는 영역 합의에 넣지 않는다 (0.7709ms)
+✔ 상반된 직업 후보는 단정 대신 갈림으로 표시한다 (0.6762ms)
+✔ 직업 전용 장치가 없는 체계는 직업 후보 근거에서 제외한다 (2.2463ms)
+✔ 전용 체계의 원국 사실은 후보가 없어도 해석 근거로 보존한다 (0.7845ms)
+(node:5548) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/interpretation/targets.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 관계·자녀·직업의 구체 후보는 근거와 반증 조건을 함께 낸다 (2.3975ms)
+(node:16280) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/lens.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 핵심 한 체계 신호는 행동 묘사를 숨기고 약하게 표현한다 (2.7238ms)
+✔ 핵심 두 체계 이상이면 현실 행동 설명을 허용한다 (0.7419ms)
+✔ 핵심 세 체계 이상이면 반복 확인된 핵심 패턴으로 표시한다 (0.6662ms)
+✔ 궁합 총평은 좋음·무난·어려움 세 칸과 핵심/전체를 모두 적는다 (1.6718ms)
+✔ 사용자 현실을 알고 쓴 것처럼 보이는 잔존 문구를 막는다 (14.9051ms)
+(node:772) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/engine.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 열다섯 체계가 저마다 구조화된 직업 해석을 낸다 (195.105ms)
+✔ 전통에 직업 자리가 없는 체계도 간접 증거로 참여한다 (122.1169ms)
+✔ 한 체계의 뜻을 다른 체계의 어휘로 옮기지 않는다 (2.0659ms)
+✔ 강한 소수 의견이 침묵한 다수에 희석되지 않는다 (0.8349ms)
+✔ 같은 표를 쓰는 계보는 한 표로 나눠 갖는다 (0.5753ms)
+✔ 직접 증거가 적으면 보조 증거의 몫도 같이 줄어든다 (181.7285ms)
+✔ 표의 평균에서 벗어난 만큼으로 합친다 — 절대값으로 더하면 누구나 같아진다 (1.1012ms)
+✔ 좁게 말하는 규칙이 넓게 말하는 규칙보다 높은 좁기를 받는다 (0.7238ms)
+✔ 모든 규칙에 전통강도·좁기·증거등급이 붙어 있다 (2.6691ms)
+✔ 실측이 없으면 0 이 아니라 null 이다 (2.758ms)
+✔ 표본 수에 따라 무게가 움직일 수 있는 폭이 묶여 있다 (0.493ms)
+✔ 속성별 보정 무게가 좁은 범위 안에 머문다 (235.5226ms)
+✔ 같은 입력이면 결과가 똑같다 (193.9534ms)
+✔ 원국 해석은 asOfDate 에 흔들리지 않는다 (167.1341ms)
+✔ 시각을 모르면 그 체계만 빠지고 나머지는 계속 말한다 (11.4821ms)
+✔ 네 층이 모두 나오고 분포의 합이 1이다 (68.889ms)
+✔ 산업군 원형은 손으로 쓰지 않고 그 업종의 직업들에서 나온다 (0.9737ms)
+✔ 정답 속성을 그대로 넣으면 정답 업종이 위쪽에 온다 — 변환층 자체 점검 (7.859ms)
+✔ 평균을 빼고 견준다 — 안 빼면 모두에게 평균을 주는 것이 최선이 된다 (0.3905ms)
+✔ 상관은 변화가 없으면 말하지 않는다 (0.2465ms)
+✔ 맞힌 축·놓친 축·과하게 읽은 축을 구별한다 (0.4122ms)
+✔ 해석 사전은 규칙 등록소에서 그대로 나온다 (5.1308ms)
+✔ 축 하나를 어느 기호들이 가리키는지 거꾸로 찾을 수 있다 (2.0353ms)
+✔ 처음 보는 사람에게도 답이 나온다 (64.5147ms)
+✔ 확신도는 근거의 두께이지 적중률이 아니라고 적는다 (58.6319ms)
+✔ 근거 없는 값은 내지 않는다 (53.3197ms)
+✔ 직업 사전에 없는 직업은 정답으로 지어내지 않는다 (0.4898ms)
+(node:16184) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/engine.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+SURGERY_WEEKDAY_TOP=[{"rank":1,"date":"2026-12-02","weekday":"수","gz":"庚戌","cheonui":true,"hwangdo":true,"hwangdoName":"금궤","clashPenalty":4,"minorPenalty":0,"branchRisk":["월지충"],"daeun":"丙寅","monthHealth":25,"dayHealth":42,"grade":"무난"},{"rank":2,"date":"2026-11-20","weekday":"금","gz":"戊戌","cheonui":true,"hwangdo":true,"hwangdoName":"금궤","clashPenalty":4,"minorPenalty":0,"branchRisk":["월지충"],"daeun":"丙寅","monthHealth":25,"dayHealth":31,"grade":"조심"},{"rank":3,"date":"2026-12-15","weekday":"화","gz":"癸亥","cheonui":true,"hwangdo":false,"hwangdoName":"주작","clashPenalty":3,"minorPenalty":0,"branchRisk":["시지충"],"daeun":"乙丑","monthHealth":38,"dayHealth":33,"grade":"무난"},{"rank":4,"date":"2026-10-01","weekday":"목","gz":"戊申","cheonui":true,"hwangdo":false,"hwangdoName":"백호","clashPenalty":4.2,"minorPenalty":4.94,"branchRisk":["시지삼형","시지파","대운충","대운삼형"],"daeun":"丙寅","monthHealth":39,"dayHealth":48,"grade":"좋음"},{"rank":5,"date":"2026-09-17","weekday":"목","gz":"甲午","cheonui":false,"hwangdo":true,"hwangdoName":"금궤","clashPenalty":0,"minorPenalty":0.98,"branchRisk":["년지파"],"daeun":"丙寅","monthHealth":39,"dayHealth":32,"grade":"무난"},{"rank":6,"date":"2026-09-29","weekday":"화","gz":"丙午","cheonui":false,"hwangdo":true,"hwangdoName":"금궤","clashPenalty":0,"minorPenalty":0.98,"branchRisk":["년지파"],"daeun":"丙寅","monthHealth":39,"dayHealth":32,"grade":"무난"},{"rank":7,"date":"2026-11-16","weekday":"월","gz":"甲午","cheonui":false,"hwangdo":true,"hwangdoName":"청룡","clashPenalty":0,"minorPenalty":0.98,"branchRisk":["년지파"],"daeun":"丙寅","monthHealth":25,"dayHealth":39,"grade":"좋음"},{"rank":8,"date":"2026-10-08","weekday":"목","gz":"乙卯","cheonui":false,"hwangdo":true,"hwangdoName":"명당","clashPenalty":0,"minorPenalty":1.5,"branchRisk":["월지해"],"daeun":"丙寅","monthHealth":39,"dayHealth":45,"grade":"좋음"},{"rank":9,"date":"2026-12-31","weekday":"목","gz":"己卯","cheonui":false,"hwangdo":true,"hwangdoName":"옥당","clashPenalty":0,"minorPenalty":1.5,"branchRisk":["월지해"],"daeun":"乙丑","monthHealth":38,"dayHealth":45,"grade":"무난"},{"rank":10,"date":"2026-12-07","weekday":"월","gz":"乙卯","cheonui":false,"hwangdo":true,"hwangdoName":"옥당","clashPenalty":0,"minorPenalty":1.5,"branchRisk":["월지해"],"daeun":"乙丑","monthHealth":38,"dayHealth":39,"grade":"무난"},{"rank":11,"date":"2026-09-23","weekday":"수","gz":"庚子","cheonui":false,"hwangdo":true,"hwangdoName":"사명","clashPenalty":0,"minorPenalty":1.65,"branchRisk":["년지상형"],"daeun":"丙寅","monthHealth":39,"dayHealth":44,"grade":"좋음"},{"rank":12,"date":"2026-10-05","weekday":"월","gz":"壬子","cheonui":false,"hwangdo":true,"hwangdoName":"사명","clashPenalty":0,"minorPenalty":1.65,"branchRisk":["년지상형"],"daeun":"丙寅","monthHealth":39,"dayHealth":40,"grade":"아주 좋음"}]
+SURGERY_COMPARE=[{"date":"2026-09-28","rank":50,"gz":"乙巳","cheonui":false,"hwangdo":false,"hwangdoName":"주작","clashPenalty":0,"minorPenalty":3.89,"branchRisk":["대운삼형","대운해"],"daeun":"丙寅","monthHealth":39,"dayHealth":47,"grade":"좋음"},{"date":"2026-11-13","rank":42,"gz":"辛卯","cheonui":false,"hwangdo":false,"hwangdoName":"현무","clashPenalty":0,"minorPenalty":1.5,"branchRisk":["월지해"],"daeun":"丙寅","monthHealth":25,"dayHealth":35,"grade":"조심"},{"date":"2026-11-25","rank":41,"gz":"癸卯","cheonui":false,"hwangdo":false,"hwangdoName":"현무","clashPenalty":0,"minorPenalty":1.5,"branchRisk":["월지해"],"daeun":"丙寅","monthHealth":25,"dayHealth":39,"grade":"무난"},{"date":"2026-12-02","rank":1,"gz":"庚戌","cheonui":true,"hwangdo":true,"hwangdoName":"금궤","clashPenalty":4,"minorPenalty":0,"branchRisk":["월지충"],"daeun":"丙寅","monthHealth":25,"dayHealth":42,"grade":"무난"},{"date":"2026-11-20","rank":2,"gz":"戊戌","cheonui":true,"hwangdo":true,"hwangdoName":"금궤","clashPenalty":4,"minorPenalty":0,"branchRisk":["월지충"],"daeun":"丙寅","monthHealth":25,"dayHealth":31,"grade":"조심"}]
+✔ 수술 후보에서는 일지충·양인만 강하게 제외한다 (4.0873ms)
+✔ 수술 전용 순위는 천의 → 황도 → 충 감점 → 형해파 감점 → 건강 흐름 → 일반등급 순을 보존한다 (1.813ms)
+✔ 대희 실제 후보에서 황도 천의 날짜가 흑도 천의 날짜보다 앞선다 (0.4907ms)
+✔ 대희 원국·대운의 직접 충과 형해파를 실제 후보마다 잡는다 (0.7752ms)
+✔ 대희 2026 남은 평일 상위 후보를 로그로 남긴다 (4.0743ms)
+✔ 대운 전환 45일 이내 후보에는 전환 주의 정보를 붙인다 (1.2668ms)
+(node:25312) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/engine.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 양력 연도는 한국시간 1월 1일에 바뀌고 사주 연도는 입춘 전까지 유지된다 (56.0047ms)
+✔ 사주 연도는 입춘 전후에서 바뀐다 (27.0242ms)
+✔ 카발라 개인년은 입춘이 아니라 양력 1월 1일을 따른다 (33.8695ms)
+✔ 타로 연도 배열도 양력 1월 1일을 따른다 (31.7202ms)
+✔ 대운은 정수 만 나이가 아니라 소수 경계에서 즉시 전환된다 (1.0213ms)
+✔ 빔쇼타리 다샤 선택은 소수 elapsedYears 경계를 실제로 사용한다 (46.0329ms)
+(node:2024) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/engine.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 나라는 사람은 등록된 15체계를 각각 한 줄로 보여준다 (419.0611ms)
+✔ 상세 성향은 여러 체계에서 실제로 반복된 것만 남긴다 (277.5686ms)
+✔ 화면은 결론을 큰 제목으로, 근거 강도를 작은 보조문구로 배치한다 (13.4147ms)
+(node:10976) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///C:/Users/kysn2/Desktop/05_%EC%B1%85%EB%8F%84%EC%9E%A5/chaekdojang-web/public/unse-8f3k2m/src/engine.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to C:\Users\kysn2\Desktop\05_책도장\chaekdojang-web\package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+✔ 섹트는 태양이 지평선 위인지로 갈린다 (79.3796ms)
+✔ 도미사일·엑절테이션·디트리먼트·폴이 전통 표대로 매겨진다 (0.8348ms)
+✔ 트리플리시티는 도로테우스 방식으로 낮·밤이 갈린다 (2.1931ms)
+✔ 텀은 이집트 표, 페이스는 칼데안 순서를 따른다 (0.5458ms)
+✔ 카지미·조합·태양광 아래는 궤가 갈린다 (17.9577ms)
+✔ 포춘과 스피릿은 낮·밤에 따라 공식이 뒤집힌다 (20.7475ms)
+✔ 로트는 자리만이 아니라 주인의 상태까지 함께 준다 (2.1172ms)
+✔ 출생 시각을 모르면 로트를 만들지 않는다 (17.2253ms)
+✔ 재물 하우스 다섯을 각각 다른 돈으로 본다 (1.5119ms)
+✔ ZR 기간표는 발렌스 표준이고 한 바퀴가 211년이다 (0.6779ms)
+✔ 1단계는 로트 자리에서 출발해 순서대로 돈다 (0.7154ms)
+✔ 2단계 합은 부모 구간과 같고 끈 풀림이 표시된다 (1.4322ms)
+✔ 정점 구간은 기준 로트에서 앵귤러인 자리다 (1.2239ms)
+✔ 돈이 한 덩어리가 아니라 경로로 갈라진다 (328.6037ms)
+✔ 근거는 어느 체계 어느 자리에서 왔는지 남는다 (83.7086ms)
+✔ 사주 재고는 창고 지지가 실제로 있을 때만 잡는다 (1.4142ms)
+✔ 큰돈 신호를 곧바로 복권으로 옮기지 않는다 (280.8735ms)
+✔ 여러 기법이 겹치는 해만 비정기 재물 시기로 센다 (68.9049ms)
+✔ 타고난 횡재 구조는 잡힌 자리 수로 세기를 매긴다 (58.6215ms)
+✔ 평생 재물 곡선은 십 년마다 중심을 말한다 (2.5731ms)
+✔ 횡재 질문은 재물 분야를 켜고 고전 계산까지 돌린다 (2.7312ms)
+✔ 평생 질문은 십 년 곡선을 켠다 (0.6116ms)
+✔ 문맥에 고전 계산과 재물 경로가 실린다 (764.8906ms)
+✔ 재물과 무관한 질문에는 재물 구획을 싣지 않는다 (451.0671ms)
+✔ 시각 미상이면 고전 계산을 건너뛰고 그렇다고 적는다 (529.0623ms)
+ℹ tests 212
+ℹ suites 0
+ℹ pass 212
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 36433.9774

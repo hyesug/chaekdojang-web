@@ -1,0 +1,21 @@
+{
+  "method": "R",
+  "description": "10,000 seeded uniform random six-number ticket runs.",
+  "score": {
+    "score": 1465.977,
+    "mean": 0.8000087761674646,
+    "ge3": 0.023790821256038076,
+    "ge4": 0.0014007246376809628,
+    "fiveHit": 0.0381,
+    "sixHit": 0
+  },
+  "walk_forward_score": 757.6939,
+  "distribution": {
+    "runs": 10000,
+    "median_score": 1454,
+    "standard_deviation": 104.3700314793473,
+    "p95_score": 1653,
+    "p99_score": 1811,
+    "max_score": 2238
+  }
+}
