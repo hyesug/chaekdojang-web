@@ -1,0 +1,53 @@
+{
+  "d1": {
+    "saju": 399,
+    "jamidusu": 243,
+    "astrology": 299,
+    "vedic": 204,
+    "juyeok": 192,
+    "yukim": 416,
+    "hongguk": 202,
+    "taeeul": 115,
+    "gujeong": 34,
+    "sukyo": 30,
+    "tojeong": 30,
+    "kabbalah": 29,
+    "mahabote": 19,
+    "thai": 12,
+    "tarot": 15
+  },
+  "d2": {
+    "saju": 925,
+    "jamidusu": 541,
+    "astrology": 654,
+    "vedic": 438,
+    "juyeok": 408,
+    "yukim": 944,
+    "hongguk": 447,
+    "taeeul": 229,
+    "gujeong": 403,
+    "sukyo": 419,
+    "tojeong": 387,
+    "kabbalah": 437,
+    "mahabote": 212,
+    "thai": 193,
+    "tarot": 227
+  },
+  "diverse": {
+    "saju": 919,
+    "jamidusu": 547,
+    "astrology": 653,
+    "vedic": 439,
+    "juyeok": 412,
+    "yukim": 939,
+    "hongguk": 445,
+    "taeeul": 231,
+    "gujeong": 402,
+    "sukyo": 420,
+    "tojeong": 384,
+    "kabbalah": 434,
+    "mahabote": 217,
+    "thai": 195,
+    "tarot": 231
+  }
+}
