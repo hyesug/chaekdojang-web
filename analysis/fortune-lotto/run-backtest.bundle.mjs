@@ -3,7 +3,7 @@ import { mkdir, writeFile, readFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-// public/unse-8f3k2m/src/core/astro.js
+// public/unse/src/core/astro.js
 var DEG = Math.PI / 180;
 var sin = (d) => Math.sin(d * DEG);
 function norm360(x) {
@@ -358,7 +358,7 @@ function obliquity(jd) {
   return 23 + 26 / 60 + (21.448 - 46.815 * T - 59e-5 * T * T + 1813e-6 * T ** 3) / 3600;
 }
 
-// public/unse-8f3k2m/src/core/time.js
+// public/unse/src/core/time.js
 var KR_TZ_PERIODS = [
   { from: [1908, 4, 1], tz: 8.5 },
   { from: [1912, 1, 1], tz: 9 },
@@ -438,7 +438,7 @@ function normalizeBirth(input) {
   };
 }
 
-// public/unse-8f3k2m/src/core/lunar.js
+// public/unse/src/core/lunar.js
 function kstDay(jd) {
   return Math.floor(jd + 9 / 24 + 0.5);
 }
@@ -515,7 +515,7 @@ function solarToLunar(y, m, d) {
   };
 }
 
-// public/unse-8f3k2m/src/core/ganzhi.js
+// public/unse/src/core/ganzhi.js
 var STEMS = ["\u7532", "\u4E59", "\u4E19", "\u4E01", "\u620A", "\u5DF1", "\u5E9A", "\u8F9B", "\u58EC", "\u7678"];
 var STEMS_KR = ["\uAC11", "\uC744", "\uBCD1", "\uC815", "\uBB34", "\uAE30", "\uACBD", "\uC2E0", "\uC784", "\uACC4"];
 var BRANCHES = ["\u5B50", "\u4E11", "\u5BC5", "\u536F", "\u8FB0", "\u5DF3", "\u5348", "\u672A", "\u7533", "\u9149", "\u620C", "\u4EA5"];
@@ -651,7 +651,7 @@ function yearPillar(year) {
   return ganzhiName(s, b);
 }
 
-// public/unse-8f3k2m/src/core/planets.js
+// public/unse/src/core/planets.js
 var sin2 = (d) => Math.sin(d * DEG);
 var cos = (d) => Math.cos(d * DEG);
 var tan = (d) => Math.tan(d * DEG);
@@ -834,7 +834,7 @@ function toSidereal(lon, jd) {
   return norm360(lon - lahiriAyanamsa(jd));
 }
 
-// public/unse-8f3k2m/src/core/place.js
+// public/unse/src/core/place.js
 var CITIES = [
   // ── 한국 ──
   { name: "\uC11C\uC6B8", lat: 37.5665, lon: 126.978, tz: 9, kr: true },
@@ -1043,7 +1043,7 @@ function findCity(name) {
   return BY_NAME.get(name) ?? null;
 }
 
-// public/unse-8f3k2m/src/core/josa.js
+// public/unse/src/core/josa.js
 function tailChar(word) {
   const s = String(word ?? "").trim().replace(/[)\]}\s]+$/, "");
   return s ? s.charCodeAt(s.length - 1) : null;
@@ -1083,7 +1083,7 @@ function j(word, particle) {
   return w + (t !== 0 ? pair[0] : pair[1]);
 }
 
-// public/unse-8f3k2m/src/systems/_base.js
+// public/unse/src/systems/_base.js
 var WESTERN_TO_OHAENG = {
   \uBD88: [0, 1, 0, 0, 0],
   \uD759: [0, 0, 0.7, 0.3, 0],
@@ -1166,7 +1166,7 @@ function weekdayFromJDN(jdn) {
 }
 var WEEKDAY_KR = ["\uC77C", "\uC6D4", "\uD654", "\uC218", "\uBAA9", "\uAE08", "\uD1A0"];
 
-// public/unse-8f3k2m/src/systems/sukyo.js
+// public/unse/src/systems/sukyo.js
 function nakshatraOf(jd) {
   const sidereal = norm360(moonLongitude(jd) - lahiriAyanamsa(jd));
   const span = 360 / 27;
@@ -1204,7 +1204,7 @@ var SU = [
 ];
 var NAKSHATRA_NAMES = SU.map(([hanja, kr, sanskrit]) => ({ hanja, kr, sanskrit }));
 
-// public/unse-8f3k2m/src/systems/juyeok.js
+// public/unse/src/systems/juyeok.js
 var HEXAGRAM_TABLE = [
   [1, 10, 13, 25, 44, 6, 33, 12],
   // 상 건
@@ -1232,7 +1232,7 @@ function hexOf(x) {
   return { upper, lower, num: HEXAGRAM_TABLE[upper][lower] };
 }
 
-// public/unse-8f3k2m/src/systems/yukim.js
+// public/unse/src/systems/yukim.js
 var meta = {
   id: "yukim",
   name: "\uC721\uC784",
@@ -1435,7 +1435,7 @@ function analyze(input) {
   });
 }
 
-// public/unse-8f3k2m/src/systems/hongguk.js
+// public/unse/src/systems/hongguk.js
 var meta2 = {
   id: "hongguk",
   name: "\uD64D\uAD6D\uAE30\uBB38",
@@ -1584,7 +1584,7 @@ function analyze2(input) {
   });
 }
 
-// public/unse-8f3k2m/src/systems/taeeul.js
+// public/unse/src/systems/taeeul.js
 var meta3 = {
   id: "taeeul",
   name: "\uD0DC\uC744\uC2E0\uC218",
@@ -1753,7 +1753,7 @@ function analyze3(input) {
   });
 }
 
-// public/unse-8f3k2m/src/systems/gujeong.js
+// public/unse/src/systems/gujeong.js
 function starOfYear(year) {
   let s = String(year).split("").reduce((a, c) => a + Number(c), 0);
   while (s > 9) s = String(s).split("").reduce((a, c) => a + Number(c), 0);
@@ -1761,7 +1761,7 @@ function starOfYear(year) {
   return v > 9 ? v - 9 : v;
 }
 
-// public/unse-8f3k2m/src/systems/tojeong.js
+// public/unse/src/systems/tojeong.js
 var meta4 = {
   id: "tojeong",
   name: "\uD1A0\uC815\uBE44\uACB0",
@@ -1888,7 +1888,7 @@ function analyze4(input) {
   });
 }
 
-// public/unse-8f3k2m/src/systems/mahabote.js
+// public/unse/src/systems/mahabote.js
 var meta5 = {
   id: "mahabote",
   name: "\uB9C8\uD558\uBCF4\uD14C",
@@ -2051,7 +2051,7 @@ function analyze5(input) {
   });
 }
 
-// public/unse-8f3k2m/src/systems/thai.js
+// public/unse/src/systems/thai.js
 var meta6 = {
   id: "thai",
   name: "\uD0DC\uAD6D \uC810\uC131\uC220",
@@ -2197,7 +2197,7 @@ function analyze6(input) {
   });
 }
 
-// public/unse-8f3k2m/src/systems/tarot.js
+// public/unse/src/systems/tarot.js
 var meta7 = {
   id: "tarot",
   name: "\uD0C0\uB85C",

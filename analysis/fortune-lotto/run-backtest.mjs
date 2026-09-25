@@ -2,27 +2,27 @@
  * Read-only fortune-engine lottery backtest spike.
  *
  * This script intentionally imports the staging engine but never writes under
- * public/unse-8f3k2m/src.  It writes only analysis/fortune-lotto/output.
+ * public/unse/src.  It writes only analysis/fortune-lotto/output.
  */
 import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { normalizeBirth } from '../../public/unse-8f3k2m/src/core/time.js';
-import { solarToLunar } from '../../public/unse-8f3k2m/src/core/lunar.js';
-import { computeFourPillars, sexagenaryIndex, elementDistribution } from '../../public/unse-8f3k2m/src/core/ganzhi.js';
-import { toJDN } from '../../public/unse-8f3k2m/src/core/astro.js';
-import { planetPositions, PLANET_ORDER, houses, toSidereal } from '../../public/unse-8f3k2m/src/core/planets.js';
-import { findCity } from '../../public/unse-8f3k2m/src/core/place.js';
-import { nakshatraOf } from '../../public/unse-8f3k2m/src/systems/sukyo.js';
-import { hexOf } from '../../public/unse-8f3k2m/src/systems/juyeok.js';
-import { monthGeneral, analyze as yukimAnalyze } from '../../public/unse-8f3k2m/src/systems/yukim.js';
-import { analyze as honggukAnalyze } from '../../public/unse-8f3k2m/src/systems/hongguk.js';
-import { analyze as taeeulAnalyze } from '../../public/unse-8f3k2m/src/systems/taeeul.js';
-import { starOfYear } from '../../public/unse-8f3k2m/src/systems/gujeong.js';
-import { analyze as tojeongAnalyze } from '../../public/unse-8f3k2m/src/systems/tojeong.js';
-import { analyze as mahaboteAnalyze } from '../../public/unse-8f3k2m/src/systems/mahabote.js';
-import { analyze as thaiAnalyze } from '../../public/unse-8f3k2m/src/systems/thai.js';
-import { analyze as tarotAnalyze } from '../../public/unse-8f3k2m/src/systems/tarot.js';
+import { normalizeBirth } from '../../public/unse/src/core/time.js';
+import { solarToLunar } from '../../public/unse/src/core/lunar.js';
+import { computeFourPillars, sexagenaryIndex, elementDistribution } from '../../public/unse/src/core/ganzhi.js';
+import { toJDN } from '../../public/unse/src/core/astro.js';
+import { planetPositions, PLANET_ORDER, houses, toSidereal } from '../../public/unse/src/core/planets.js';
+import { findCity } from '../../public/unse/src/core/place.js';
+import { nakshatraOf } from '../../public/unse/src/systems/sukyo.js';
+import { hexOf } from '../../public/unse/src/systems/juyeok.js';
+import { monthGeneral, analyze as yukimAnalyze } from '../../public/unse/src/systems/yukim.js';
+import { analyze as honggukAnalyze } from '../../public/unse/src/systems/hongguk.js';
+import { analyze as taeeulAnalyze } from '../../public/unse/src/systems/taeeul.js';
+import { starOfYear } from '../../public/unse/src/systems/gujeong.js';
+import { analyze as tojeongAnalyze } from '../../public/unse/src/systems/tojeong.js';
+import { analyze as mahaboteAnalyze } from '../../public/unse/src/systems/mahabote.js';
+import { analyze as thaiAnalyze } from '../../public/unse/src/systems/thai.js';
+import { analyze as tarotAnalyze } from '../../public/unse/src/systems/tarot.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = join(HERE, 'output');

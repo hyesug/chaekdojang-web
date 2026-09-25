@@ -12,7 +12,7 @@
 
 ## Global Constraints
 
-- Never modify `public/unse-8f3k2m/src`.
+- Never modify `public/unse/src`.
 - Use only fixed external draw-time schedules, never results, to set event time.
 - Preserve raw, `lotto.js` spread, source lineage, and 1–45 cyclic terminal conversion.
 - Keep future-validation rules from round 1243 untouched.

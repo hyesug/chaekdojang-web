@@ -2,9 +2,9 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { normalizeBirth } from '../../public/unse-8f3k2m/src/core/time.js';
-import { planetPositions, PLANET_ORDER, houses, toSidereal } from '../../public/unse-8f3k2m/src/core/planets.js';
-import { findCity } from '../../public/unse-8f3k2m/src/core/place.js';
+import { normalizeBirth } from '../../public/unse/src/core/time.js';
+import { planetPositions, PLANET_ORDER, houses, toSidereal } from '../../public/unse/src/core/planets.js';
+import { findCity } from '../../public/unse/src/core/place.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const OUT = join(HERE, 'output');
