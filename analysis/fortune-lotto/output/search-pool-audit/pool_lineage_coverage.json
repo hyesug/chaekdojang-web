@@ -1,59 +1,155 @@
 {
-  "d1": {
-    "ganzhi.pillars": 399,
-    "jamidusu.palaces": 243,
-    "astro.sun": 191,
-    "astro.moon": 123,
-    "astro.sidereal_moon": 234,
-    "juyeok.trigrams": 192,
-    "yukim.month_general+hour_branch": 94,
-    "yukim.day_stem_gigung": 104,
-    "yukim.three_transmissions": 270,
-    "hongguk.plate": 202,
-    "taeeul.cycle": 115,
-    "gujeong.stars": 34,
-    "tojeong.trigrams": 30,
-    "civil_date": 29,
-    "mahabote.eight_place": 19,
-    "thai.calendar": 12,
-    "tarot.cards": 15
+  "D1": {
+    "in_sample_pool": {
+      "ganzhi.pillars": 399,
+      "jamidusu.palaces": 243,
+      "astro.sun": 191,
+      "astro.moon": 123,
+      "astro.sidereal_moon": 234,
+      "juyeok.trigrams": 192,
+      "yukim.month_general+hour_branch": 94,
+      "yukim.day_stem_gigung": 104,
+      "yukim.three_transmissions": 270,
+      "hongguk.plate": 202,
+      "taeeul.cycle": 115,
+      "gujeong.stars": 34,
+      "tojeong.trigrams": 30,
+      "civil_date": 29,
+      "mahabote.eight_place": 19,
+      "thai.calendar": 12,
+      "tarot.cards": 15
+    },
+    "walk_forward_split_pools": [
+      {
+        "label": "1-600 → 601-700",
+        "pool_size": 900
+      },
+      {
+        "label": "1-700 → 701-800",
+        "pool_size": 900
+      },
+      {
+        "label": "1-800 → 801-900",
+        "pool_size": 900
+      },
+      {
+        "label": "1-900 → 901-1000",
+        "pool_size": 900
+      },
+      {
+        "label": "1-1000 → 1001-1100",
+        "pool_size": 900
+      },
+      {
+        "label": "1-1100 → 1101-1200",
+        "pool_size": 900
+      },
+      {
+        "label": "1-1200 → 1201-1242",
+        "pool_size": 900
+      }
+    ]
   },
-  "d2": {
-    "ganzhi.pillars": 925,
-    "jamidusu.palaces": 541,
-    "astro.sun": 426,
-    "astro.moon": 256,
-    "astro.sidereal_moon": 815,
-    "juyeok.trigrams": 408,
-    "yukim.month_general+hour_branch": 209,
-    "yukim.day_stem_gigung": 235,
-    "yukim.three_transmissions": 597,
-    "hongguk.plate": 447,
-    "taeeul.cycle": 229,
-    "gujeong.stars": 403,
-    "tojeong.trigrams": 387,
-    "civil_date": 437,
-    "mahabote.eight_place": 212,
-    "thai.calendar": 193,
-    "tarot.cards": 227
+  "D2": {
+    "in_sample_pool": {
+      "ganzhi.pillars": 925,
+      "jamidusu.palaces": 541,
+      "astro.sun": 426,
+      "astro.moon": 256,
+      "astro.sidereal_moon": 815,
+      "juyeok.trigrams": 408,
+      "yukim.month_general+hour_branch": 209,
+      "yukim.day_stem_gigung": 235,
+      "yukim.three_transmissions": 597,
+      "hongguk.plate": 447,
+      "taeeul.cycle": 229,
+      "gujeong.stars": 403,
+      "tojeong.trigrams": 387,
+      "civil_date": 437,
+      "mahabote.eight_place": 212,
+      "thai.calendar": 193,
+      "tarot.cards": 227
+    },
+    "walk_forward_split_pools": [
+      {
+        "label": "1-600 → 601-700",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-700 → 701-800",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-800 → 801-900",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-900 → 901-1000",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-1000 → 1001-1100",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-1100 → 1101-1200",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-1200 → 1201-1242",
+        "pool_size": 2500
+      }
+    ]
   },
-  "diverse": {
-    "ganzhi.pillars": 919,
-    "jamidusu.palaces": 547,
-    "astro.sun": 427,
-    "astro.moon": 254,
-    "astro.sidereal_moon": 817,
-    "juyeok.trigrams": 412,
-    "yukim.month_general+hour_branch": 205,
-    "yukim.day_stem_gigung": 234,
-    "yukim.three_transmissions": 595,
-    "hongguk.plate": 445,
-    "taeeul.cycle": 231,
-    "gujeong.stars": 402,
-    "tojeong.trigrams": 384,
-    "civil_date": 434,
-    "mahabote.eight_place": 217,
-    "thai.calendar": 195,
-    "tarot.cards": 231
+  "D3": {
+    "in_sample_pool": {
+      "ganzhi.pillars": 919,
+      "jamidusu.palaces": 547,
+      "astro.sun": 427,
+      "astro.moon": 254,
+      "astro.sidereal_moon": 817,
+      "juyeok.trigrams": 412,
+      "yukim.month_general+hour_branch": 205,
+      "yukim.day_stem_gigung": 234,
+      "yukim.three_transmissions": 595,
+      "hongguk.plate": 445,
+      "taeeul.cycle": 231,
+      "gujeong.stars": 402,
+      "tojeong.trigrams": 384,
+      "civil_date": 434,
+      "mahabote.eight_place": 217,
+      "thai.calendar": 195,
+      "tarot.cards": 231
+    },
+    "walk_forward_split_pools": [
+      {
+        "label": "1-600 → 601-700",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-700 → 701-800",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-800 → 801-900",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-900 → 901-1000",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-1000 → 1001-1100",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-1100 → 1101-1200",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-1200 → 1201-1242",
+        "pool_size": 2500
+      }
+    ]
   }
 }

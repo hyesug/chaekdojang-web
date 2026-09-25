@@ -1,53 +1,149 @@
 {
-  "d1": {
-    "saju": 399,
-    "jamidusu": 243,
-    "astrology": 299,
-    "vedic": 204,
-    "juyeok": 192,
-    "yukim": 416,
-    "hongguk": 202,
-    "taeeul": 115,
-    "gujeong": 34,
-    "sukyo": 30,
-    "tojeong": 30,
-    "kabbalah": 29,
-    "mahabote": 19,
-    "thai": 12,
-    "tarot": 15
+  "D1": {
+    "in_sample_pool": {
+      "saju": 399,
+      "jamidusu": 243,
+      "astrology": 299,
+      "vedic": 204,
+      "juyeok": 192,
+      "yukim": 416,
+      "hongguk": 202,
+      "taeeul": 115,
+      "gujeong": 34,
+      "sukyo": 30,
+      "tojeong": 30,
+      "kabbalah": 29,
+      "mahabote": 19,
+      "thai": 12,
+      "tarot": 15
+    },
+    "walk_forward_split_pools": [
+      {
+        "label": "1-600 → 601-700",
+        "pool_size": 900
+      },
+      {
+        "label": "1-700 → 701-800",
+        "pool_size": 900
+      },
+      {
+        "label": "1-800 → 801-900",
+        "pool_size": 900
+      },
+      {
+        "label": "1-900 → 901-1000",
+        "pool_size": 900
+      },
+      {
+        "label": "1-1000 → 1001-1100",
+        "pool_size": 900
+      },
+      {
+        "label": "1-1100 → 1101-1200",
+        "pool_size": 900
+      },
+      {
+        "label": "1-1200 → 1201-1242",
+        "pool_size": 900
+      }
+    ]
   },
-  "d2": {
-    "saju": 925,
-    "jamidusu": 541,
-    "astrology": 654,
-    "vedic": 438,
-    "juyeok": 408,
-    "yukim": 944,
-    "hongguk": 447,
-    "taeeul": 229,
-    "gujeong": 403,
-    "sukyo": 419,
-    "tojeong": 387,
-    "kabbalah": 437,
-    "mahabote": 212,
-    "thai": 193,
-    "tarot": 227
+  "D2": {
+    "in_sample_pool": {
+      "saju": 925,
+      "jamidusu": 541,
+      "astrology": 654,
+      "vedic": 438,
+      "juyeok": 408,
+      "yukim": 944,
+      "hongguk": 447,
+      "taeeul": 229,
+      "gujeong": 403,
+      "sukyo": 419,
+      "tojeong": 387,
+      "kabbalah": 437,
+      "mahabote": 212,
+      "thai": 193,
+      "tarot": 227
+    },
+    "walk_forward_split_pools": [
+      {
+        "label": "1-600 → 601-700",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-700 → 701-800",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-800 → 801-900",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-900 → 901-1000",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-1000 → 1001-1100",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-1100 → 1101-1200",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-1200 → 1201-1242",
+        "pool_size": 2500
+      }
+    ]
   },
-  "diverse": {
-    "saju": 919,
-    "jamidusu": 547,
-    "astrology": 653,
-    "vedic": 439,
-    "juyeok": 412,
-    "yukim": 939,
-    "hongguk": 445,
-    "taeeul": 231,
-    "gujeong": 402,
-    "sukyo": 420,
-    "tojeong": 384,
-    "kabbalah": 434,
-    "mahabote": 217,
-    "thai": 195,
-    "tarot": 231
+  "D3": {
+    "in_sample_pool": {
+      "saju": 919,
+      "jamidusu": 547,
+      "astrology": 653,
+      "vedic": 439,
+      "juyeok": 412,
+      "yukim": 939,
+      "hongguk": 445,
+      "taeeul": 231,
+      "gujeong": 402,
+      "sukyo": 420,
+      "tojeong": 384,
+      "kabbalah": 434,
+      "mahabote": 217,
+      "thai": 195,
+      "tarot": 231
+    },
+    "walk_forward_split_pools": [
+      {
+        "label": "1-600 → 601-700",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-700 → 701-800",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-800 → 801-900",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-900 → 901-1000",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-1000 → 1001-1100",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-1100 → 1101-1200",
+        "pool_size": 2500
+      },
+      {
+        "label": "1-1200 → 1201-1242",
+        "pool_size": 2500
+      }
+    ]
   }
 }
