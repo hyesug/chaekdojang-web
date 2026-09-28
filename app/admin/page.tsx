@@ -371,6 +371,11 @@ function sortedLottoNumbers(numbers: number[]) {
   return [...numbers].sort((a, b) => a - b);
 }
 
+function hasLottoDrawPassed(round: Pick<LottoPredictionRound, "drawDate" | "drawTime">) {
+  const drawAt = new Date(`${round.drawDate}T${round.drawTime.length === 5 ? `${round.drawTime}:00` : round.drawTime}+09:00`);
+  return !Number.isNaN(drawAt.getTime()) && drawAt.getTime() <= Date.now();
+}
+
 function formatReviewTime(value: string) {
   const hasTimezone = /(?:Z|[+-]\d{2}:\d{2})$/.test(value);
   const date = new Date(hasTimezone ? value : `${value}Z`);
@@ -1173,6 +1178,7 @@ export default function AdminPage() {
       method: "PATCH", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }, body: JSON.stringify({ numbers }),
     });
     if (response.ok) setLottoRounds(await fetchAdmin<LottoPredictionRound[]>("/api/admin/lotto-future-validations") ?? []);
+    else window.alert("실제번호를 저장하지 못했습니다. 추첨 시각 이후인지와 번호를 다시 확인하세요.");
   }
 
   async function reviseLottoDrawTime(round: number, currentTime: string) {
@@ -1186,6 +1192,7 @@ export default function AdminPage() {
       method: "PATCH", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }, body: JSON.stringify({ drawTime, reason: reason.trim() }),
     });
     if (response.ok) setLottoRounds(await fetchAdmin<LottoPredictionRound[]>("/api/admin/lotto-future-validations") ?? []);
+    else window.alert("추첨시각은 추첨 전에만 변경할 수 있습니다.");
   }
 
   async function reviseLottoModel(round: number) {
@@ -1197,6 +1204,7 @@ export default function AdminPage() {
       method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }, body: JSON.stringify({ reason: reason.trim() }),
     });
     if (response.ok) setLottoRounds(await fetchAdmin<LottoPredictionRound[]>("/api/admin/lotto-future-validations") ?? []);
+    else window.alert("모델 revision은 추첨 전에만 생성할 수 있습니다.");
   }
 
   async function searchAdminUsers(event?: React.FormEvent) {
@@ -2567,10 +2575,11 @@ export default function AdminPage() {
               </div>
               {lottoRounds[0] && (() => {
                 const current = lottoRounds[0];
+                const drawHasPassed = hasLottoDrawPassed(current);
                 return <div className="rounded-2xl border border-cream-200 bg-white p-5 shadow-sm">
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div><h3 className="font-serif text-xl font-bold text-brown-900">{current.round}회</h3><p className="mt-1 text-sm text-brown-500">추첨: {current.drawDate} {current.drawTime.slice(0, 5)} · {current.timeSource === "official_default" ? "공식 기본시각" : current.timeSource}</p><p className="mt-1 text-xs text-brown-400">생성: {formatLogTime(current.generatedAt)} · 모델: {current.predictions.find((prediction) => prediction.active)?.modelVersion ?? "-"}</p></div>
-                    {!current.actualNumbers && <div className="flex flex-wrap gap-2"><button type="button" onClick={() => void reviseLottoModel(current.round)} className="rounded-lg border border-cream-300 px-3 py-2 text-xs text-brown-600 hover:bg-cream-50">수정 모델 revision</button><button type="button" onClick={() => void reviseLottoDrawTime(current.round, current.drawTime)} className="rounded-lg border border-cream-300 px-3 py-2 text-xs text-brown-600 hover:bg-cream-50">추첨시각 변경</button><button type="button" onClick={() => void confirmLottoResult(current.round)} className="rounded-lg border border-cream-300 px-3 py-2 text-xs text-brown-600 hover:bg-cream-50">실제번호 입력</button></div>}
+                    {!current.actualNumbers && <div className="flex flex-wrap gap-2">{!drawHasPassed && <><button type="button" onClick={() => void reviseLottoModel(current.round)} className="rounded-lg border border-cream-300 px-3 py-2 text-xs text-brown-600 hover:bg-cream-50">수정 모델 revision</button><button type="button" onClick={() => void reviseLottoDrawTime(current.round, current.drawTime)} className="rounded-lg border border-cream-300 px-3 py-2 text-xs text-brown-600 hover:bg-cream-50">추첨시각 변경</button></>}{drawHasPassed && <button type="button" onClick={() => void confirmLottoResult(current.round)} className="rounded-lg border border-cream-300 px-3 py-2 text-xs text-brown-600 hover:bg-cream-50">실제번호 입력</button>}</div>}
                   </div>
                   <div className="mt-5 grid gap-3 sm:grid-cols-2">
                     {current.predictions.filter((prediction) => prediction.active).map((prediction) => <div key={`${prediction.model}-${prediction.revision}`} className="rounded-xl bg-cream-50 p-3"><p className="font-semibold text-brown-800">{prediction.model}</p><div className="mt-2 flex flex-wrap gap-2">{sortedLottoNumbers(prediction.numbers).map((number) => <span key={number} className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-brown-700 text-sm font-bold text-white">{number}</span>)}</div>{current.actualNumbers && <p className="mt-2 text-sm text-brown-500">결과: {prediction.hitCount}/6{prediction.hitNumbers.length ? ` · 적중 ${sortedLottoNumbers(prediction.hitNumbers).join(", ")}` : ""}</p>}</div>)}
