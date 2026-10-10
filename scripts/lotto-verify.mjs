@@ -17,7 +17,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SRC = path.join(ROOT, 'public/unse-8f3k2m/src');
+const SRC = path.join(ROOT, 'public/unse/src');
 const OUT = path.join(SRC, 'data/lotto-model.js');
 
 const { DRAWS } = await import(`file://${path.join(SRC, 'data/draws.js')}`);

@@ -1,20 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { readFortune } from '../../public/unse-8f3k2m/src/engine.js';
-import { pickNumbers, currentRound } from '../../public/unse-8f3k2m/src/lotto.js';
-import { splitRisk, relaxShape } from '../../public/unse-8f3k2m/src/lotto-avoid.js';
-import { featuresOf, assertNoFuture, BASE, POOL } from '../../public/unse-8f3k2m/src/lotto-statistics.js';
-import { buildTransition, carryStats, carryState, MIN_ROW_SAMPLES } from '../../public/unse-8f3k2m/src/lotto-transition.js';
-import { classify, rangeRegime, regimeTable } from '../../public/unse-8f3k2m/src/lotto-regime.js';
-import { featuresOf as comboFeatures, buildStructureModel, structureScore } from '../../public/unse-8f3k2m/src/lotto-combination.js';
+import { readFortune } from '../../public/unse/src/engine.js';
+import { pickNumbers, currentRound } from '../../public/unse/src/lotto.js';
+import { splitRisk, relaxShape } from '../../public/unse/src/lotto-avoid.js';
+import { featuresOf, assertNoFuture, BASE, POOL } from '../../public/unse/src/lotto-statistics.js';
+import { buildTransition, carryStats, carryState, MIN_ROW_SAMPLES } from '../../public/unse/src/lotto-transition.js';
+import { classify, rangeRegime, regimeTable } from '../../public/unse/src/lotto-regime.js';
+import { featuresOf as comboFeatures, buildStructureModel, structureScore } from '../../public/unse/src/lotto-combination.js';
 import {
   verifySignals, signalsOf, probabilities, topPick, walkForward,
   randomBaseline, makeSplit, fakeDraws, skill, SIGNALS, MIN_TRAIN,
-} from '../../public/unse-8f3k2m/src/lotto-backtest.js';
-import { generate } from '../../public/unse-8f3k2m/src/lotto-generator.js';
-import { DRAWS, DRAW_ROWS, LATEST_ROUND } from '../../public/unse-8f3k2m/src/data/draws.js';
-import { LOTTO_MODEL } from '../../public/unse-8f3k2m/src/data/lotto-model.js';
+} from '../../public/unse/src/lotto-backtest.js';
+import { generate } from '../../public/unse/src/lotto-generator.js';
+import { DRAWS, DRAW_ROWS, LATEST_ROUND } from '../../public/unse/src/data/draws.js';
+import { LOTTO_MODEL } from '../../public/unse/src/data/lotto-model.js';
 
 const FORM = {
   name: '로또 테스트',

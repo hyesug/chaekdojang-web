@@ -1,0 +1,9 @@
+{
+  "method": "500 deterministic Monte Carlo random six-number tickets; this is a lower bound and does not reproduce the adaptive search winner's curse",
+  "runs": 500,
+  "min": 1247,
+  "median": 1451,
+  "max": 1946,
+  "mean": 1461.712,
+  "exceed_best": 0
+}

@@ -1,0 +1,8 @@
+{
+  "trials": 400,
+  "mean_score": 1466.475,
+  "mean_hits": 0.8012600644122392,
+  "min_score": 1249,
+  "max_score": 1909,
+  "expected_one_ticket_mean_hits": 0.8
+}

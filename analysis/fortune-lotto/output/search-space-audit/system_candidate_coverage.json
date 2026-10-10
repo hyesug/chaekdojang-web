@@ -1,0 +1,220 @@
+{
+  "by_system": {
+    "saju": {
+      "count": 4,
+      "candidates": [
+        "saju.c1_year_sexagenary",
+        "saju.c2_month_sexagenary",
+        "saju.c3_day_sexagenary",
+        "saju.c4_hour_sexagenary"
+      ]
+    },
+    "jamidusu": {
+      "count": 3,
+      "candidates": [
+        "jamidusu.c1_myeong",
+        "jamidusu.c2_sin",
+        "jamidusu.c3_jaebaek"
+      ]
+    },
+    "astrology": {
+      "count": 3,
+      "candidates": [
+        "astrology.c1_sun_longitude",
+        "astrology.c2_moon_longitude",
+        "astrology.c3_sun_sign"
+      ]
+    },
+    "vedic": {
+      "count": 2,
+      "candidates": [
+        "vedic.c1_nakshatra",
+        "vedic.c2_nakshatra_pada"
+      ]
+    },
+    "juyeok": {
+      "count": 2,
+      "candidates": [
+        "juyeok.c1_hexagram",
+        "juyeok.c2_moving_line"
+      ]
+    },
+    "yukim": {
+      "count": 5,
+      "candidates": [
+        "yukim.c1_month_general_point_hour",
+        "yukim.c2_day_stem_gigung",
+        "yukim.c3_first_transmission",
+        "yukim.c4_middle_transmission",
+        "yukim.c5_last_transmission"
+      ]
+    },
+    "hongguk": {
+      "count": 2,
+      "candidates": [
+        "hongguk.c1_heaven_earth",
+        "hongguk.c2_plate_mix"
+      ]
+    },
+    "taeeul": {
+      "count": 1,
+      "candidates": [
+        "taeeul.c1_cycle"
+      ]
+    },
+    "gujeong": {
+      "count": 2,
+      "candidates": [
+        "gujeong.c1_honmei_getsumei",
+        "gujeong.c2_honmei"
+      ]
+    },
+    "sukyo": {
+      "count": 2,
+      "candidates": [
+        "sukyo.c1_nakshatra",
+        "sukyo.c2_nakshatra_pada"
+      ]
+    },
+    "tojeong": {
+      "count": 2,
+      "candidates": [
+        "tojeong.c1_hexagram",
+        "tojeong.c2_upper_middle"
+      ]
+    },
+    "kabbalah": {
+      "count": 2,
+      "candidates": [
+        "kabbalah.c1_life_birthday",
+        "kabbalah.c2_personal_year"
+      ]
+    },
+    "mahabote": {
+      "count": 1,
+      "candidates": [
+        "mahabote.c1_eight_place"
+      ]
+    },
+    "thai": {
+      "count": 1,
+      "candidates": [
+        "thai.c1_weekday_buddhist"
+      ]
+    },
+    "tarot": {
+      "count": 1,
+      "candidates": [
+        "tarot.c1_birth_card"
+      ]
+    }
+  },
+  "lineage_duplicates": {
+    "ganzhi.pillars": [
+      "saju.c1_year_sexagenary",
+      "saju.c2_month_sexagenary",
+      "saju.c3_day_sexagenary",
+      "saju.c4_hour_sexagenary"
+    ],
+    "jamidusu.palaces": [
+      "jamidusu.c1_myeong",
+      "jamidusu.c2_sin",
+      "jamidusu.c3_jaebaek"
+    ],
+    "astro.sun": [
+      "astrology.c1_sun_longitude",
+      "astrology.c3_sun_sign"
+    ],
+    "astro.moon": [
+      "astrology.c2_moon_longitude"
+    ],
+    "astro.sidereal_moon": [
+      "vedic.c1_nakshatra",
+      "vedic.c2_nakshatra_pada",
+      "sukyo.c1_nakshatra",
+      "sukyo.c2_nakshatra_pada"
+    ],
+    "juyeok.trigrams": [
+      "juyeok.c1_hexagram",
+      "juyeok.c2_moving_line"
+    ],
+    "yukim.month_general+hour_branch": [
+      "yukim.c1_month_general_point_hour"
+    ],
+    "yukim.day_stem_gigung": [
+      "yukim.c2_day_stem_gigung"
+    ],
+    "yukim.three_transmissions": [
+      "yukim.c3_first_transmission",
+      "yukim.c4_middle_transmission",
+      "yukim.c5_last_transmission"
+    ],
+    "hongguk.plate": [
+      "hongguk.c1_heaven_earth",
+      "hongguk.c2_plate_mix"
+    ],
+    "taeeul.cycle": [
+      "taeeul.c1_cycle"
+    ],
+    "gujeong.stars": [
+      "gujeong.c1_honmei_getsumei",
+      "gujeong.c2_honmei"
+    ],
+    "tojeong.trigrams": [
+      "tojeong.c1_hexagram",
+      "tojeong.c2_upper_middle"
+    ],
+    "civil_date": [
+      "kabbalah.c1_life_birthday",
+      "kabbalah.c2_personal_year"
+    ],
+    "mahabote.eight_place": [
+      "mahabote.c1_eight_place"
+    ],
+    "thai.calendar": [
+      "thai.c1_weekday_buddhist"
+    ],
+    "tarot.cards": [
+      "tarot.c1_birth_card"
+    ]
+  },
+  "state_vector_feature_counts": {
+    "E": {
+      "saju": 3,
+      "jamidusu": 2,
+      "astrology": 3,
+      "vedic_sukyo_shared": 2,
+      "juyeok": 2,
+      "yukim": 4,
+      "hongguk": 2,
+      "taeeul": 1,
+      "gujeong": 1,
+      "tojeong": 1,
+      "kabbalah": 1,
+      "mahabote": 1,
+      "thai": 1,
+      "tarot": 1
+    },
+    "F": {
+      "saju": 3,
+      "jamidusu": 2,
+      "astrology": 3,
+      "vedic_sukyo_shared": 2,
+      "juyeok": 2,
+      "yukim": 4,
+      "hongguk": 2,
+      "taeeul": 1,
+      "gujeong": 1,
+      "tojeong": 1,
+      "kabbalah": 1,
+      "mahabote": 1,
+      "thai": 1,
+      "tarot": 1
+    }
+  },
+  "D_top900": {
+    "universe": 17633,
+    "top900": 900,
+    "percent": null
+  }
+}

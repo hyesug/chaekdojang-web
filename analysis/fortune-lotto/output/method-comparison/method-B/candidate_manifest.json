@@ -1,0 +1,200 @@
+[
+  {
+    "id": "saju.c1_year_sexagenary",
+    "system": "saju",
+    "lineage": "ganzhi.pillars",
+    "source": "saju.year_sexagenary"
+  },
+  {
+    "id": "saju.c2_month_sexagenary",
+    "system": "saju",
+    "lineage": "ganzhi.pillars",
+    "source": "saju.month_sexagenary"
+  },
+  {
+    "id": "saju.c3_day_sexagenary",
+    "system": "saju",
+    "lineage": "ganzhi.pillars",
+    "source": "saju.day_sexagenary"
+  },
+  {
+    "id": "saju.c4_hour_sexagenary",
+    "system": "saju",
+    "lineage": "ganzhi.pillars",
+    "source": "saju.hour_sexagenary"
+  },
+  {
+    "id": "jamidusu.c1_myeong",
+    "system": "jamidusu",
+    "lineage": "jamidusu.palaces",
+    "source": "jamidusu.myeong_palace"
+  },
+  {
+    "id": "jamidusu.c2_sin",
+    "system": "jamidusu",
+    "lineage": "jamidusu.palaces",
+    "source": "jamidusu.sin_palace"
+  },
+  {
+    "id": "jamidusu.c3_jaebaek",
+    "system": "jamidusu",
+    "lineage": "jamidusu.palaces",
+    "source": "myeong_palace+8"
+  },
+  {
+    "id": "astrology.c1_sun_longitude",
+    "system": "astrology",
+    "lineage": "astro.sun",
+    "source": "astrology.태양_longitude_degree"
+  },
+  {
+    "id": "astrology.c2_moon_longitude",
+    "system": "astrology",
+    "lineage": "astro.moon",
+    "source": "astrology.달_longitude_degree"
+  },
+  {
+    "id": "astrology.c3_sun_sign",
+    "system": "astrology",
+    "lineage": "astro.sun",
+    "source": "astrology.태양_sign"
+  },
+  {
+    "id": "vedic.c1_nakshatra",
+    "system": "vedic",
+    "lineage": "astro.sidereal_moon",
+    "source": "vedic_sukyo_shared.nakshatra_index"
+  },
+  {
+    "id": "vedic.c2_nakshatra_pada",
+    "system": "vedic",
+    "lineage": "astro.sidereal_moon",
+    "source": "nakshatra_index,pada"
+  },
+  {
+    "id": "juyeok.c1_hexagram",
+    "system": "juyeok",
+    "lineage": "juyeok.trigrams",
+    "source": "juyeok.original_hexagram"
+  },
+  {
+    "id": "juyeok.c2_moving_line",
+    "system": "juyeok",
+    "lineage": "juyeok.trigrams",
+    "source": "juyeok.moving_line"
+  },
+  {
+    "id": "yukim.c1_month_general_point_hour",
+    "system": "yukim",
+    "lineage": "yukim.month_general+hour_branch",
+    "source": "month_general,point_hour"
+  },
+  {
+    "id": "yukim.c2_day_stem_gigung",
+    "system": "yukim",
+    "lineage": "yukim.day_stem_gigung",
+    "source": "yukim.day_stem_gigung"
+  },
+  {
+    "id": "yukim.c3_first_transmission",
+    "system": "yukim",
+    "lineage": "yukim.three_transmissions",
+    "source": "yukim.first_transmission"
+  },
+  {
+    "id": "yukim.c4_middle_transmission",
+    "system": "yukim",
+    "lineage": "yukim.three_transmissions",
+    "source": "yukim.middle_transmission"
+  },
+  {
+    "id": "yukim.c5_last_transmission",
+    "system": "yukim",
+    "lineage": "yukim.three_transmissions",
+    "source": "yukim.last_transmission"
+  },
+  {
+    "id": "hongguk.c1_heaven_earth",
+    "system": "hongguk",
+    "lineage": "hongguk.plate",
+    "source": "heaven_plate_center,earth_plate_center"
+  },
+  {
+    "id": "hongguk.c2_plate_mix",
+    "system": "hongguk",
+    "lineage": "hongguk.plate",
+    "source": "heaven_plate_center*5+earth_plate_center"
+  },
+  {
+    "id": "taeeul.c1_cycle",
+    "system": "taeeul",
+    "lineage": "taeeul.cycle",
+    "source": "taeeul.cycle_position"
+  },
+  {
+    "id": "gujeong.c1_honmei_getsumei",
+    "system": "gujeong",
+    "lineage": "gujeong.stars",
+    "source": "honmei_star,getsumei_star"
+  },
+  {
+    "id": "gujeong.c2_honmei",
+    "system": "gujeong",
+    "lineage": "gujeong.stars",
+    "source": "gujeong.honmei_star"
+  },
+  {
+    "id": "sukyo.c1_nakshatra",
+    "system": "sukyo",
+    "lineage": "astro.sidereal_moon",
+    "source": "vedic_sukyo_shared.nakshatra_index"
+  },
+  {
+    "id": "sukyo.c2_nakshatra_pada",
+    "system": "sukyo",
+    "lineage": "astro.sidereal_moon",
+    "source": "nakshatra_index,pada"
+  },
+  {
+    "id": "tojeong.c1_hexagram",
+    "system": "tojeong",
+    "lineage": "tojeong.trigrams",
+    "source": "tojeong.괘"
+  },
+  {
+    "id": "tojeong.c2_upper_middle",
+    "system": "tojeong",
+    "lineage": "tojeong.trigrams",
+    "source": "상괘,중괘"
+  },
+  {
+    "id": "kabbalah.c1_life_birthday",
+    "system": "kabbalah",
+    "lineage": "civil_date",
+    "source": "life_path,birthday_number"
+  },
+  {
+    "id": "kabbalah.c2_personal_year",
+    "system": "kabbalah",
+    "lineage": "civil_date",
+    "source": "kabbalah.personal_year"
+  },
+  {
+    "id": "mahabote.c1_eight_place",
+    "system": "mahabote",
+    "lineage": "mahabote.eight_place",
+    "source": "mahabote.eight_place"
+  },
+  {
+    "id": "thai.c1_weekday_buddhist",
+    "system": "thai",
+    "lineage": "thai.calendar",
+    "source": "weekday_index,buddhist_era_mod100"
+  },
+  {
+    "id": "tarot.c1_birth_card",
+    "system": "tarot",
+    "lineage": "tarot.cards",
+    "source": "tarot.생일_카드"
+  }
+]

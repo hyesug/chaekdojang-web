@@ -1,0 +1,215 @@
+{
+  "candidate_count": 33,
+  "first22": [
+    {
+      "id": "saju.c1_year_sexagenary",
+      "system": "saju"
+    },
+    {
+      "id": "saju.c2_month_sexagenary",
+      "system": "saju"
+    },
+    {
+      "id": "saju.c3_day_sexagenary",
+      "system": "saju"
+    },
+    {
+      "id": "saju.c4_hour_sexagenary",
+      "system": "saju"
+    },
+    {
+      "id": "jamidusu.c1_myeong",
+      "system": "jamidusu"
+    },
+    {
+      "id": "jamidusu.c2_sin",
+      "system": "jamidusu"
+    },
+    {
+      "id": "jamidusu.c3_jaebaek",
+      "system": "jamidusu"
+    },
+    {
+      "id": "astrology.c1_sun_longitude",
+      "system": "astrology"
+    },
+    {
+      "id": "astrology.c2_moon_longitude",
+      "system": "astrology"
+    },
+    {
+      "id": "astrology.c3_sun_sign",
+      "system": "astrology"
+    },
+    {
+      "id": "vedic.c1_nakshatra",
+      "system": "vedic"
+    },
+    {
+      "id": "vedic.c2_nakshatra_pada",
+      "system": "vedic"
+    },
+    {
+      "id": "juyeok.c1_hexagram",
+      "system": "juyeok"
+    },
+    {
+      "id": "juyeok.c2_moving_line",
+      "system": "juyeok"
+    },
+    {
+      "id": "yukim.c1_month_general_point_hour",
+      "system": "yukim"
+    },
+    {
+      "id": "yukim.c2_day_stem_gigung",
+      "system": "yukim"
+    },
+    {
+      "id": "yukim.c3_first_transmission",
+      "system": "yukim"
+    },
+    {
+      "id": "yukim.c4_middle_transmission",
+      "system": "yukim"
+    },
+    {
+      "id": "yukim.c5_last_transmission",
+      "system": "yukim"
+    },
+    {
+      "id": "hongguk.c1_heaven_earth",
+      "system": "hongguk"
+    },
+    {
+      "id": "hongguk.c2_plate_mix",
+      "system": "hongguk"
+    },
+    {
+      "id": "taeeul.c1_cycle",
+      "system": "taeeul"
+    }
+  ],
+  "excluded_from_triples": [
+    {
+      "id": "gujeong.c1_honmei_getsumei",
+      "system": "gujeong"
+    },
+    {
+      "id": "gujeong.c2_honmei",
+      "system": "gujeong"
+    },
+    {
+      "id": "sukyo.c1_nakshatra",
+      "system": "sukyo"
+    },
+    {
+      "id": "sukyo.c2_nakshatra_pada",
+      "system": "sukyo"
+    },
+    {
+      "id": "tojeong.c1_hexagram",
+      "system": "tojeong"
+    },
+    {
+      "id": "tojeong.c2_upper_middle",
+      "system": "tojeong"
+    },
+    {
+      "id": "kabbalah.c1_life_birthday",
+      "system": "kabbalah"
+    },
+    {
+      "id": "kabbalah.c2_personal_year",
+      "system": "kabbalah"
+    },
+    {
+      "id": "mahabote.c1_eight_place",
+      "system": "mahabote"
+    },
+    {
+      "id": "thai.c1_weekday_buddhist",
+      "system": "thai"
+    },
+    {
+      "id": "tarot.c1_birth_card",
+      "system": "tarot"
+    }
+  ],
+  "by_system": {
+    "saju": [
+      "saju.c1_year_sexagenary",
+      "saju.c2_month_sexagenary",
+      "saju.c3_day_sexagenary",
+      "saju.c4_hour_sexagenary"
+    ],
+    "jamidusu": [
+      "jamidusu.c1_myeong",
+      "jamidusu.c2_sin",
+      "jamidusu.c3_jaebaek"
+    ],
+    "astrology": [
+      "astrology.c1_sun_longitude",
+      "astrology.c2_moon_longitude",
+      "astrology.c3_sun_sign"
+    ],
+    "vedic": [
+      "vedic.c1_nakshatra",
+      "vedic.c2_nakshatra_pada"
+    ],
+    "juyeok": [
+      "juyeok.c1_hexagram",
+      "juyeok.c2_moving_line"
+    ],
+    "yukim": [
+      "yukim.c1_month_general_point_hour",
+      "yukim.c2_day_stem_gigung",
+      "yukim.c3_first_transmission",
+      "yukim.c4_middle_transmission",
+      "yukim.c5_last_transmission"
+    ],
+    "hongguk": [
+      "hongguk.c1_heaven_earth",
+      "hongguk.c2_plate_mix"
+    ],
+    "taeeul": [
+      "taeeul.c1_cycle"
+    ],
+    "gujeong": [
+      "gujeong.c1_honmei_getsumei",
+      "gujeong.c2_honmei"
+    ],
+    "sukyo": [
+      "sukyo.c1_nakshatra",
+      "sukyo.c2_nakshatra_pada"
+    ],
+    "tojeong": [
+      "tojeong.c1_hexagram",
+      "tojeong.c2_upper_middle"
+    ],
+    "kabbalah": [
+      "kabbalah.c1_life_birthday",
+      "kabbalah.c2_personal_year"
+    ],
+    "mahabote": [
+      "mahabote.c1_eight_place"
+    ],
+    "thai": [
+      "thai.c1_weekday_buddhist"
+    ],
+    "tarot": [
+      "tarot.c1_birth_card"
+    ]
+  },
+  "triple_ops": [
+    "abcSum",
+    "abcSub",
+    "abPlusC",
+    "abMinusC",
+    "twoABC",
+    "aTwoBC",
+    "abTwoC",
+    "absPlusC"
+  ],
+  "limitation_confirmed": true
+}

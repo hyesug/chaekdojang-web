@@ -28,7 +28,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT = path.join(ROOT, 'public/unse-8f3k2m/src/data/draws.js');
+const OUT = path.join(ROOT, 'public/unse/src/data/draws.js');
 
 const DATASET = 'https://raw.githubusercontent.com/jeong760/lotto-data/main/data/lotto-history.json';
 const src = process.argv[2];

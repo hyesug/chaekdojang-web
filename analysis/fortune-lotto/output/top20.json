@@ -1,0 +1,223 @@
+[
+  {
+    "rank": 1,
+    "formula": "saju.hour_stem.spread×yukim.heaven_plate_at_8.spread",
+    "complexity": 4,
+    "individual_hits": 224,
+    "layer": "spread",
+    "feature_lineage": [
+      "ganzhi.pillars",
+      "yukim.month_general+hour_branch"
+    ]
+  },
+  {
+    "rank": 2,
+    "formula": "juyeok.original_hexagram.spread+2×saju.month_stem.raw-astrology.목성_longitude_degree.raw",
+    "complexity": 5,
+    "individual_hits": 221,
+    "layer": "spread",
+    "feature_lineage": [
+      "juyeok.trigrams",
+      "ganzhi.pillars",
+      "astro.planet.목성"
+    ]
+  },
+  {
+    "rank": 3,
+    "formula": "kabbalah.life_path.raw-saju.element_4.spread",
+    "complexity": 2,
+    "individual_hits": 219,
+    "layer": "raw",
+    "feature_lineage": [
+      "civil_date",
+      "ganzhi.pillars.element_distribution"
+    ]
+  },
+  {
+    "rank": 4,
+    "formula": "2×saju.year_stem.raw+tojeong.상괘.raw",
+    "complexity": 3,
+    "individual_hits": 218,
+    "layer": "raw",
+    "feature_lineage": [
+      "ganzhi.pillars",
+      "lunar+ganzhi"
+    ]
+  },
+  {
+    "rank": 5,
+    "formula": "2×saju.year_stem.raw+tojeong.괘.raw",
+    "complexity": 3,
+    "individual_hits": 218,
+    "layer": "raw",
+    "feature_lineage": [
+      "ganzhi.pillars",
+      "lunar+ganzhi"
+    ]
+  },
+  {
+    "rank": 6,
+    "formula": "floor((hongguk.dun_direction.raw+saju.day_stem.spread)/2)",
+    "complexity": 3,
+    "individual_hits": 218,
+    "layer": "raw",
+    "feature_lineage": [
+      "astro.solar_term",
+      "ganzhi.pillars"
+    ]
+  },
+  {
+    "rank": 7,
+    "formula": "astrology.태양_sign.raw-yukim.heaven_plate_at_3.spread",
+    "complexity": 2,
+    "individual_hits": 217,
+    "layer": "raw",
+    "feature_lineage": [
+      "astro.planet.태양",
+      "yukim.month_general+hour_branch"
+    ]
+  },
+  {
+    "rank": 8,
+    "formula": "astrology.화성_longitude_degree.spread-yukim.heaven_plate_at_12.raw",
+    "complexity": 2,
+    "individual_hits": 217,
+    "layer": "raw",
+    "feature_lineage": [
+      "yukim.month_general+hour_branch",
+      "astro.planet.화성"
+    ]
+  },
+  {
+    "rank": 9,
+    "formula": "saju.day_branch.raw-saju.hour_branch.raw",
+    "complexity": 2,
+    "individual_hits": 216,
+    "layer": "raw",
+    "feature_lineage": [
+      "ganzhi.pillars",
+      "ganzhi.pillars"
+    ]
+  },
+  {
+    "rank": 10,
+    "formula": "saju.day_branch.raw-yukim.point_hour.raw",
+    "complexity": 2,
+    "individual_hits": 216,
+    "layer": "raw",
+    "feature_lineage": [
+      "ganzhi.pillars",
+      "ganzhi.hour_branch"
+    ]
+  },
+  {
+    "rank": 11,
+    "formula": "astrology.금성_sign.raw-2×tarot.생일_카드.raw",
+    "complexity": 3,
+    "individual_hits": 216,
+    "layer": "raw",
+    "feature_lineage": [
+      "astro.planet.금성",
+      "civil_date+event_clock"
+    ]
+  },
+  {
+    "rank": 12,
+    "formula": "vedic.태양_sidereal_sign.raw+2×astrology.천왕성_sign.spread",
+    "complexity": 3,
+    "individual_hits": 216,
+    "layer": "raw",
+    "feature_lineage": [
+      "astro.planet.태양+lahiri",
+      "astro.planet.천왕성"
+    ]
+  },
+  {
+    "rank": 13,
+    "formula": "2×astrology.천왕성_sign.raw+2×yukim.day_stem_gigung.spread",
+    "complexity": 3,
+    "individual_hits": 215,
+    "layer": "raw",
+    "feature_lineage": [
+      "astro.planet.천왕성",
+      "ganzhi.day_stem"
+    ]
+  },
+  {
+    "rank": 14,
+    "formula": "juyeok.original_hexagram.raw+2×hongguk.year_palace.raw",
+    "complexity": 3,
+    "individual_hits": 215,
+    "layer": "raw",
+    "feature_lineage": [
+      "juyeok.trigrams",
+      "hongguk.year_branch"
+    ]
+  },
+  {
+    "rank": 15,
+    "formula": "saju.month_stem.raw-2×hongguk.earth_plate_center.raw",
+    "complexity": 3,
+    "individual_hits": 214,
+    "layer": "raw",
+    "feature_lineage": [
+      "ganzhi.pillars",
+      "ganzhi.four_branches"
+    ]
+  },
+  {
+    "rank": 16,
+    "formula": "2×astrology.수성_longitude_degree.raw+vedic.케투_sidereal_sign.raw",
+    "complexity": 3,
+    "individual_hits": 214,
+    "layer": "raw",
+    "feature_lineage": [
+      "astro.planet.수성",
+      "astro.planet.케투+lahiri"
+    ]
+  },
+  {
+    "rank": 17,
+    "formula": "astrology.달_sign.spread-astrology.midheaven_degree.raw",
+    "complexity": 2,
+    "individual_hits": 214,
+    "layer": "raw",
+    "feature_lineage": [
+      "astro.houses",
+      "astro.planet.달"
+    ]
+  },
+  {
+    "rank": 18,
+    "formula": "tojeong.상괘.raw+astrology.달_sign.spread",
+    "complexity": 2,
+    "individual_hits": 214,
+    "layer": "raw",
+    "feature_lineage": [
+      "lunar+ganzhi",
+      "astro.planet.달"
+    ]
+  },
+  {
+    "rank": 19,
+    "formula": "tojeong.괘.raw+astrology.달_sign.spread",
+    "complexity": 2,
+    "individual_hits": 214,
+    "layer": "raw",
+    "feature_lineage": [
+      "lunar+ganzhi",
+      "astro.planet.달"
+    ]
+  },
+  {
+    "rank": 20,
+    "formula": "saju.month_stem.spread+2×yukim.heaven_plate_at_9.spread",
+    "complexity": 3,
+    "individual_hits": 214,
+    "layer": "spread",
+    "feature_lineage": [
+      "ganzhi.pillars",
+      "yukim.month_general+hour_branch"
+    ]
+  }
+]

@@ -1,0 +1,711 @@
+{
+  "note": "research only; one change per experiment; production D and 1243 prediction untouched",
+  "d0_reproduction": {
+    "score": 920,
+    "expected": 920,
+    "tickets_identical": true
+  },
+  "alias_groups": [
+    {
+      "kept": "jamidusu.c2_sin",
+      "merged": [
+        "jamidusu.c3_jaebaek"
+      ]
+    },
+    {
+      "kept": "vedic.c1_nakshatra",
+      "merged": [
+        "sukyo.c1_nakshatra"
+      ]
+    },
+    {
+      "kept": "vedic.c2_nakshatra_pada",
+      "merged": [
+        "sukyo.c2_nakshatra_pada"
+      ]
+    }
+  ],
+  "tie_audit": {
+    "in_sample": {
+      "cutoff_hit": 185,
+      "tied_hit": 128,
+      "tied_hit_and_complexity": 113,
+      "included_at_cutoff": 12,
+      "changed_in_top900": 11
+    },
+    "splits": [
+      {
+        "label": "1-600 → 601-700",
+        "cutoff_hit": 94,
+        "tied_hit": 197,
+        "tied_hit_and_complexity": 151,
+        "included_at_cutoff": 137,
+        "changed_in_top900": 14
+      },
+      {
+        "label": "1-700 → 701-800",
+        "cutoff_hit": 108,
+        "tied_hit": 187,
+        "tied_hit_and_complexity": 150,
+        "included_at_cutoff": 35,
+        "changed_in_top900": 29
+      },
+      {
+        "label": "1-800 → 801-900",
+        "cutoff_hit": 122,
+        "tied_hit": 223,
+        "tied_hit_and_complexity": 32,
+        "included_at_cutoff": 12,
+        "changed_in_top900": 6
+      },
+      {
+        "label": "1-900 → 901-1000",
+        "cutoff_hit": 137,
+        "tied_hit": 157,
+        "tied_hit_and_complexity": 136,
+        "included_at_cutoff": 98,
+        "changed_in_top900": 29
+      },
+      {
+        "label": "1-1000 → 1001-1100",
+        "cutoff_hit": 151,
+        "tied_hit": 178,
+        "tied_hit_and_complexity": 143,
+        "included_at_cutoff": 41,
+        "changed_in_top900": 30
+      },
+      {
+        "label": "1-1100 → 1101-1200",
+        "cutoff_hit": 165,
+        "tied_hit": 187,
+        "tied_hit_and_complexity": 164,
+        "included_at_cutoff": 14,
+        "changed_in_top900": 9
+      },
+      {
+        "label": "1-1200 → 1201-1242",
+        "cutoff_hit": 179,
+        "tied_hit": 151,
+        "tied_hit_and_complexity": 21,
+        "included_at_cutoff": 6,
+        "changed_in_top900": 3
+      }
+    ]
+  },
+  "duplicate_audit": {
+    "in_sample": 0,
+    "splits": [
+      {
+        "label": "1-600 → 601-700",
+        "duplicate_formula_count": 2
+      },
+      {
+        "label": "1-700 → 701-800",
+        "duplicate_formula_count": 0
+      },
+      {
+        "label": "1-800 → 801-900",
+        "duplicate_formula_count": 0
+      },
+      {
+        "label": "1-900 → 901-1000",
+        "duplicate_formula_count": 0
+      },
+      {
+        "label": "1-1000 → 1001-1100",
+        "duplicate_formula_count": 0
+      },
+      {
+        "label": "1-1100 → 1101-1200",
+        "duplicate_formula_count": 0
+      },
+      {
+        "label": "1-1200 → 1201-1242",
+        "duplicate_formula_count": 0
+      }
+    ],
+    "splits_with_duplicates": 1
+  },
+  "experiments": {
+    "D0": {
+      "change": "none (기존 D)",
+      "universe_size": 17633,
+      "in_sample": {
+        "score": 7969,
+        "hist": [
+          429,
+          542,
+          239,
+          26,
+          3,
+          1,
+          2
+        ],
+        "mean": 0.9074074074074074,
+        "ge3Count": 32,
+        "ge4Count": 6,
+        "ge5Count": 3,
+        "fiveHit": 1,
+        "sixHit": 2,
+        "rounds": 1242
+      },
+      "exact_walk_forward": {
+        "score": 920,
+        "hist": [
+          262,
+          273,
+          89,
+          13,
+          5,
+          0,
+          0
+        ],
+        "mean": 0.794392523364486,
+        "ge3Count": 18,
+        "ge4Count": 5,
+        "ge5Count": 0,
+        "fiveHit": 0,
+        "sixHit": 0,
+        "rounds": 642
+      },
+      "wf_delta_vs_D0": 0,
+      "split_scores": [
+        {
+          "label": "1-600 → 601-700",
+          "score": 207,
+          "hist": [
+            41,
+            39,
+            16,
+            2,
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-700 → 701-800",
+          "score": 189,
+          "hist": [
+            44,
+            40,
+            13,
+            1,
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-800 → 801-900",
+          "score": 88,
+          "hist": [
+            47,
+            39,
+            13,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-900 → 901-1000",
+          "score": 114,
+          "hist": [
+            40,
+            40,
+            18,
+            2,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-1000 → 1001-1100",
+          "score": 155,
+          "hist": [
+            38,
+            46,
+            13,
+            2,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-1100 → 1101-1200",
+          "score": 116,
+          "hist": [
+            34,
+            48,
+            16,
+            2,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-1200 → 1201-1242",
+          "score": 51,
+          "hist": [
+            18,
+            21,
+            0,
+            3,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "in_sample_formulas": [
+        "wrap45(juyeok.c2_moving_line-yukim.c3_first_transmission+yukim.c4_middle_transmission)",
+        "wrap45(astrology.c1_sun_longitude+juyeok.c1_hexagram-hongguk.c1_heaven_earth)",
+        "wrap45(|gujeong.c2_honmei-tarot.c1_birth_card|)",
+        "wrap45(astrology.c3_sun_sign-vedic.c2_nakshatra_pada-yukim.c3_first_transmission)",
+        "wrap45(saju.c2_month_sexagenary+vedic.c2_nakshatra_pada+taeeul.c1_cycle)",
+        "wrap45(2*hongguk.c1_heaven_earth-gujeong.c2_honmei)"
+      ],
+      "all_leakage_checks": true
+    },
+    "D_alias": {
+      "change": "1~1242 전 회차 값열이 같은 candidate alias를 하나로 합침",
+      "universe_size": 15020,
+      "in_sample": {
+        "score": 7969,
+        "hist": [
+          429,
+          542,
+          239,
+          26,
+          3,
+          1,
+          2
+        ],
+        "mean": 0.9074074074074074,
+        "ge3Count": 32,
+        "ge4Count": 6,
+        "ge5Count": 3,
+        "fiveHit": 1,
+        "sixHit": 2,
+        "rounds": 1242
+      },
+      "exact_walk_forward": {
+        "score": 903,
+        "hist": [
+          264,
+          262,
+          97,
+          15,
+          4,
+          0,
+          0
+        ],
+        "mean": 0.8052959501557633,
+        "ge3Count": 19,
+        "ge4Count": 4,
+        "ge5Count": 0,
+        "fiveHit": 0,
+        "sixHit": 0,
+        "rounds": 642
+      },
+      "wf_delta_vs_D0": -17,
+      "split_scores": [
+        {
+          "label": "1-600 → 601-700",
+          "score": 221,
+          "hist": [
+            41,
+            39,
+            14,
+            4,
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-700 → 701-800",
+          "score": 86,
+          "hist": [
+            46,
+            38,
+            16,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-800 → 801-900",
+          "score": 144,
+          "hist": [
+            40,
+            45,
+            13,
+            1,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-900 → 901-1000",
+          "score": 114,
+          "hist": [
+            40,
+            40,
+            18,
+            2,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-1000 → 1001-1100",
+          "score": 155,
+          "hist": [
+            38,
+            46,
+            13,
+            2,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-1100 → 1101-1200",
+          "score": 132,
+          "hist": [
+            41,
+            33,
+            23,
+            3,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-1200 → 1201-1242",
+          "score": 51,
+          "hist": [
+            18,
+            21,
+            0,
+            3,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "in_sample_formulas": [
+        "wrap45(juyeok.c2_moving_line-yukim.c3_first_transmission+yukim.c4_middle_transmission)",
+        "wrap45(astrology.c1_sun_longitude+juyeok.c1_hexagram-hongguk.c1_heaven_earth)",
+        "wrap45(|gujeong.c2_honmei-tarot.c1_birth_card|)",
+        "wrap45(astrology.c3_sun_sign-vedic.c2_nakshatra_pada-yukim.c3_first_transmission)",
+        "wrap45(saju.c2_month_sexagenary+vedic.c2_nakshatra_pada+taeeul.c1_cycle)",
+        "wrap45(2*hongguk.c1_heaven_earth-gujeong.c2_honmei)"
+      ],
+      "all_leakage_checks": true
+    },
+    "D_tie": {
+      "change": "ranking 동점의 마지막 tie-break를 universe(manifest) 순서 대신 sha256(canonical formula) 순서로",
+      "universe_size": 17633,
+      "in_sample": {
+        "score": 7969,
+        "hist": [
+          429,
+          542,
+          239,
+          26,
+          3,
+          1,
+          2
+        ],
+        "mean": 0.9074074074074074,
+        "ge3Count": 32,
+        "ge4Count": 6,
+        "ge5Count": 3,
+        "fiveHit": 1,
+        "sixHit": 2,
+        "rounds": 1242
+      },
+      "exact_walk_forward": {
+        "score": 835,
+        "hist": [
+          264,
+          269,
+          92,
+          14,
+          3,
+          0,
+          0
+        ],
+        "mean": 0.7897196261682243,
+        "ge3Count": 17,
+        "ge4Count": 3,
+        "ge5Count": 0,
+        "fiveHit": 0,
+        "sixHit": 0,
+        "rounds": 642
+      },
+      "wf_delta_vs_D0": -85,
+      "split_scores": [
+        {
+          "label": "1-600 → 601-700",
+          "score": 207,
+          "hist": [
+            41,
+            39,
+            16,
+            2,
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-700 → 701-800",
+          "score": 86,
+          "hist": [
+            46,
+            38,
+            16,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-800 → 801-900",
+          "score": 106,
+          "hist": [
+            47,
+            37,
+            13,
+            3,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-900 → 901-1000",
+          "score": 114,
+          "hist": [
+            40,
+            40,
+            18,
+            2,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-1000 → 1001-1100",
+          "score": 155,
+          "hist": [
+            38,
+            46,
+            13,
+            2,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-1100 → 1101-1200",
+          "score": 116,
+          "hist": [
+            34,
+            48,
+            16,
+            2,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-1200 → 1201-1242",
+          "score": 51,
+          "hist": [
+            18,
+            21,
+            0,
+            3,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "in_sample_formulas": [
+        "wrap45(juyeok.c2_moving_line-yukim.c3_first_transmission+yukim.c4_middle_transmission)",
+        "wrap45(astrology.c1_sun_longitude+juyeok.c1_hexagram-hongguk.c1_heaven_earth)",
+        "wrap45(|gujeong.c2_honmei-tarot.c1_birth_card|)",
+        "wrap45(astrology.c3_sun_sign-vedic.c2_nakshatra_pada-yukim.c3_first_transmission)",
+        "wrap45(saju.c2_month_sexagenary+vedic.c2_nakshatra_pada+taeeul.c1_cycle)",
+        "wrap45(2*hongguk.c1_heaven_earth-gujeong.c2_honmei)"
+      ],
+      "all_leakage_checks": true
+    },
+    "D_unique": {
+      "change": "greedy/local swap에서 같은 formula를 두 lane에 넣지 않음",
+      "universe_size": 17633,
+      "in_sample": {
+        "score": 7969,
+        "hist": [
+          429,
+          542,
+          239,
+          26,
+          3,
+          1,
+          2
+        ],
+        "mean": 0.9074074074074074,
+        "ge3Count": 32,
+        "ge4Count": 6,
+        "ge5Count": 3,
+        "fiveHit": 1,
+        "sixHit": 2,
+        "rounds": 1242
+      },
+      "exact_walk_forward": {
+        "score": 895,
+        "hist": [
+          261,
+          274,
+          87,
+          16,
+          4,
+          0,
+          0
+        ],
+        "mean": 0.7975077881619937,
+        "ge3Count": 20,
+        "ge4Count": 4,
+        "ge5Count": 0,
+        "fiveHit": 0,
+        "sixHit": 0,
+        "rounds": 642
+      },
+      "wf_delta_vs_D0": -25,
+      "split_scores": [
+        {
+          "label": "1-600 → 601-700",
+          "score": 182,
+          "hist": [
+            40,
+            40,
+            14,
+            5,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-700 → 701-800",
+          "score": 189,
+          "hist": [
+            44,
+            40,
+            13,
+            1,
+            2,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-800 → 801-900",
+          "score": 88,
+          "hist": [
+            47,
+            39,
+            13,
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-900 → 901-1000",
+          "score": 114,
+          "hist": [
+            40,
+            40,
+            18,
+            2,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-1000 → 1001-1100",
+          "score": 155,
+          "hist": [
+            38,
+            46,
+            13,
+            2,
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-1100 → 1101-1200",
+          "score": 116,
+          "hist": [
+            34,
+            48,
+            16,
+            2,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "label": "1-1200 → 1201-1242",
+          "score": 51,
+          "hist": [
+            18,
+            21,
+            0,
+            3,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "in_sample_formulas": [
+        "wrap45(juyeok.c2_moving_line-yukim.c3_first_transmission+yukim.c4_middle_transmission)",
+        "wrap45(astrology.c1_sun_longitude+juyeok.c1_hexagram-hongguk.c1_heaven_earth)",
+        "wrap45(|gujeong.c2_honmei-tarot.c1_birth_card|)",
+        "wrap45(astrology.c3_sun_sign-vedic.c2_nakshatra_pada-yukim.c3_first_transmission)",
+        "wrap45(saju.c2_month_sexagenary+vedic.c2_nakshatra_pada+taeeul.c1_cycle)",
+        "wrap45(2*hongguk.c1_heaven_earth-gujeong.c2_honmei)"
+      ],
+      "all_leakage_checks": true
+    }
+  }
+}

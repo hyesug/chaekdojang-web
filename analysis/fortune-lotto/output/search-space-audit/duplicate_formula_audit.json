@@ -1,0 +1,19 @@
+{
+  "formula_identity_duplicates": {
+    "A": 10,
+    "D": 0,
+    "E": 15
+  },
+  "number_resolution": {
+    "D": {
+      "duplicate_formula_count": 0,
+      "cyclic_increment_count": 387,
+      "cyclic_increment_rate": 0.051932367149758456
+    },
+    "D_triple_all": {
+      "duplicate_formula_count": 0,
+      "cyclic_increment_count": 429,
+      "cyclic_increment_rate": 0.05756843800322061
+    }
+  }
+}

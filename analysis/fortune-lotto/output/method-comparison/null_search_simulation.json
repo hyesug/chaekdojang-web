@@ -1,0 +1,200 @@
+{
+  "method": "B-like global formula search against shuffled targets",
+  "trials": [
+    {
+      "seed": 0,
+      "score": 4575,
+      "formulas": [
+        "wrap45(astrology.c1_sun_longitude-saju.c4_hour_sexagenary)",
+        "wrap45(juyeok.c2_moving_line-jamidusu.c1_myeong)",
+        "wrap45(gujeong.c1_honmei_getsumei-gujeong.c2_honmei)",
+        "wrap45(gujeong.c1_honmei_getsumei-gujeong.c2_honmei)",
+        "wrap45(|saju.c1_year_sexagenary-yukim.c5_last_transmission|+taeeul.c1_cycle)",
+        "wrap45(juyeok.c1_hexagram*gujeong.c2_honmei)"
+      ]
+    },
+    {
+      "seed": 1,
+      "score": 4548,
+      "formulas": [
+        "wrap45(yukim.c5_last_transmission-saju.c3_day_sexagenary)",
+        "wrap45(astrology.c3_sun_sign-vedic.c2_nakshatra_pada-yukim.c3_first_transmission)",
+        "wrap45(jamidusu.c2_sin-yukim.c4_middle_transmission+hongguk.c1_heaven_earth)",
+        "wrap45(vedic.c2_nakshatra_pada*tarot.c1_birth_card)",
+        "wrap45(saju.c2_month_sexagenary+2*astrology.c1_sun_longitude)",
+        "wrap45(astrology.c2_moon_longitude+yukim.c3_first_transmission-hongguk.c2_plate_mix)"
+      ]
+    },
+    {
+      "seed": 2,
+      "score": 4641,
+      "formulas": [
+        "wrap45(|jamidusu.c2_sin-hongguk.c2_plate_mix|)",
+        "wrap45(saju.c3_day_sexagenary-gujeong.c1_honmei_getsumei)",
+        "wrap45(jamidusu.c1_myeong+juyeok.c2_moving_line-taeeul.c1_cycle)",
+        "wrap45(saju.c3_day_sexagenary+astrology.c2_moon_longitude-yukim.c2_day_stem_gigung)",
+        "wrap45(gujeong.c1_honmei_getsumei-gujeong.c2_honmei)",
+        "wrap45(jamidusu.c1_myeong+vedic.c1_nakshatra-2*hongguk.c1_heaven_earth)"
+      ]
+    },
+    {
+      "seed": 3,
+      "score": 4567,
+      "formulas": [
+        "wrap45(juyeok.c1_hexagram+2*hongguk.c2_plate_mix)",
+        "wrap45(saju.c3_day_sexagenary+astrology.c2_moon_longitude+yukim.c1_month_general_point_hour)",
+        "wrap45(astrology.c3_sun_sign-vedic.c2_nakshatra_pada-yukim.c3_first_transmission)",
+        "wrap45(astrology.c2_moon_longitude-yukim.c2_day_stem_gigung-yukim.c5_last_transmission)",
+        "wrap45(jamidusu.c2_sin+2*yukim.c1_month_general_point_hour-hongguk.c2_plate_mix)",
+        "wrap45(gujeong.c1_honmei_getsumei-gujeong.c2_honmei)"
+      ]
+    },
+    {
+      "seed": 4,
+      "score": 4629,
+      "formulas": [
+        "wrap45(|saju.c1_year_sexagenary-kabbalah.c1_life_birthday|)",
+        "wrap45(2*saju.c1_year_sexagenary+gujeong.c2_honmei)",
+        "wrap45(yukim.c2_day_stem_gigung-saju.c1_year_sexagenary)",
+        "wrap45(astrology.c3_sun_sign+juyeok.c2_moving_line-yukim.c4_middle_transmission)",
+        "wrap45(saju.c2_month_sexagenary+2*jamidusu.c2_sin-hongguk.c2_plate_mix)",
+        "wrap45(saju.c1_year_sexagenary+juyeok.c1_hexagram+yukim.c2_day_stem_gigung)"
+      ]
+    },
+    {
+      "seed": 5,
+      "score": 4642,
+      "formulas": [
+        "wrap45(|gujeong.c2_honmei-tarot.c1_birth_card|)",
+        "wrap45(astrology.c2_moon_longitude+juyeok.c1_hexagram)",
+        "wrap45(saju.c3_day_sexagenary-gujeong.c1_honmei_getsumei)",
+        "wrap45(|jamidusu.c2_sin-hongguk.c2_plate_mix|)",
+        "wrap45(gujeong.c1_honmei_getsumei-gujeong.c2_honmei)",
+        "wrap45(saju.c3_day_sexagenary-taeeul.c1_cycle)"
+      ]
+    },
+    {
+      "seed": 6,
+      "score": 1981,
+      "formulas": [
+        "wrap45(2*saju.c4_hour_sexagenary+astrology.c3_sun_sign-hongguk.c2_plate_mix)",
+        "wrap45(jamidusu.c2_sin-astrology.c1_sun_longitude+yukim.c5_last_transmission)",
+        "wrap45(2*vedic.c2_nakshatra_pada+juyeok.c2_moving_line-hongguk.c2_plate_mix)",
+        "wrap45(juyeok.c2_moving_line-jamidusu.c1_myeong)",
+        "wrap45(2*saju.c1_year_sexagenary+saju.c3_day_sexagenary-juyeok.c1_hexagram)",
+        "wrap45(2*saju.c1_year_sexagenary+saju.c3_day_sexagenary-juyeok.c1_hexagram)"
+      ]
+    },
+    {
+      "seed": 7,
+      "score": 5102,
+      "formulas": [
+        "wrap45(2*saju.c1_year_sexagenary+gujeong.c2_honmei)",
+        "wrap45(astrology.c2_moon_longitude+2*tojeong.c1_hexagram)",
+        "wrap45(kabbalah.c1_life_birthday-2*thai.c1_weekday_buddhist)",
+        "wrap45(saju.c2_month_sexagenary-2*hongguk.c2_plate_mix)",
+        "wrap45(|jamidusu.c2_sin-yukim.c4_middle_transmission|+hongguk.c1_heaven_earth)",
+        "wrap45(saju.c1_year_sexagenary+juyeok.c2_moving_line+yukim.c1_month_general_point_hour)"
+      ]
+    },
+    {
+      "seed": 8,
+      "score": 2429,
+      "formulas": [
+        "wrap45(saju.c4_hour_sexagenary+yukim.c2_day_stem_gigung-2*hongguk.c1_heaven_earth)",
+        "wrap45(astrology.c1_sun_longitude+2*yukim.c1_month_general_point_hour-hongguk.c2_plate_mix)",
+        "wrap45(jamidusu.c1_myeong+2*astrology.c1_sun_longitude-yukim.c3_first_transmission)",
+        "wrap45(gujeong.c1_honmei_getsumei-gujeong.c2_honmei)",
+        "wrap45(2*vedic.c2_nakshatra_pada+yukim.c1_month_general_point_hour-yukim.c3_first_transmission)",
+        "wrap45(saju.c3_day_sexagenary-astrology.c1_sun_longitude-taeeul.c1_cycle)"
+      ]
+    },
+    {
+      "seed": 9,
+      "score": 4526,
+      "formulas": [
+        "wrap45(2*vedic.c2_nakshatra_pada+yukim.c1_month_general_point_hour-yukim.c3_first_transmission)",
+        "wrap45(saju.c3_day_sexagenary-vedic.c1_nakshatra)",
+        "wrap45(2*saju.c1_year_sexagenary+saju.c3_day_sexagenary-juyeok.c1_hexagram)",
+        "wrap45(saju.c3_day_sexagenary+2*hongguk.c1_heaven_earth-hongguk.c2_plate_mix)",
+        "wrap45(saju.c3_day_sexagenary+2*hongguk.c1_heaven_earth-hongguk.c2_plate_mix)",
+        "wrap45(gujeong.c1_honmei_getsumei-gujeong.c2_honmei)"
+      ]
+    },
+    {
+      "seed": 10,
+      "score": 4804,
+      "formulas": [
+        "wrap45(saju.c1_year_sexagenary+2*saju.c2_month_sexagenary-juyeok.c2_moving_line)",
+        "wrap45(2*vedic.c1_nakshatra+yukim.c3_first_transmission-taeeul.c1_cycle)",
+        "wrap45(saju.c4_hour_sexagenary+2*yukim.c1_month_general_point_hour-hongguk.c2_plate_mix)",
+        "wrap45(vedic.c1_nakshatra+juyeok.c1_hexagram+yukim.c4_middle_transmission)",
+        "wrap45(astrology.c2_moon_longitude+2*tojeong.c1_hexagram)",
+        "wrap45(juyeok.c1_hexagram+juyeok.c2_moving_line-2*taeeul.c1_cycle)"
+      ]
+    },
+    {
+      "seed": 11,
+      "score": 4847,
+      "formulas": [
+        "wrap45(saju.c2_month_sexagenary+jamidusu.c1_myeong+juyeok.c2_moving_line)",
+        "wrap45(|jamidusu.c2_sin-astrology.c2_moon_longitude|+yukim.c2_day_stem_gigung)",
+        "wrap45(saju.c2_month_sexagenary+2*saju.c3_day_sexagenary)",
+        "wrap45(2*gujeong.c1_honmei_getsumei-kabbalah.c2_personal_year)",
+        "wrap45(saju.c3_day_sexagenary-jamidusu.c1_myeong+yukim.c2_day_stem_gigung)",
+        "wrap45(astrology.c1_sun_longitude+2*yukim.c1_month_general_point_hour-hongguk.c2_plate_mix)"
+      ]
+    },
+    {
+      "seed": 12,
+      "score": 4661,
+      "formulas": [
+        "wrap45(saju.c3_day_sexagenary-juyeok.c2_moving_line-hongguk.c2_plate_mix)",
+        "wrap45(jamidusu.c1_myeong-vedic.c2_nakshatra_pada+yukim.c3_first_transmission)",
+        "wrap45(jamidusu.c2_sin+yukim.c3_first_transmission-hongguk.c1_heaven_earth)",
+        "wrap45(gujeong.c1_honmei_getsumei-gujeong.c2_honmei)",
+        "wrap45(|saju.c1_year_sexagenary-yukim.c4_middle_transmission|+hongguk.c2_plate_mix)",
+        "wrap45(2*juyeok.c1_hexagram-gujeong.c1_honmei_getsumei)"
+      ]
+    },
+    {
+      "seed": 13,
+      "score": 4788,
+      "formulas": [
+        "wrap45(|saju.c2_month_sexagenary-jamidusu.c1_myeong|+yukim.c2_day_stem_gigung)",
+        "wrap45(|vedic.c1_nakshatra-vedic.c2_nakshatra_pada|+taeeul.c1_cycle)",
+        "wrap45(saju.c2_month_sexagenary+2*astrology.c1_sun_longitude)",
+        "wrap45(vedic.c2_nakshatra_pada*tarot.c1_birth_card)",
+        "wrap45(|astrology.c1_sun_longitude-astrology.c2_moon_longitude|+vedic.c1_nakshatra)",
+        "wrap45(jamidusu.c2_sin-astrology.c1_sun_longitude+yukim.c5_last_transmission)"
+      ]
+    },
+    {
+      "seed": 14,
+      "score": 2135,
+      "formulas": [
+        "wrap45(jamidusu.c1_myeong-vedic.c2_nakshatra_pada+yukim.c3_first_transmission)",
+        "wrap45(|jamidusu.c2_sin-astrology.c2_moon_longitude|+yukim.c2_day_stem_gigung)",
+        "wrap45(saju.c4_hour_sexagenary+vedic.c1_nakshatra+yukim.c2_day_stem_gigung)",
+        "wrap45(gujeong.c1_honmei_getsumei-gujeong.c2_honmei)",
+        "wrap45(gujeong.c1_honmei_getsumei-gujeong.c2_honmei)",
+        "wrap45(gujeong.c1_honmei_getsumei-gujeong.c2_honmei)"
+      ]
+    },
+    {
+      "seed": 15,
+      "score": 2072,
+      "formulas": [
+        "wrap45(2*hongguk.c1_heaven_earth-gujeong.c1_honmei_getsumei)",
+        "wrap45(saju.c3_day_sexagenary+2*saju.c4_hour_sexagenary-juyeok.c2_moving_line)",
+        "wrap45(saju.c1_year_sexagenary-astrology.c2_moon_longitude-hongguk.c2_plate_mix)",
+        "wrap45(saju.c1_year_sexagenary+yukim.c1_month_general_point_hour+yukim.c4_middle_transmission)",
+        "wrap45(vedic.c1_nakshatra-vedic.c2_nakshatra_pada+yukim.c3_first_transmission)",
+        "wrap45(saju.c1_year_sexagenary+juyeok.c1_hexagram+yukim.c2_day_stem_gigung)"
+      ]
+    }
+  ],
+  "mean_score": 4059.1875,
+  "max_score": 5102,
+  "caveat": "A theoretical event_signature upper bound is excluded because it is lookup-like."
+}
