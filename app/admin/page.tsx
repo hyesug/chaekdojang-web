@@ -255,7 +255,7 @@ interface AdminAuditLog {
 }
 
 interface LottoPrediction {
-  model: "A" | "D" | "E" | "F" | "H";
+  model: "A" | "D" | "E" | "F" | "H" | "S1" | "S2" | "S3";
   revision: number;
   numbers: number[];
   modelVersion: string;
@@ -265,6 +265,16 @@ interface LottoPrediction {
   active: boolean;
   hitCount: number;
   hitNumbers: number[];
+  official: boolean;
+  engineVersion: string | null;
+}
+
+interface LottoStrategyRecalculation {
+  round: number;
+  modelVersion: string;
+  sourceCommit: string;
+  engineVersion: string;
+  predictions: Array<{ model: "S1" | "S2" | "S3"; numbers: number[]; hitCount: number; hitNumbers: number[] }>;
 }
 
 interface LottoPredictionRound {
@@ -374,6 +384,30 @@ function formatLogTime(value: string) {
     hour: "2-digit",
     minute: "2-digit",
   });
+}
+
+const LOTTO_MODELS = ["A", "D", "E", "F", "H", "S1", "S2", "S3"] as const;
+const LOTTO_MODEL_LABELS: Record<LottoPrediction["model"], string> = {
+  A: "A", D: "D", E: "E", F: "F", H: "H",
+  S1: "전략 A: 원본 슬롯 득표순", S2: "전략 B: 2표 이상 우선", S3: "전략 C: 체계 지지와 득표 결합",
+};
+
+const LOTTO_STRATEGY_MODELS = ["S1", "S2", "S3"] as const;
+
+function officialLottoPrediction(round: LottoPredictionRound, model: LottoPrediction["model"]) {
+  return round.predictions.find((prediction) => prediction.model === model && prediction.active && prediction.official);
+}
+
+// 정식 성적: 추첨 전 생성·저장되고 결과가 확정된 예측만 집계한다.
+function lottoStrategyOfficialScores(rounds: LottoPredictionRound[]) {
+  return LOTTO_STRATEGY_MODELS.map((model) => {
+    const hits = rounds.filter((round) => round.actualNumbers).map((round) => officialLottoPrediction(round, model)?.hitCount).filter((hit): hit is number => hit != null);
+    return { model, rounds: hits.length, totalHits: hits.reduce((sum, hit) => sum + hit, 0), bestHit: hits.length ? Math.max(...hits) : 0 };
+  });
+}
+
+function lottoRoundsWithoutOfficialStrategies(rounds: LottoPredictionRound[]) {
+  return rounds.filter((round) => round.actualNumbers && !officialLottoPrediction(round, "S1"));
 }
 
 function sortedLottoNumbers(numbers: number[]) {
@@ -879,6 +913,8 @@ export default function AdminPage() {
   const [auditLogs, setAuditLogs] = useState<AdminAuditLog[]>([]);
   const [lottoRounds, setLottoRounds] = useState<LottoPredictionRound[]>([]);
   const [lottoGenerating, setLottoGenerating] = useState(false);
+  const [lottoRecalculations, setLottoRecalculations] = useState<LottoStrategyRecalculation[]>([]);
+  const [lottoRecalculating, setLottoRecalculating] = useState(false);
   const [aiCreditStats, setAiCreditStats] = useState<AiCreditStatistics | null>(null);
   const [creditUserId, setCreditUserId] = useState("");
   const [creditAmount, setCreditAmount] = useState("1");
@@ -1227,6 +1263,17 @@ export default function AdminPage() {
     });
     if (response.ok) setLottoRounds(await fetchAdmin<LottoPredictionRound[]>("/api/admin/lotto-future-validations") ?? []);
     else window.alert("추첨시각은 추첨 전에만 변경할 수 있습니다.");
+  }
+
+  async function loadLottoStrategyRecalculations() {
+    setLottoRecalculating(true);
+    try {
+      const rounds = lottoRoundsWithoutOfficialStrategies(lottoRounds);
+      const results = await Promise.all(rounds.map((round) => fetchAdmin<LottoStrategyRecalculation>(`/api/admin/lotto-future-validations/${round.round}/strategy-recalculation`)));
+      setLottoRecalculations(results.filter((result): result is LottoStrategyRecalculation => result != null));
+    } finally {
+      setLottoRecalculating(false);
+    }
   }
 
   async function reviseLottoModel(round: number) {
@@ -2638,15 +2685,32 @@ export default function AdminPage() {
                 const drawHasPassed = hasLottoDrawPassed(current);
                 return <div className="rounded-2xl border border-cream-200 bg-white p-5 shadow-sm">
                   <div className="flex flex-wrap items-start justify-between gap-3">
-                    <div><h3 className="font-serif text-xl font-bold text-brown-900">{current.round}회</h3><p className="mt-1 text-sm text-brown-500">추첨: {current.drawDate} {current.drawTime.slice(0, 5)} · {current.timeSource === "official_default" ? "공식 기본시각" : current.timeSource}</p><p className="mt-1 text-xs text-brown-400">생성: {formatLogTime(current.generatedAt)} · 모델: {current.predictions.find((prediction) => prediction.active)?.modelVersion ?? "-"}</p></div>
+                    <div><h3 className="font-serif text-xl font-bold text-brown-900">{current.round}회</h3><p className="mt-1 text-sm text-brown-500">추첨: {current.drawDate} {current.drawTime.slice(0, 5)} · {current.timeSource === "official_default" ? "공식 기본시각" : current.timeSource}</p><p className="mt-1 text-xs text-brown-400">생성: {formatLogTime(current.generatedAt)} · 모델: {current.predictions.find((prediction) => prediction.active)?.modelVersion ?? "-"} · 엔진: {current.predictions.find((prediction) => prediction.active)?.engineVersion ?? "기록 이전"}</p></div>
                     {!current.actualNumbers && <div className="flex flex-wrap gap-2">{!drawHasPassed && <><button type="button" onClick={() => void reviseLottoModel(current.round)} className="rounded-lg border border-cream-300 px-3 py-2 text-xs text-brown-600 hover:bg-cream-50">수정 모델 revision</button><button type="button" onClick={() => void reviseLottoDrawTime(current.round, current.drawTime)} className="rounded-lg border border-cream-300 px-3 py-2 text-xs text-brown-600 hover:bg-cream-50">추첨시각 변경</button></>}{drawHasPassed && <button type="button" onClick={() => void confirmLottoResult(current.round)} className="rounded-lg border border-cream-300 px-3 py-2 text-xs text-brown-600 hover:bg-cream-50">실제번호 입력</button>}</div>}
                   </div>
                   <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                    {current.predictions.filter((prediction) => prediction.active).map((prediction) => <div key={`${prediction.model}-${prediction.revision}`} className="rounded-xl bg-cream-50 p-3"><p className="font-semibold text-brown-800">{prediction.model}</p><div className="mt-2 flex flex-wrap gap-2">{sortedLottoNumbers(prediction.numbers).map((number) => <span key={number} className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-brown-700 text-sm font-bold text-white">{number}</span>)}</div>{current.actualNumbers && <p className="mt-2 text-sm text-brown-500">결과: {prediction.hitCount}/6{prediction.hitNumbers.length ? ` · 적중 ${sortedLottoNumbers(prediction.hitNumbers).join(", ")}` : ""}</p>}</div>)}
+                    {current.predictions.filter((prediction) => prediction.active).map((prediction) => <div key={`${prediction.model}-${prediction.revision}`} className="rounded-xl bg-cream-50 p-3"><p className="font-semibold text-brown-800">{LOTTO_MODEL_LABELS[prediction.model] ?? prediction.model}</p><div className="mt-2 flex flex-wrap gap-2">{sortedLottoNumbers(prediction.numbers).map((number) => <span key={number} className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-brown-700 text-sm font-bold text-white">{number}</span>)}</div>{current.actualNumbers && <p className="mt-2 text-sm text-brown-500">결과: {prediction.hitCount}/6{prediction.hitNumbers.length ? ` · 적중 ${sortedLottoNumbers(prediction.hitNumbers).join(", ")}` : ""}</p>}</div>)}
                   </div>
                 </div>;
               })()}
-              <div className="overflow-x-auto rounded-2xl border border-cream-200 bg-white shadow-sm"><table className="w-full min-w-[940px] text-sm"><thead className="bg-cream-100 text-left text-brown-600"><tr><th className="px-4 py-3">회차</th><th className="px-4 py-3">실제번호</th><th className="px-4 py-3">A</th><th className="px-4 py-3">D</th><th className="px-4 py-3">E</th><th className="px-4 py-3">F</th><th className="px-4 py-3">H</th></tr></thead><tbody>{lottoRounds.map((round) => <tr key={round.round} className="border-t border-cream-100"><td className="px-4 py-3 font-medium text-brown-800">{round.round}<p className="mt-1 text-xs font-normal text-brown-400">{round.drawDate} {round.drawTime.slice(0, 5)}</p></td><td className="px-4 py-3 text-brown-600">{round.actualNumbers ? sortedLottoNumbers(round.actualNumbers).join(" ") : "-"}</td>{(["A", "D", "E", "F", "H"] as const).map((model) => { const prediction = round.predictions.find((item) => item.model === model && item.active); return <td key={model} className="px-4 py-3 text-brown-600">{prediction ? <><p>{sortedLottoNumbers(prediction.numbers).join(" ")}</p>{round.actualNumbers && <p className="mt-1 text-xs text-brown-400">{prediction.hitCount}/6</p>}</> : "-"}</td>; })}</tr>)}</tbody></table>{lottoRounds.length === 0 && <EmptyState>아직 생성된 미래검증 회차가 없어요</EmptyState>}</div>
+              <div className="overflow-x-auto rounded-2xl border border-cream-200 bg-white shadow-sm"><table className="w-full min-w-[1400px] text-sm"><thead className="bg-cream-100 text-left text-brown-600"><tr><th className="px-4 py-3">회차</th><th className="px-4 py-3">실제번호</th>{LOTTO_MODELS.map((model) => <th key={model} className="px-4 py-3" title={LOTTO_MODEL_LABELS[model]}>{LOTTO_MODEL_LABELS[model].split(":")[0]}</th>)}</tr></thead><tbody>{lottoRounds.map((round) => <tr key={round.round} className="border-t border-cream-100"><td className="px-4 py-3 font-medium text-brown-800">{round.round}<p className="mt-1 text-xs font-normal text-brown-400">{round.drawDate} {round.drawTime.slice(0, 5)}</p></td><td className="px-4 py-3 text-brown-600">{round.actualNumbers ? sortedLottoNumbers(round.actualNumbers).join(" ") : "-"}</td>{LOTTO_MODELS.map((model) => { const prediction = round.predictions.find((item) => item.model === model && item.active); return <td key={model} className="px-4 py-3 text-brown-600">{prediction ? <><p>{sortedLottoNumbers(prediction.numbers).join(" ")}</p>{round.actualNumbers && <p className="mt-1 text-xs text-brown-400">{prediction.hitCount}/6{prediction.official === false && " · 추첨 후 생성, 성적 미집계"}</p>}</> : "-"}</td>; })}</tr>)}</tbody></table>{lottoRounds.length === 0 && <EmptyState>아직 생성된 미래검증 회차가 없어요</EmptyState>}</div>
+              <div className="rounded-2xl border border-cream-200 bg-white p-5 shadow-sm">
+                <h3 className="font-serif text-lg font-bold text-brown-900">득표 전략 정식 성적</h3>
+                <p className="mt-1 text-sm text-brown-500">추첨 전에 생성·저장되고 실제번호가 확정된 예측만 집계합니다. 재계산값은 넣지 않습니다.</p>
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  {lottoStrategyOfficialScores(lottoRounds).map((score) => <div key={score.model} className="rounded-xl bg-cream-50 p-3"><p className="font-semibold text-brown-800">{LOTTO_MODEL_LABELS[score.model]}</p><p className="mt-2 text-sm text-brown-600">{score.rounds ? `${score.rounds}회 · 적중 합계 ${score.totalHits}개 · 평균 ${(score.totalHits / score.rounds).toFixed(2)}개 · 최고 ${score.bestHit}/6` : "아직 집계할 회차가 없어요"}</p></div>)}
+                </div>
+              </div>
+              {lottoRoundsWithoutOfficialStrategies(lottoRounds).length > 0 && <div className="rounded-2xl border border-dashed border-cream-300 bg-white p-5 shadow-sm">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <h3 className="font-serif text-lg font-bold text-brown-900">득표 전략 재계산 (참고)</h3>
+                    <p className="mt-1 text-sm text-brown-500">추첨 전 저장값이 없는 회차를 현재 엔진으로 다시 계산한 값입니다. 저장하지 않으며 정식 성적에 넣지 않습니다.</p>
+                  </div>
+                  <button type="button" onClick={() => void loadLottoStrategyRecalculations()} disabled={lottoRecalculating} className="rounded-lg border border-cream-300 px-3 py-2 text-xs text-brown-600 hover:bg-cream-50 disabled:opacity-50">{lottoRecalculating ? "계산 중" : "재계산 보기"}</button>
+                </div>
+                {lottoRecalculations.length > 0 && <div className="mt-4 overflow-x-auto"><table className="w-full min-w-[720px] text-sm"><thead className="text-left text-brown-500"><tr><th className="px-3 py-2">회차</th>{LOTTO_STRATEGY_MODELS.map((model) => <th key={model} className="px-3 py-2">{LOTTO_MODEL_LABELS[model].split(":")[0]}</th>)}<th className="px-3 py-2">엔진</th></tr></thead><tbody>{lottoRecalculations.map((recalculation) => <tr key={recalculation.round} className="border-t border-cream-100"><td className="px-3 py-2 text-brown-800">{recalculation.round}</td>{LOTTO_STRATEGY_MODELS.map((model) => { const prediction = recalculation.predictions.find((item) => item.model === model); return <td key={model} className="px-3 py-2 text-brown-600">{prediction ? <><p>{sortedLottoNumbers(prediction.numbers).join(" ")}</p><p className="mt-1 text-xs text-brown-400">재계산 {prediction.hitCount}/6</p></> : "-"}</td>; })}<td className="px-3 py-2 text-xs text-brown-400">{recalculation.modelVersion}<br />{recalculation.engineVersion}</td></tr>)}</tbody></table></div>}
+              </div>}
             </section>
           )}
         </div>
