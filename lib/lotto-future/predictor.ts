@@ -12,7 +12,7 @@ type FeatureSet = {
   max: Record<string, number>;
   input: { year: number; month: number; day: number; hourBranch: number };
 };
-const MODEL_VERSION = "future-validation-frozen-70a3d85-v2";
+const MODEL_VERSION = "future-validation-frozen-70a3d85-v3-votes";
 const SOURCE_COMMIT = "70a3d85";
 const stateIds = stateMatrix.feature_ids as string[];
 const stateVectors = stateMatrix.vectors as number[][];
@@ -56,6 +56,24 @@ function candidateValues(features: FeatureSet) {
     "thai.c1_weekday_buddhist": spread((raw("thai.weekday_index") - 1) * 100 + raw("thai.buddhist_era_mod100"), 700), "tarot.c1_birth_card": direct("tarot.생일_카드", 78),
   } as Record<string, number>;
 }
+// 득표 전략 S1·S2·S3: 15체계 원본 후보 슬롯(키 접두사 = 체계)을 입력으로만 쓰며 후보 밖 번호로 채우지 않는다.
+export function voteStrategyTickets(candidates: Record<string, number>) {
+  const votes = new Map<number, number>(); const systems = new Map<number, Set<string>>();
+  for (const [slot, number] of Object.entries(candidates)) {
+    if (!Number.isInteger(number) || number < 1 || number > 45) throw new Error(`Vote candidate is out of range: ${slot}`);
+    votes.set(number, (votes.get(number) ?? 0) + 1);
+    systems.set(number, (systems.get(number) ?? new Set()).add(slot.split(".")[0]));
+  }
+  const numbers = [...votes.keys()];
+  if (numbers.length < 6) throw new Error(`Vote candidates have fewer than 6 distinct numbers: ${numbers.length}`);
+  const vote = (n: number) => votes.get(n)!; const support = (n: number) => systems.get(n)!.size;
+  const top = (compare: (a: number, b: number) => number) => [...numbers].sort((a, b) => compare(a, b) || a - b).slice(0, 6).sort((a, b) => a - b);
+  return {
+    S1: top((a, b) => vote(b) - vote(a)),
+    S2: top((a, b) => Number(vote(b) >= 2) - Number(vote(a) >= 2) || vote(b) - vote(a)),
+    S3: top((a, b) => support(b) - support(a) || vote(b) - vote(a)),
+  };
+}
 function candidateFormula(formula: string, candidates: Record<string, number>) {
   const expression = formula.replace(/^wrap45\(/, "").replace(/\)$/, "")
     .replace(/[a-z]+\.[a-z0-9_]+/g, (name) => `c[${JSON.stringify(name)}]`)
@@ -96,5 +114,5 @@ export function generateFrozenPredictions(event: Event, history: History[]) {
   const h = features; const weekday = h.values["thai.weekday_index"] - 1; const dayOfYear = Math.floor((Date.UTC(h.input.year, h.input.month - 1, h.input.day) - Date.UTC(h.input.year, 0, 0)) / 86400000);
   return { predictions: { A: uniqueTicket(aRules.map((formula) => aLane(formula, features))), D: uniqueTicket((methodD.model.genome as string[]).map((formula) => candidateFormula(formula, candidates))), E: uniqueTicket(eRules.map((formula) => candidateFormula(formula, candidates))), F: pastOnlyFSelection(event, history).ticket, H: uniqueTicket([
     value(h, "astrology.금성_longitude_degree") * value(h, "astrology.라후_longitude_degree"), value(h, "astrology.달_longitude_degree"), Math.floor((value(h, "astrology.금성_longitude_degree") + h.input.day) / 2), value(h, "astrology.천왕성_longitude_degree") * weekday, 2 * h.input.day + dayOfYear, value(h, "astrology.목성_longitude_degree") * value(h, "astrology.토성_longitude_degree")
-  ]) }, modelVersion: MODEL_VERSION, sourceCommit: SOURCE_COMMIT };
+  ]), ...voteStrategyTickets(candidates) }, modelVersion: MODEL_VERSION, sourceCommit: SOURCE_COMMIT };
 }
