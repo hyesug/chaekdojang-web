@@ -3,7 +3,7 @@ import methodD from "../../analysis/fortune-lotto/output/method-comparison/metho
 import methodE from "../../analysis/fortune-lotto/output/method-comparison/method_E.json";
 import stateMatrix from "../../analysis/fortune-lotto/output/method-comparison/method-E/state_matrix.json";
 import commonDataset from "../../analysis/fortune-lotto/output/method-comparison/common_dataset.json";
-import { eventFeatures, spread, wrap45 } from "./event-features.mjs";
+import { ENGINE_VERSION, eventFeatures, spread, wrap45 } from "./event-features.mjs";
 
 type Event = { round: number; drawDate: string; drawTime: string };
 type History = Event & { numbers: number[] };
@@ -114,5 +114,5 @@ export function generateFrozenPredictions(event: Event, history: History[]) {
   const h = features; const weekday = h.values["thai.weekday_index"] - 1; const dayOfYear = Math.floor((Date.UTC(h.input.year, h.input.month - 1, h.input.day) - Date.UTC(h.input.year, 0, 0)) / 86400000);
   return { predictions: { A: uniqueTicket(aRules.map((formula) => aLane(formula, features))), D: uniqueTicket((methodD.model.genome as string[]).map((formula) => candidateFormula(formula, candidates))), E: uniqueTicket(eRules.map((formula) => candidateFormula(formula, candidates))), F: pastOnlyFSelection(event, history).ticket, H: uniqueTicket([
     value(h, "astrology.금성_longitude_degree") * value(h, "astrology.라후_longitude_degree"), value(h, "astrology.달_longitude_degree"), Math.floor((value(h, "astrology.금성_longitude_degree") + h.input.day) / 2), value(h, "astrology.천왕성_longitude_degree") * weekday, 2 * h.input.day + dayOfYear, value(h, "astrology.목성_longitude_degree") * value(h, "astrology.토성_longitude_degree")
-  ]), ...voteStrategyTickets(candidates) }, modelVersion: MODEL_VERSION, sourceCommit: SOURCE_COMMIT };
+  ]), ...voteStrategyTickets(candidates) }, modelVersion: MODEL_VERSION, sourceCommit: SOURCE_COMMIT, engineVersion: ENGINE_VERSION };
 }

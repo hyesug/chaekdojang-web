@@ -96,7 +96,7 @@ test('득표 전략 1243~1245 회귀 fixture는 고정 티켓과 당첨 교집�
   const expected = {
     1243: { S1: [[1, 4, 23, 42, 43, 44], [43, 44]], S2: [[1, 4, 23, 42, 43, 44], [43, 44]], S3: [[1, 4, 23, 42, 43, 44], [43, 44]] },
     1244: { S1: [[1, 8, 9, 10, 23, 31], [1]], S2: [[1, 8, 9, 10, 23, 31], [1]], S3: [[1, 8, 9, 10, 23, 31], [1]] },
-    1245: { S1: [[1, 8, 11, 19, 21, 27], []], S2: [[1, 8, 11, 21, 22, 27], []], S3: [[1, 8, 11, 21, 22, 27], []] },
+    1245: { S1: [[1, 8, 11, 19, 27, 42], [42]], S2: [[1, 8, 11, 21, 22, 27], []], S3: [[1, 8, 11, 21, 27, 42], [42]] },
   };
   try {
     for (const draw of draws) {
@@ -107,6 +107,21 @@ test('득표 전략 1243~1245 회귀 fixture는 고정 티켓과 당첨 교집�
         assert.deepEqual(predictions[model].filter((number) => draw.numbers.includes(number)), hits, `${model} hits ${draw.round}`);
       }
     }
+  } finally {
+    await cleanup();
+  }
+});
+
+test('로또 예측은 c991927 고정 엔진만 쓰고 일반 운세 엔진(public/unse)을 불러오지 않는다', async () => {
+  const result = await build({ entryPoints: [fileURLToPath(new URL('../lib/lotto-future/predictor.ts', import.meta.url))], bundle: true, platform: 'node', format: 'esm', write: false, metafile: true, logLevel: 'silent' });
+  const inputs = Object.keys(result.metafile.inputs).map((path) => path.replaceAll('\\', '/'));
+  assert.ok(inputs.some((path) => path.includes('lib/lotto-future/engine-c991927/')));
+  assert.deepEqual(inputs.filter((path) => path.includes('public/unse')), []);
+  const { module, cleanup } = await predictor();
+  try {
+    const generated = module.generateFrozenPredictions({ round: 1246, drawDate: '2026-10-17', drawTime: '20:35' }, []);
+    assert.equal(generated.engineVersion, 'unse-c991927');
+    assert.match(generated.modelVersion, /v4-votes$/);
   } finally {
     await cleanup();
   }
