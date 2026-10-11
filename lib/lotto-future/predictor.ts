@@ -12,7 +12,7 @@ type FeatureSet = {
   max: Record<string, number>;
   input: { year: number; month: number; day: number; hourBranch: number };
 };
-const MODEL_VERSION = "future-validation-frozen-70a3d85-v3-votes";
+const MODEL_VERSION = "future-validation-frozen-70a3d85-v4-votes";
 const SOURCE_COMMIT = "70a3d85";
 const stateIds = stateMatrix.feature_ids as string[];
 const stateVectors = stateMatrix.vectors as number[][];
@@ -70,7 +70,7 @@ export function voteStrategyTickets(candidates: Record<string, number>) {
   const top = (compare: (a: number, b: number) => number) => [...numbers].sort((a, b) => compare(a, b) || a - b).slice(0, 6).sort((a, b) => a - b);
   return {
     S1: top((a, b) => vote(b) - vote(a)),
-    S2: top((a, b) => Number(vote(b) >= 2) - Number(vote(a) >= 2) || vote(b) - vote(a)),
+    S2: top((a, b) => Number(vote(b) >= 2) - Number(vote(a) >= 2) || support(b) - support(a)),
     S3: top((a, b) => support(b) - support(a) || vote(b) - vote(a)),
   };
 }
