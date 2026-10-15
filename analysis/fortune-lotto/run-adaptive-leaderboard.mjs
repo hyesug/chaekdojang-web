@@ -96,6 +96,12 @@ export async function main() {
     famIds.forEach((f) => series[`LV-${f}`].set(1246, lv.tickets[f].get(1246))); series['FV-전체'].set(1246, fv.tickets['전체'].get(1246));
     const famChoice1246 = { ...Object.fromEntries(famIds.map((f) => [`LV-${f}`, lv.chosen[f][0]])), 'FV-전체': fv.chosen['전체'][0] };
 
+    // 2-1) 매주 재탐색 체계 조합식 C1·C2·고전점성 단독(run-combination-rules.mjs 산출, 1246 포함)
+    const combo = JSON.parse(await readFile(join(PRIOR, 'combination-rules/tickets.json'), 'utf8'));
+    const comboSlots = JSON.parse(await readFile(join(PRIOR, 'combination-rules/slots.json'), 'utf8'));
+    const comboIds = Object.keys(combo.series);
+    for (const id of comboIds) series[id] = new Map(Object.entries(combo.series[id]).map(([k, t]) => [Number(k), t]));
+
     // 3) 신규 N1–N3(102회부터, 그 이전 회차만으로 매회 갱신)
     for (const id of ['N1', 'N2', 'N3', 'N4']) series[id] = new Map();
     const slotStats = {}; const sysHist = {}; const table = [0, 1, 2].map(() => Array.from({ length: 4 }, () => ({ w: 0, t: 0 })));
@@ -120,7 +126,7 @@ export async function main() {
     }
 
     // 4) 순위표 루프(102–1246). 회차 r 순위·N4 는 r 이전 결과만 사용
-    const ids = [...liveIds, 'N1', 'N2', 'N3', 'N4']; const idx = Object.fromEntries(ids.map((id, i) => [id, i]));
+    const ids = [...liveIds, ...comboIds, 'N1', 'N2', 'N3', 'N4']; const idx = Object.fromEntries(ids.map((id, i) => [id, i]));
     const cum = ids.map(() => ({ hits: 0, n: 0, recent: [] }));
     const common = ids.map(() => new Float64Array(ids.length)), commonN = ids.map(() => new Int32Array(ids.length));
     const rankBy = (scoreFn, r, exclude = []) => ids.filter((id) => !exclude.includes(id) && cum[idx[id]].n >= MIN_N && series[id].get(r)).map((id) => ({ id, s: scoreFn(cum[idx[id]]) })).sort((a, b) => b.s - a.s || a.id.localeCompare(b.id));
@@ -152,7 +158,7 @@ export async function main() {
         await writeFile(join(OUT, 'baseline.json'), JSON.stringify({ lastRound: LAST, engineTree, settings: { K, MIN_N, TOP, DUP },
           ruleIds: ids, records: cum.map((c) => ({ hits: c.hits, n: c.n, recent: c.recent.slice(-104) })),
           common: common.map((row) => Array.from(row)), commonN: commonN.map((row) => Array.from(row)),
-          slotNames, cands: { frozen: rows('frozen'), latest: rows('latest') }, latestStates: draws.map((d) => states.latest[d.round]),
+          slotNames, cands: { frozen: rows('frozen'), latest: rows('latest') }, classicalNames: comboSlots.classicalNames, classical: comboSlots.classical.slice(0, LAST), comboSlotNames: comboSlots.comboSlotNames, latestStates: draws.map((d) => states.latest[d.round]),
           draws: draws.map((d) => ({ round: d.round, drawDate: d.drawDate, drawTime: d.drawTime, numbers: d.numbers })) }));
       }
     }
@@ -179,7 +185,7 @@ export async function main() {
 
     // 7) 1246 순위표
     const final = log.find((e) => e.round === 1246);
-    const board = rankBy(SCORERS.shrunk, 1246).map((x, k) => { const c = cum[idx[x.id]]; const rec = c.recent.slice(-104); return { rank: k + 1, id: x.id, score: x.s, rounds: c.n, mean: c.hits / c.n, recent104: rec.reduce((s, v) => s + v, 0) / rec.length, ticket: normTicket(series[x.id].get(1246)), name: meta[x.id]?.name ?? { N1: '슬롯 적중률 가중(두 엔진 66슬롯, 매회 갱신)', N2: '최근 104회 강세 체계 5개 득표', N3: '번호 특징 나이브 베이즈(득표·52회 빈도·간격)', N4: '순위표 상위 10개 규칙 합의' }[x.id], engine: meta[x.id]?.engine ?? (x.id === 'N2' ? 'latest' : x.id === 'N3' ? 'unse-c991927' : '두 엔진'), origin: meta[x.id]?.origin ?? '신규(이번 연구)' }; });
+    const board = rankBy(SCORERS.shrunk, 1246).map((x, k) => { const c = cum[idx[x.id]]; const rec = c.recent.slice(-104); return { rank: k + 1, id: x.id, score: x.s, rounds: c.n, mean: c.hits / c.n, recent104: rec.reduce((s, v) => s + v, 0) / rec.length, ticket: normTicket(series[x.id].get(1246)), name: meta[x.id]?.name ?? { N1: '슬롯 적중률 가중(두 엔진 66슬롯, 매회 갱신)', N2: '최근 104회 강세 체계 5개 득표', N3: '번호 특징 나이브 베이즈(득표·52회 빈도·간격)', N4: '순위표 상위 10개 규칙 합의', C1: '매주 재탐색 체계 조합식(전체 회차)', C2: '매주 재탐색 체계 조합식(최근 300회)', 'SYS-L-classical': '고전점성 단독(슬롯+이웃 채움)' }[x.id], engine: meta[x.id]?.engine ?? (x.id === 'N2' || comboIds.includes(x.id) ? 'latest' : x.id === 'N3' ? 'unse-c991927' : '두 엔진'), origin: meta[x.id]?.origin ?? '신규(이번 연구)' }; });
     const result = { generatedAt: new Date().toISOString(), protocol: 'ADAPTIVE_LEADERBOARD_PROTOCOL.md', next: NEXT, settings: { K, MIN_N, TOP, DUP }, random: { mean: MEAN0, best5Ge3Note: 'pBest5Sim 은 실제로 고른 5장의 겹침을 반영한 시뮬레이션' , pmf: PMF },
       liveRules: ids.length, leaderboardEval, effective, ruleUse, leaderChanges, newRules, top5For1246: final.picks.shrunk, variantsFor1246: { recent104: final.picks.recent104, plain: final.picks.plain }, board, famChoice1246,
       log: log.filter((e) => e.round >= 701).map((e) => ({ round: e.round, top5: e.picks.shrunk.map((x) => [x.id, x.hits ?? null]), rankCorr: e.rankCorr ?? null })) };
