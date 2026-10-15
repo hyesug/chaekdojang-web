@@ -412,14 +412,6 @@ function officialLottoPrediction(round: LottoPredictionRound, model: LottoPredic
   return round.predictions.find((prediction) => prediction.model === model && prediction.active && prediction.official);
 }
 
-// 정식 성적: 추첨 전 생성·저장되고 결과가 확정된 예측만 집계한다.
-function lottoStrategyOfficialScores(rounds: LottoPredictionRound[]) {
-  return LOTTO_STRATEGY_MODELS.map((model) => {
-    const hits = rounds.filter((round) => round.actualNumbers).map((round) => officialLottoPrediction(round, model)?.hitCount).filter((hit): hit is number => hit != null);
-    return { model, rounds: hits.length, totalHits: hits.reduce((sum, hit) => sum + hit, 0), bestHit: hits.length ? Math.max(...hits) : 0 };
-  });
-}
-
 function lottoRoundsWithoutOfficialStrategies(rounds: LottoPredictionRound[]) {
   return rounds.filter((round) => round.actualNumbers && !officialLottoPrediction(round, "S1"));
 }
@@ -2743,17 +2735,10 @@ export default function AdminPage() {
               })()}
               <LottoLeaderboardPanel rounds={lottoRounds} drawHasPassed={hasLottoDrawPassed} generating={lottoLeaderboardGenerating} onGenerate={(round) => void generateLottoLeaderboard(round)} />
               <details className="rounded-2xl border border-cream-200 bg-white p-5 shadow-sm">
-                <summary className="cursor-pointer font-serif text-lg font-bold text-brown-900">기존 8개 모델 기록 · 득표 전략 성적</summary>
+                <summary className="cursor-pointer font-serif text-lg font-bold text-brown-900">기존 8개 모델 기록</summary>
                 <p className="mt-1 text-sm text-brown-500">기존 8개(A·D·E·F·H·S1~S3)는 순위표에 OP-A~OP-S3로 함께 들어 있습니다. 회차별 저장 기록은 그대로 보존합니다.</p>
                 <div className="mt-4 space-y-4">
               <div className="overflow-x-auto rounded-2xl border border-cream-200 bg-white shadow-sm"><table className="w-full min-w-[1400px] text-sm"><thead className="bg-cream-100 text-left text-brown-600"><tr><th className="px-4 py-3">회차</th><th className="px-4 py-3">실제번호</th>{LOTTO_MODELS.map((model) => <th key={model} className="px-4 py-3"><LottoModelName model={model} /></th>)}</tr></thead><tbody>{lottoRounds.map((round) => <tr key={round.round} className="border-t border-cream-100"><td className="px-4 py-3 font-medium text-brown-800">{round.round}<p className="mt-1 text-xs font-normal text-brown-400">{round.drawDate} {round.drawTime.slice(0, 5)}</p></td><td className="px-4 py-3 text-brown-600">{round.actualNumbers ? sortedLottoNumbers(round.actualNumbers).join(" ") : "-"}</td>{LOTTO_MODELS.map((model) => { const prediction = round.predictions.find((item) => item.model === model && item.active); return <td key={model} className="px-4 py-3 text-brown-600">{prediction ? <><p>{sortedLottoNumbers(prediction.numbers).join(" ")}</p>{round.actualNumbers && <p className="mt-1 text-xs text-brown-400">{prediction.hitCount}/6{prediction.official === false && " · 추첨 후 생성, 성적 미집계"}</p>}</> : "-"}</td>; })}</tr>)}</tbody></table>{lottoRounds.length === 0 && <EmptyState>아직 생성된 미래검증 회차가 없어요</EmptyState>}</div>
-              <div className="rounded-2xl border border-cream-200 bg-white p-5 shadow-sm">
-                <h3 className="font-serif text-lg font-bold text-brown-900">득표 전략 정식 성적</h3>
-                <p className="mt-1 text-sm text-brown-500">추첨 전에 생성·저장되고 실제번호가 확정된 예측만 집계합니다. 재계산값은 넣지 않습니다.</p>
-                <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                  {lottoStrategyOfficialScores(lottoRounds).map((score) => <div key={score.model} className="rounded-xl bg-cream-50 p-3"><p className="font-semibold text-brown-800"><LottoModelName model={score.model} /></p><p className="mt-2 text-sm text-brown-600">{score.rounds ? `${score.rounds}회 · 적중 합계 ${score.totalHits}개 · 평균 ${(score.totalHits / score.rounds).toFixed(2)}개 · 최고 ${score.bestHit}/6` : "아직 집계할 회차가 없어요"}</p></div>)}
-                </div>
-              </div>
               {lottoRoundsWithoutOfficialStrategies(lottoRounds).length > 0 && <div className="rounded-2xl border border-dashed border-cream-300 bg-white p-5 shadow-sm">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
