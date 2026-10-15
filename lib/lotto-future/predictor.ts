@@ -7,7 +7,7 @@ import { ENGINE_VERSION, eventFeatures, spread, wrap45 } from "./event-features.
 
 type Event = { round: number; drawDate: string; drawTime: string };
 type History = Event & { numbers: number[] };
-type FeatureSet = {
+export type FeatureSet = {
   values: Record<string, number>;
   max: Record<string, number>;
   input: { year: number; month: number; day: number; hourBranch: number };
@@ -38,7 +38,7 @@ function aLane(formula: string, features: FeatureSet): number {
   const left = aLane(call[2], features), right = aLane(call[3], features);
   return call[1] === "diff" ? left - right : call[1] === "abs" ? Math.abs(left - right) : call[1] === "sum" ? left + right : call[1] === "a2b" ? 2 * left + right : left * right;
 }
-function candidateValues(features: FeatureSet) {
+export function candidateValues(features: FeatureSet) {
   const raw = (id: string) => value(features, id);
   const direct = (id: string, max: number) => spread(raw(id), max);
   return {
@@ -93,7 +93,7 @@ function kmeans(vectors: number[][]) {
   return centroids;
 }
 const centroids = kmeans(stateVectors);
-function state(features: FeatureSet) { return stateIds.map((id) => value(features, id) / features.max[id]); }
+export function state(features: FeatureSet) { return stateIds.map((id) => value(features, id) / features.max[id]); }
 function nearestCluster(vector: number[]) { return centroids.reduce((best, centroid, index) => { const distance = centroid.reduce((sum, coordinate, i) => sum + (coordinate - vector[i]) ** 2, 0); return distance < best.distance ? { index, distance } : best; }, { index: 0, distance: Infinity }).index; }
 export function pastOnlyFSelection(event: Event, history: History[]) {
   const current = eventFeatures({ ...dateParts(event.drawDate), ...timeParts(event.drawTime) }) as unknown as FeatureSet;

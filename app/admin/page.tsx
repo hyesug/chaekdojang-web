@@ -7,6 +7,7 @@ import Link from "next/link";
 import ReviewDetailModal from "../components/ReviewDetailModal";
 import FortuneFeedbackPanel from "./FortuneFeedbackPanel";
 import AiCreditUserPanel from "./AiCreditUserPanel";
+import { LottoLeaderboardPanel, type LottoLeaderboardEntry } from "./LottoLeaderboardPanel";
 import { API_BASE } from "../lib/api";
 import { authFetch, getValidToken } from "../lib/auth";
 
@@ -289,6 +290,7 @@ interface LottoPredictionRound {
   actualNumbers: number[] | null;
   resultConfirmedAt: string | null;
   predictions: LottoPrediction[];
+  leaderboard?: LottoLeaderboardEntry[];
 }
 
 interface DashboardSummary {
@@ -928,6 +930,7 @@ export default function AdminPage() {
   const [lottoGenerating, setLottoGenerating] = useState(false);
   const [lottoRecalculations, setLottoRecalculations] = useState<LottoStrategyRecalculation[]>([]);
   const [lottoRecalculating, setLottoRecalculating] = useState(false);
+  const [lottoLeaderboardGenerating, setLottoLeaderboardGenerating] = useState(false);
   const [aiCreditStats, setAiCreditStats] = useState<AiCreditStatistics | null>(null);
   const [creditUserId, setCreditUserId] = useState("");
   // 회원 질문권 조회 — 조회 버튼을 눌렀을 때의 ID 와, 조정 뒤 다시 읽게 하는 신호
@@ -1303,6 +1306,23 @@ export default function AdminPage() {
     });
     if (response.ok) setLottoRounds(await fetchAdmin<LottoPredictionRound[]>("/api/admin/lotto-future-validations") ?? []);
     else window.alert("모델 revision은 추첨 전에만 생성할 수 있습니다.");
+  }
+
+  async function generateLottoLeaderboard(round: number) {
+    const reason = window.prompt("순위표 생성 사유를 입력하세요.", "순위표 생성");
+    if (!reason?.trim()) return;
+    const token = getToken();
+    if (!token) return;
+    setLottoLeaderboardGenerating(true);
+    try {
+      const response = await authFetch(`${API_BASE}/api/admin/lotto-future-validations/${round}/leaderboard`, {
+        method: "POST", headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }, body: JSON.stringify({ reason: reason.trim() }),
+      });
+      if (response.ok) setLottoRounds(await fetchAdmin<LottoPredictionRound[]>("/api/admin/lotto-future-validations") ?? []);
+      else window.alert("순위표는 추첨 전 회차에서만 만들 수 있고, 직전 회차까지 당첨번호가 입력돼 있어야 합니다.");
+    } finally {
+      setLottoLeaderboardGenerating(false);
+    }
   }
 
   async function searchAdminUsers(event?: React.FormEvent) {
@@ -2720,6 +2740,7 @@ export default function AdminPage() {
                 </div>;
               })()}
               <div className="overflow-x-auto rounded-2xl border border-cream-200 bg-white shadow-sm"><table className="w-full min-w-[1400px] text-sm"><thead className="bg-cream-100 text-left text-brown-600"><tr><th className="px-4 py-3">회차</th><th className="px-4 py-3">실제번호</th>{LOTTO_MODELS.map((model) => <th key={model} className="px-4 py-3"><LottoModelName model={model} /></th>)}</tr></thead><tbody>{lottoRounds.map((round) => <tr key={round.round} className="border-t border-cream-100"><td className="px-4 py-3 font-medium text-brown-800">{round.round}<p className="mt-1 text-xs font-normal text-brown-400">{round.drawDate} {round.drawTime.slice(0, 5)}</p></td><td className="px-4 py-3 text-brown-600">{round.actualNumbers ? sortedLottoNumbers(round.actualNumbers).join(" ") : "-"}</td>{LOTTO_MODELS.map((model) => { const prediction = round.predictions.find((item) => item.model === model && item.active); return <td key={model} className="px-4 py-3 text-brown-600">{prediction ? <><p>{sortedLottoNumbers(prediction.numbers).join(" ")}</p>{round.actualNumbers && <p className="mt-1 text-xs text-brown-400">{prediction.hitCount}/6{prediction.official === false && " · 추첨 후 생성, 성적 미집계"}</p>}</> : "-"}</td>; })}</tr>)}</tbody></table>{lottoRounds.length === 0 && <EmptyState>아직 생성된 미래검증 회차가 없어요</EmptyState>}</div>
+              <LottoLeaderboardPanel rounds={lottoRounds} drawHasPassed={hasLottoDrawPassed} generating={lottoLeaderboardGenerating} onGenerate={(round) => void generateLottoLeaderboard(round)} />
               <div className="rounded-2xl border border-cream-200 bg-white p-5 shadow-sm">
                 <h3 className="font-serif text-lg font-bold text-brown-900">득표 전략 정식 성적</h3>
                 <p className="mt-1 text-sm text-brown-500">추첨 전에 생성·저장되고 실제번호가 확정된 예측만 집계합니다. 재계산값은 넣지 않습니다.</p>
