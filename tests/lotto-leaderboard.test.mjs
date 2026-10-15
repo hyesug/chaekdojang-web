@@ -33,7 +33,9 @@ test('운영 순위표는 1246회에서 연구 산출(순위·상위 5개·규�
     }
     const top = result.entries.filter((e) => e.top5Rank).sort((a, b) => a.top5Rank - b.top5Rank).map((e) => e.ruleId);
     assert.deepEqual(top, research.top5For1246.map((x) => x.id));
-    assert.equal(result.entries.length, 57);
+    assert.equal(result.entries.length, research.board.length + result.entries.filter((e) => e.rank == null).length);
+    assert.ok(result.entries.find((e) => e.ruleId === 'C1').detail.startsWith('이번 주 조합: '));
+    assert.ok(result.entries.find((e) => e.ruleId === 'OP-D').detail.includes('주역 동효'));
     assert.match(result.engineVersion, /^unse-c991927\+unse-latest/);
   } finally {
     await cleanup();
